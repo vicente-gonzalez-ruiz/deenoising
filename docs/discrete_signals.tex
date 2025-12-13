@@ -4,22 +4,25 @@ A discrete signal is the result of discretizing an analog signal in
 the signal domain (time, for example), producing a sequence of
 (signal) samples. Discrete signals will be represented with lower-case
 bold-faced symbols, such as $\mathbf{s}$. By physical reasons, we will
-suppose the discrete signals are finite with length $N$, and
-therefore, a discrete signal $\mathbf{s}$ will be denoted as
+suppose that discrete signals are finite. A discrete signal
+$\mathbf{s}$ will be denoted as
 \begin{equation}
-  \mathbf{s} = \{\mathbf{s}_n\}_{n=0}^{N-1}.
+  \mathbf{s} = \{\mathbf{s}_n\}_{n=0}^{N-1},
 \end{equation}
-However, notice that the assumption of this constrain ($N$ finite)
-only obey to the idea of focusing our analysis into the
-\emph{expected} (and most logical) case. In other words, a similar
-presentation could be done considering infinite discrete signals. In
-some results, we will see what happens.
+where $N$ is the signal length.
+
+%However, notice that the assumption of this constrain ($N$ finite)
+%only obey to the idea of focusing our analysis into the
+%\emph{expected} case. In other words, a similar
+%presentation could be done considering infinite discrete signals. In
+%some results, we will see what happens.
 
 \section{Signal sampling}
 %{{{
 
-Discrete signal are (a priori, infinite) sequences of samples. For example, if $s(t)$ is
-a analog signal that depends on time, the $n$-th signal sample is defined by
+Discrete signal are (a priori, infinite) sequences of samples. For
+example, if $s(t)$ is a analog signal that depends on time, the $n$-th
+signal sample is defined by
 \begin{equation}
   \mathbf{s}_n = s(t)\delta(t-nT),
 \end{equation}
