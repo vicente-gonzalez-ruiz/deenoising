@@ -1,0 +1,25 @@
+\chapter{Diffusion Models}
+
+Diffusion models are algorithms primarily used to create high-quality,
+realistic synthetic data, such as images, audio, and video.
+
+% https://arxiv.org/html/2312.14977v1#:~:text=Generative%20artificial%20intelligence%20(AI)%20refers,generators%20and%20large%20language%20models.
+
+The core idea is inspired by the physical process of diffusion, where molecules spread out from a high concentration to a low concentration (like ink spreading in water). In AI, this is modeled in two key phases:
+
+1. Forward Diffusion Process (Noising)
+
+The Goal: Systematically destroy the original data sample by gradually adding random noise (typically Gaussian noise) over many small, sequential steps.
+
+The Mechanism: Starting with a clean data sample (e.g., a high-quality image, x0​), the process adds a small, controlled amount of noise in a Markov chain fashion (memoryless) at each time step (t).
+
+The Result: After a sufficient number of steps, the original data is completely corrupted and becomes indistinguishable from pure, random noise (xT​), which is easily sampled from a simple distribution.
+
+2. Reverse Diffusion Process (Denoising / Generation)
+
+    The Goal: Train a neural network to learn how to perfectly reverse the forward diffusion process.
+
+The Mechanism: The model is trained to predict and remove the noise that was added at each step in the forward process. It learns the subtle statistical steps needed to transition from a noisy state (xt​) back to a slightly less noisy state (xt−1​).
+
+The Result: Once trained, to generate new data, the model starts with pure random noise (xT​) and iteratively applies the learned reverse steps (denoising) until it generates a clean, novel, and realistic data sample (x0​). This is the generation phase.
+

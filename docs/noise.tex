@@ -167,8 +167,9 @@ is a type of random\footnote{There exist a different type of noise,
   where $\mathbf{s}$ is the clean signal (without noise, ground truth
   usually unknown), $\hat{\mathbf{s}}$ is the noisy signal, and
   ${\mathbf{n}}$ is a sequence of random real values (noise samples)
-  that follow a Gaussian (normal) distribution (see
-  Section~\ref{sec:gaussian_distribution}), centered at zero:
+  that follow a Gaussian (normal) distribution\footnote{Read and dark
+  noise of most sensors can be treated as additive Gaussian noise.}
+  (see Section~\ref{sec:gaussian_distribution}), centered at zero:
   \begin{equation} 
     \mathbb{E}(\mathbf{n}_i) = 0,\quad {\mathbf n}_i\sim{\mathcal N}(\mu=0,\sigma^2).
   \end{equation}
@@ -339,7 +340,8 @@ Poisson noise (see Section~\ref{sec:poisson_distribution}) is a type
 of signal-dependent noise that arises in systems where the measured
 data represent counts of discrete events (photons or electrons,
 depending on the microscope). Poisson noise becomes particularly
-relevant in low-radiation microscopy imaging.
+relevant in low-radiation microscopy imaging. Shot noise is typically
+modeled as Poission noise.
 
 Pixel-wise signal-dependent Poisson noise can be modeled as
 \begin{equation}

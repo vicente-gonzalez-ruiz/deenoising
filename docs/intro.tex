@@ -47,12 +47,15 @@ in microscopy of biological specimens.
 There are several tecniques to capture microscopy images:
 
 \begin{enumerate}
-  \item \textbf{\gls{LM}}: Light passes through the specimen, and this light
-  is then magnified by an objective and ocular lenses to form an
-  observable image. Fluorescence microscopy and confocal microscopy
-  are two \gls{LM} tecniques, where the specimen(s) emit light after
-  have being excited by a source of light. Using \gls{LM} we can
-  typical reach a resolution of up to 200 nm.
+  \item \textbf{\gls{LM}}: Light passes through the specimen, and this
+    light is then magnified by an objective and ocular lenses to form
+    an observable image. Fluorescence microscopy\footnote{The target
+    of interest is ``tinted'' with fluorophores that upon ilumination
+    with a specific wavelength of excitation light, the attached
+    fluorophores emit photons.} and confocal microscopy are two
+    \gls{LM} tecniques, where the specimen(s) emit light after have
+    being excited by a source of light. Using \gls{LM} we can typical
+    reach a resolution of up to 200 nm.
 
 \item \textbf{\gls{EM}}: We use a beam of electrons that can pass
   through the sample to discover the internal structure (\gls{TEM}) or
@@ -169,12 +172,6 @@ and photon noises are usually modeled as a Poisson distribution
 $\mathcal{P}(\lambda)$, where $\lambda$ represents the average dark
 flux. Typically, read-out noise is modeled as zero-mean additive white Gaussian
 noise \cite{meiniel2018denoising,zhou2020wirtinger}.
-
-%}}}
-
-\section{Why denoising?}
-\label{sec:why_denoising}
-%{{{
 
 %We consider denoising techniques where there is only one noisy
 %instance or a few instances, usually in the latter case with slightly

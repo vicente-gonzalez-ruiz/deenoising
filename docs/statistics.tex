@@ -5,16 +5,25 @@ A random variable is a function
 \begin{equation}
   X:\Omega\rightarrow \mathcal{X}
 \end{equation}
-that maps outcomes $\omega\in\Omega$ (the sample space) to numerical values in some set $\mathcal{X}$ (usually $\mathbb{R}$, or a countable/continuos subset). For example, if we toss a coin, $X$ is a random variable that numerically represents the coin flip, $\omega=\{\text{Heads},\text{Tails}\}$, by definition $X(\omega)=1$ if $\omega=\text{Heads}$, and $X(\omega)=0$ if $\omega=\text{Tails}$.
+that maps outcomes $\omega\in\Omega$ (the sample space) to numerical
+values in some set $\mathcal{X}$ (usually $\mathbb{R}$, or a
+countable/continuos subset). For example, if we toss a coin, $X$ is a
+random variable that numerically represents the coin flip,
+$\omega=\{\text{Heads},\text{Tails}\}$, by definition $X(\omega)=1$ if
+$\omega=\text{Heads}$, and $X(\omega)=0$ if $\omega=\text{Tails}$.
 
-Notice that a randon variable is not random itself (it's a deterministic function of the underlying outcome). The ``randomness'' comes from the fact that the outcome $\omega$ is random (governed by $P$).
+Notice that a randon variable is not random itself (it's a
+deterministic function of the underlying outcome). The ``randomness''
+comes from the fact that the outcome $\omega$ is random (governed by
+the probability of resulting heads of tails).
 
 \section{Probability mass function}
 The \gls{PMF} of a random variable $X$, defined as
 \begin{equation}
   p(x) = \Pr(X=x), \quad x\in\mathcal{x},
 \end{equation}
-describes the probability with which a random variable $X$ takes values in a countable set $\mathcal{X}$, where
+describes the probability with which a random variable $X$ takes
+values in a countable set $\mathcal{X}$, where
 \begin{equation*}
   p(x)\ge 0,\quad\sum_{x\in\mathcal{X}}p(x)=1.
 \end{equation*}
@@ -22,15 +31,6 @@ describes the probability with which a random variable $X$ takes values in a cou
 % We will assume that discrete signals are stationary (discrete) random processes
 
 Discrete data only can take countable values (like 0, 1, 2, ...).
-
-Random variables
-
-A digital signal is the result of discretizing in amplitude a discrete
-signal. Therefore, a sample of a digital signal can be represented
-using a finite number of bits.
-
-By physical requirements, digital signals are finite in length, and therefore
-$\text{Sup}(\mathbf{x})$ is a finite set.
 
 \section{Discrete signals and discrete random variables}
 \label{sec:DSRV}
@@ -67,19 +67,31 @@ vectors) will be denoted as $\overrightarrow{\mathbf{x}}$.
 
 %}}}
 
-\section{Expectation of \glspl{DRV}}
+\section{Discrete signals and digital signals}
+A digital signal is the result of discretizing in amplitude a discrete
+signal. Therefore, a sample of a digital signal can be represented
+using a finite number of bits.
+
+By physical requirements, digital signals are finite in length, and
+therefore $\text{Sup}(\mathbf{x})$ is a finite set.
+
+\section{Expectation of a \glspl{DRV}}
 The expected value (or expectation, mathematical expectation,
 expectancy) of a \gls{DRV} $\mathbf{x}$, denoted as
-$\mathbb{E}(\mathbf{x})$, is a theoretical concept representing the
-long-run average value of the variable if the experiment were to be
-repeated an infinite number of times. It is defined as the weighted
-average of all possible values the random variable can take, where the
-weights are the probabilities of those values occurring.
+$\mathbb{E}(\mathbf{x})$ (and also by $\mathbb{E}[\mathbf{x}]$), is a
+theoretical concept representing the long-run average value of the
+variable if we had an infinite number of samples. It is defined as the
+weighted average of all possible values the random variable can take,
+where the weights are the probabilities of those values occurring:
+\begin{equation}
+  \mathbb{E}(\mathbf{x}) = \sum_{\mathbf{x}_i}\mathbf{x}_i\Pr(\mathbf{x}=\mathbf{x}_i).
+  \label{eq:expectation}
+\end{equation}
 
 For a digital signal $\mathbf{x}$, it is defined as
 \begin{equation}
-  \mathbb{E}_{\mathbf{x}}(\mathbf{x})=\mathbb{E}(\mathbf{x})=\sum_i\mathbf{x}_i\Pr(\mathbf{x}=\mathbf{x}_i).
-  \label{eq:expectation}
+  \mathbb{E}(\mathbf{x})=\mathbb{E}_{\mathbf{x}}(\mathbf{x})=\sum_i\mathbf{x}_i\Pr(\mathbf{x}=\mathbf{x}_i).
+  \label{eq:expectation_digital}
 \end{equation}
 
 The subscripts in expectations (like $\mathbb{E}(X,Y)_{(X,Y)}$) are
@@ -235,9 +247,8 @@ where $N$ is the number of samples in $\mathbf{x}$. We will also use
 $\mu$ to denote the mean value.
 
 Notice that Eq.~\ref{eq:mean} is equivalent to
-Ed.~\ref{eq:expectation} when all the samples have the same
+Ed.~\ref{eq:expectation_digital} when all the samples have the same
 probability.
-
 
 \section{Variance}
 \label{sec:variance}
@@ -280,11 +291,12 @@ This is because
 \label{sec:covariance}
 %{{{
 
-The covariance $\mathbb{C}(\mathbf{x}, \mathbf{y})$ is a measure of
-how two random variables $\mathbf{x}$ and $\mathbf{y}$ change
-together. In simpler terms, it tells us the direction of the linear
-relationship between two variables. The covariance between two
-discrete signals $\mathbf{x}$ and $\mathbf{y}$ is calculated as
+The covariance $\mathbb{C}(\mathbf{x}, \mathbf{y})$ (also denoted by
+$R_{\mathbf{x}\mathbf{y}}$) is a measure of how two random variables
+$\mathbf{x}$ and $\mathbf{y}$ change together. In simpler terms, it
+tells us the direction of the linear relationship between two
+variables. The covariance between two discrete signals $\mathbf{x}$
+and $\mathbf{y}$ is calculated as
 %\begin{equation}
 %  \text{Cov}(\textbf{x}, \textbf{y}) = \mathbb{E}[(\mathbf{x}-\overline{\mathbf{x}})(\mathbf{y}-\overline{\mathbf{y}})].
 %\end{equation}
@@ -306,7 +318,10 @@ Notice that (see Eq.~\ref{eq:variance})
 \label{sec:covariance_matrix}
 %{{{
 
-The covariance matrix $\Sigma_{\overrightarrow{\mathbf{x}}}$ of a random vector $\overrightarrow{\mathbf{x}}=[\mathbf{x}_1,\cdots,\mathbf{x}_N]^T$, defined as,
+The covariance matrix $\Sigma_{\overrightarrow{\mathbf{x}}}$ of a
+random vector
+$\overrightarrow{\mathbf{x}}=[\mathbf{x}_1,\cdots,\mathbf{x}_N]^T$,
+defined as
 \begin{equation}
   (\Sigma_{\overrightarrow{\mathbf{x}}})_{i,j}=\mathbb{C}(\mathbf{x}_i,\mathbf{x}_j),
 \end{equation}
