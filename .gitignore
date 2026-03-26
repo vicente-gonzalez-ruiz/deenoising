@@ -12,11 +12,10 @@
 *.out
 *.toc
 *.ipynb_checkpoints
-*.pdf
 *.png
 *.bak
 *.svg
-*.mrc
 *.tif
 *.npy
+*.IPYNB
 *pycache*
