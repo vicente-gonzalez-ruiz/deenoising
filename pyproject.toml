@@ -4,7 +4,7 @@ requires = ["hatchling", "setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "denoising"
+name = "deenoising"
 version = "0.0.1"
 authors = [
   { name="Vicente González Ruiz", email="vruiz@ual.es" },
@@ -24,6 +24,5 @@ dynamic = ["dependencies"]
 dependencies = {file = ["requirements.txt"]}
 
 [project.urls]
-"Homepage" = "https://github.com/vicente-gonzalez-ruiz/denoising"
-"Bug Tracker" = "https://github.com/vicente-gonzalez-ruiz/denoising/issues"
-
+"Homepage" = "https://github.com/vicente-gonzalez-ruiz/deenoising"
+"Bug Tracker" = "https://github.com/vicente-gonzalez-ruiz/deenoising/issues"
