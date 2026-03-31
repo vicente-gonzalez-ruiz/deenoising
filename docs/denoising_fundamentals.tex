@@ -1,0 +1,78 @@
+\chapter{Denoising fundamentals}
+
+\section{A general solution to non-invertible problems}
+Non-invertible denoising problems can be approached by minimizing a
+cost function
+\begin{equation}
+\mathbf{Y}^*=\underset{\mathbf{Y}}{\operatorname{arg\,min}} \, E(\mathbf{X},\mathbf{y}),
+\end{equation}
+where
+\begin{equation}
+E = D(\mathbf{X},\mathbf{Y}) + \lambda R(\mathbf{Y}),
+\end{equation}
+combines a data term $D$ and a regularizer term $R$.
+
+The regularizer favors solutions based on prior assumptions about
+uncorrupted images, and therefore, it helps to pick one restored image
+$\mathbf{Y}^*$ from the set of uncorrupted images that might have
+given rise to $\mathbf{X}$. $R$ traditionally encodes rather simple,
+hand-crafted assumptions, often as simple as favoring smooth images by
+penalizing strong differences of neighboring pixels
+\cite{buchholz2019content}.
+
+The data term $D$ encourages $\mathbf{Y}^*$ to be in-line with the
+observation and our understanding of the physical nature of
+distortions. Dependent on the severity of the distortion,
+regularization has to be tuned by weighing it with a parameter
+$\lambda$ \cite{buchholz2019content}.
+
+\section{Objectives}
+
+In microscopy, an optimal denoiser should effectively attenuate noise
+while concurrently preserving crucial underlying biological
+structures. Image denoising tries to restore a latent clean image from
+an observed image degraded by noise \cite{BUCHHOLZ2019277}. Image
+noise primarily arises during data acquisition, stemming from sensor
+electronics, photon statistics, and variations in imaging conditions
+such as illumination and scene dynamics. The resulting degradations
+can be stochastic/uncorrelated (e.g., Poisson or Gaussian) or
+structured/correlated (e.g., speckle or banding)
+\cite{wang2025median2median}, both of which reduce the signal-to-noise
+ratio, impair visual quality, and hinder downstream
+analysis. Denoising methods are therefore needed to recover the
+underlying clean image, either by modeling the corruption process or
+by exploiting image priors such as self-similarity and sparsity.
+
+An added challenge to this situation is the limited availability of
+only a single noisy realization of these images, which complicates
+both the evaluation of denoising algorithms (due to the absence of a
+ground truth for comparative assessment) and the selection of
+appropriate denoising parameters. 
+
+\section{Denoisers classification}
+
+\begin{enumerate}
+  
+\item Planar imaging-based denoising methods, that only a single 2D image to be applied.
+
+  % Z. Y. M. Q. e. a. Qiao, C., “Zero-shot learning enables instant denoising
+  % and super-resolution in optical fluorescence microscopy,” Nature Com-
+  % munications, vol. 15, no. 4180, 2024.
+
+  % P. R. S. A. e. a. Lequyer, J., “A fast blind zero-shot denoiser,” Nature
+  % Machine Intelligence, vol. 4, p. 953–963, 2022.
+
+\item Time-lapse imaging-based denoising methods, which leverage the
+  temporal information present across multiple frames to distinguish
+  between actual signal and random noise.
+  
+  % X. Li, G. Zhang, J. Wu, Y. Zhang, Z. Zhao, X. Lin, H. Qiao, H. Xie,
+  % H. Wang, L. Fang et al., “Reinforcing neuron extraction and spike
+  % inference in calcium imaging using deep self-supervised denoising,”
+  % Nature Methods, pp. 1–6, 2021.
+
+  % . H. S. N. O. P. L. . C. K. J´erˆome Lecoq, Michael Oliver, “Removing in-
+  % dependent noise in systems neuroscience data using deepinterpolation,”
+  % Nature Methods, vol. 18, pp. 1401–1408, 2021.
+
+\end{enumerate}

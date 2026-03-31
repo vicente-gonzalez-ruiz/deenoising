@@ -23,6 +23,14 @@ is a single value, $\mu$, for example. To distinguish between both
 expectations we will use the notation $\overline{\mathbb{E}}$ for the
 scalar case, when there exist some doubt.
 
+Conventional denoising methods typically assume that noise follows a
+known statistical model, such as a Gaussian distribution or a mixture
+of well-characterized distributions. These assumptions allow
+classical methods to perform noise removal in a principled
+manner. However, most real-world noise is considerably more complex,
+being neither independent nor accurately represented by analytic
+models.  % https://arxiv.org/pdf/2510.01666
+
 \section{Stochastic VS structured noise}
 Noise can be stochastic (i.d.d., independent and identically
 distributed), such as Poisson or Gaussian, or structured.  Structured
