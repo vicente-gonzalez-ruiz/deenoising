@@ -2,10 +2,10 @@
 
 A discrete signal is the result of discretizing an analog signal in
 the signal domain (time, for example), producing a sequence of
-(signal) samples. Discrete signals will be represented with lower-case
-bold-faced symbols, such as $\mathbf{s}$. By physical reasons, we will
-suppose that discrete signals are finite. A discrete signal
-$\mathbf{s}$ will be denoted as
+(signal) samples. By physical reasons, we will suppose that discrete
+signals are finite. A discrete signal $\mathbf{s}$ will be
+denoted\footnote{Discrete signals will be represented with lower-case
+bold-faced symbols, such as $\mathbf{s}$.} as
 \begin{equation}
   \mathbf{s} = \{\mathbf{s}_n\}_{n=0}^{N-1},
 \end{equation}
@@ -21,7 +21,7 @@ where $N$ is the signal length.
 %{{{
 
 Discrete signal are (a priori, infinite) sequences of samples. For
-example, if $s(t)$ is a analog signal that depends on time, the $n$-th
+example, if $s(t)$ is an analog signal that depends on time, the $n$-th
 signal sample is defined by
 \begin{equation}
   \mathbf{s}_n = s(t)\delta(t-nT),
@@ -168,7 +168,7 @@ $\mathbf{S}$, that is
   |\mathbf{S}| = \sqrt{(\text{Re}(\mathbf{S}))^2+(\text{Im}(\mathbf{S}))^2}.
 \end{equation}
 As a complex function, we can also find the \emph{phase angle}, \emph{argument} or
-\emph{phase spectrum} using
+\emph{phase spectrum} of $\mathbf{S}$ using
 \begin{equation}
   \arg({\mathbf{S}}) = \text{arctan}\left(\frac{\text{Re}(\mathbf{S})}{\text{Im}(\mathbf{S})}\right),
 \end{equation}
@@ -206,8 +206,12 @@ is transformed by a system's behavior what is itself described by
 another signal (usually, the response of the system to the an
 impulse). An example of such system can be a digital filter.
 
-For two signals $\mathbf{s}$ (the signal to filter) and
-$\mathbf{h}$ (the filter coefficients), the convolution is defined as
+For two signals $\mathbf{s}$ (the signal to filter) and $\mathbf{h}$
+(the filter coefficients or weights\footnote{In the rest of this
+document, we will use only the term ``weight'' for refering to the
+``weights of a filter'' and the term ``coefficien'' for refering to
+the ``coefficients of a transform'' (the output of the transform).}),
+the convolution is defined as
 \begin{equation}
 (\mathbf{s}\ast\mathbf{h})_{n}=\sum_{k=0}^{K-1}\mathbf{s}_{n-k}\mathbf{h}_{k},
 \label{eq:convolution}
