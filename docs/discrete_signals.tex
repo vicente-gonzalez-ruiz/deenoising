@@ -2,12 +2,12 @@
 
 A discrete signal is the result of discretizing an analog signal in
 the signal domain (time, for example), producing a sequence of
-(signal) samples. By physical reasons, we will suppose that discrete
-signals are finite. A discrete signal $\mathbf{s}$ will be
-denoted\footnote{Discrete signals will be represented with lower-case
-bold-faced symbols, such as $\mathbf{s}$.} as
+(signal) samples. Discrete signals will be represented with lower-case
+bold-faced symbols, such as $\mathbf{x}$. By physical reasons, we will
+suppose that discrete signals are finite. A discrete signal
+$\mathbf{x}$ will be denoted as
 \begin{equation}
-  \mathbf{s} = \{\mathbf{s}_n\}_{n=0}^{N-1},
+  \mathbf{x} = \{\mathbf{x}_n\}_{n=0}^{N-1},
 \end{equation}
 where $N$ is the signal length.
 
@@ -21,10 +21,10 @@ where $N$ is the signal length.
 %{{{
 
 Discrete signal are (a priori, infinite) sequences of samples. For
-example, if $s(t)$ is an analog signal that depends on time, the $n$-th
+example, if $x(t)$ is a analog signal that depends on time, the $n$-th
 signal sample is defined by
 \begin{equation}
-  \mathbf{s}_n = s(t)\delta(t-nT),
+  \mathbf{x}_n = x(t)\delta(t-nT),
 \end{equation}
 where  $T$ is the sampling period, and
 $\delta(t-nT)$ is the \emph{unit impulse function} defined by
@@ -40,12 +40,12 @@ where
 \int_{-\infty}^{\infty} \delta(t) \, dt = 1.
 \end{equation}
 
-Notice that, an impulse has the so-called sifting property with
+Notice that, an impulse has the so-called shifting property with
 respect to integration,
 \begin{equation}
-\int_{-\infty}^{\infty} s(t)\delta(t) \, dt = s(0),
+\int_{-\infty}^{\infty} x(t)\delta(t) \, dt = x(0),
 \end{equation}
-provided that $s(t)$ is continuous at $t=0$ \cite{gonzalez1992digital}.
+provided that $x(t)$ is continuous at $t=0$ \cite{gonzalez1992digital}.
 
 %Notice that, by definition,
 %\begin{equation}
@@ -59,10 +59,10 @@ provided that $s(t)$ is continuous at $t=0$ \cite{gonzalez1992digital}.
 \label{sec:energy_signal}
 %{{{
 
-The energy of a discrete signal $\mathbf{s}$ is the sum of the square
+The energy of a discrete signal $\mathbf{x}$ is the sum of the square
 of all its samples:
 \begin{equation}
-  E(\mathbf{s}) = \sum_{i=0}^{N-1}|\mathbf{s}_i|^2.
+  E(\mathbf{x}) = \sum_{i=0}^{N-1}|\mathbf{x}_i|^2.
 \end{equation}
 
 Notice that, by definition, the energy of a finite-length discrete
@@ -75,9 +75,9 @@ the energy can be also infinite.
 \label{sec:power_signal}
 %{{{
 
-The power of a discrete signal $\mathbf{s}$ is
+The power of a discrete signal $\mathbf{x}$ is
 \begin{equation}
-  P(\mathbf{s}) = \frac{1}{N}E(\mathbf{s}),
+  P(\mathbf{x}) = \frac{1}{N}E(\mathbf{x}),
   \label{eq:power_discrete_signal}
 \end{equation}
 i.e., its average energy (average of the squared magnitude of the
@@ -95,14 +95,14 @@ $N\rightarrow\infty$.
 %{{{
 
 The Fourier transform, usually denoted by $\mathcal{F}$, of a
-continuous function $s(t)$ is
+continuous function $x(t)$ is
 \begin{equation}
-  \mathcal{F}(s) = S(w) = \int_{-\infty}^{\infty}s(t)e^{-jwt}dt
+  \mathcal{F}(x) = X(w) = \int_{-\infty}^{\infty}x(t)e^{-jwt}dt
   \label{eq:FT}
 \end{equation}
 and its inverse, denoted by $\mathcal{F}^{-1}$ is
 \begin{equation}
-  s(t) = \mathcal{F}^{-1}(S(w)) = \int_{-\infty}^{\infty}S(w)e^{jtw}dw,
+  x(t) = \mathcal{F}^{-1}(X(w)) = \int_{-\infty}^{\infty}X(w)e^{jtw}dw,
 \end{equation}
 where $w=2\pi f$ denotes angular frequency, $j=\sqrt{-1}$, and
 $f$ is frequency.
@@ -116,14 +116,14 @@ $S$, even if $s$ is real.
 \label{sec:DFT}
 %{{{
 
-The \acrshort{DFT} is the Fourier transform of a discrete finite signal $\mathbf{s}$ is defined as
+The \acrshort{DFT} is the Fourier transform of a discrete finite signal $\mathbf{x}$ is defined as
 \begin{equation}
-  \mathcal{F}(\mathbf{s}) = \mathbf{S} = \{\mathbf{S}_f\}_{f=0}^{N-1} \quad \text{with} \quad \mathbf{S}_f=\sum_{n=0}^{N-1}\mathbf{s}_ne^{-2\pi jf\frac{n}{N}},
+  \mathcal{F}(\mathbf{x}) = \mathbf{X} = \{\mathbf{X}_f\}_{f=0}^{N-1} \quad \text{with} \quad \mathbf{X}_f=\sum_{n=0}^{N-1}\mathbf{x}_ne^{-2\pi jf\frac{n}{N}},
   \label{eq:DFT}
 \end{equation}
 where $f$ denotes (discrete) frequency bins. The inverse \gls{DFT} is
 \begin{equation}
-  \mathbf{s} = \mathcal{F}^{-1}(\mathbf{S}) \quad \text{with} \quad \mathbf{x}_n = \frac{1}{N}\sum_{f=0}^{N-1}\mathbf{S}_fe^{2\pi jn\frac{f}{N}}.
+  \mathbf{x} = \mathcal{F}^{-1}(\mathbf{X}) \quad \text{with} \quad \mathbf{x}_n = \frac{1}{N}\sum_{f=0}^{N-1}\mathbf{X}_fe^{2\pi jn\frac{f}{N}}.
 \end{equation}
 
 The \gls{DFT} can be interpreted as sampling the \gls{FTDF} (see
@@ -146,8 +146,8 @@ $\mathcal{O}\log_2\mathcal{O}$.
 The Parseval's theorem for discrete signals states that, except for a
 scale factor, the total energy of a signal in the signal domain (time,
 for example) is equal to the total energy of its representation in the
-frequency domain. Concretely, if $\mathbf{S}$ is the \gls{DFT} of the
-discrete (and finte) signal $\mathbf{s}$, the Parseval’s theorem
+frequency domain. Concretely, if $\mathbf{X}$ is the \gls{DFT} of the
+discrete (and finte) signal $\mathbf{x}$, the Parseval’s theorem
 states that
 \begin{equation}
   E(\mathbf{s}) = \frac{1}{N}E(\mathbf{S}),
@@ -162,15 +162,15 @@ Section~\ref{sec:energy_signal}).
 %{{{
 
 By definition, the Fourier
-(or frequency) spectrum of $\mathbf{s}$ is the magnitude of
-$\mathbf{S}$, that is
+(or frequency) spectrum of $\mathbf{x}$ is the magnitude of
+$\mathbf{X}$, that is
 \begin{equation}
-  |\mathbf{S}| = \sqrt{(\text{Re}(\mathbf{S}))^2+(\text{Im}(\mathbf{S}))^2}.
+  |\mathbf{X}| = \sqrt{(\text{Re}(\mathbf{X}))^2+(\text{Im}(\mathbf{X}))^2}.
 \end{equation}
 As a complex function, we can also find the \emph{phase angle}, \emph{argument} or
-\emph{phase spectrum} of $\mathbf{S}$ using
+\emph{phase spectrum} using
 \begin{equation}
-  \arg({\mathbf{S}}) = \text{arctan}\left(\frac{\text{Re}(\mathbf{S})}{\text{Im}(\mathbf{S})}\right),
+  \arg({\mathbf{X}}) = \text{arctan}\left(\frac{\text{Re}(\mathbf{X})}{\text{Im}(\mathbf{X})}\right),
 \end{equation}
 where $\text{arctan}()$ must be computed using a four-quadrant
 arctangent function.
@@ -181,12 +181,12 @@ arctangent function.
 \label{sec:power_spectrum}
 %{{{
 
-The \gls{PS} of finite-length discrete signal $\mathbf{s}$ shows how
+The \gls{PS} of finite-length discrete signal $\mathbf{x}$ shows how
 much power (see Section~\ref{sec:power_signal}) a signal has at its
-different frequency bins. Let $\mathbf{S}$ the Fourier transform of
-$\mathbf{s}$. Then,
+different frequency bins. Let $\mathbf{X}$ the Fourier transform of
+$\mathbf{x}$. Then,
 \begin{equation}
-  \text{PS}(\mathbf{s}) = \{\text{PS}(\mathbf{s})_f\}_{f=0}^{N-1} \quad \text{where} \quad \text{PS}(\mathbf{s})_f = \frac{1}{N}|\mathbf{S}_f|^2,
+  \text{PS}(\mathbf{x}) = \{\text{PS}(\mathbf{x})_f\}_{f=0}^{N-1} \quad \text{where} \quad \text{PS}(\mathbf{x})_f = \frac{1}{N}|\mathbf{X}_f|^2,
 \end{equation}
 where $f$ denotes the frequency bin.
 
@@ -206,18 +206,14 @@ is transformed by a system's behavior what is itself described by
 another signal (usually, the response of the system to the an
 impulse). An example of such system can be a digital filter.
 
-For two signals $\mathbf{s}$ (the signal to filter) and $\mathbf{h}$
-(the filter coefficients or weights\footnote{In the rest of this
-document, we will use only the term ``weight'' for refering to the
-``weights of a filter'' and the term ``coefficien'' for refering to
-the ``coefficients of a transform'' (the output of the transform).}),
-the convolution is defined as
+For two signals $\mathbf{x}$ (the signal to filter) and
+$\mathbf{h}$ (the filter coefficients), the convolution is defined as
 \begin{equation}
-(\mathbf{s}\ast\mathbf{h})_{n}=\sum_{k=0}^{K-1}\mathbf{s}_{n-k}\mathbf{h}_{k},
+(\mathbf{x}\ast\mathbf{h})_{n}=\sum_{k=0}^{K-1}\mathbf{x}_{n-k}\mathbf{h}_{k},
 \label{eq:convolution}
 \end{equation}
-where $K$ is the number of coefficients (of the filter), and $n$ is
-known as the \emph{lag} (where the filter is applied in $\mathbf{s}$).
+where $K$ is the number of weights (of the filter), and $n$ is
+known as the \emph{lag} (where the filter is applied in $\mathbf{x}$).
 
 Notice that we could need to extend $\mathbf{s}$ to convolve.
 
@@ -233,7 +229,7 @@ signal. In the analog world, it is defined as
   H(s) = \frac{Y(s)}{X(s)},
 \end{equation}
 where $Y(s)$ is the Laplace transform of the output, $X(s)$ is the
-Laplace transform of the input, and $s=\sigma+j\omega$ represents a complex
+Laplace transform of the input, and $s$ represents a complex
 frequency. In the digital case, the Laplace-domain is changed by the
 Z-domain, resulting (\gls{IIR} filter)
 \begin{equation}
