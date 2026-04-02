@@ -1,28 +1,28 @@
 \begin{tabular}{ll}
-  $x$ & A scalar value (e.g., a value of a pixel of a grayscale image) \\
-  $s(t)$ & A (continuous) signal as a function of time \\
-  $s[n]$ & A discrete signal (only) defined at instants of time $tn, n\in\mathcal{Z}, t>0$ \\
-  $\mathbf{s}$ & A digital (discrete and finite) signal (e.g., an image) \\
-  $\mathbf{s}_{i}$ & The $i$-th element of $\mathbf{s}=\{\mathbf{s}_{i}\}_{i=0}^{N-1}=\{\mathbf{s}_{i}\}$ \\
+  $x$, $\alpha$ & Scalar values \\
+  $x(t)$ & A (continuous) signal as a function of time \\
+  $x[n]$ & A discrete signal (only) defined at instants of time $tn, n\in\mathcal{Z}, t>0$ \\
+  $\mathbf{x}$ & A digital (discrete and finite) signal (e.g., an image) \\
+  $\mathbf{x}_{i}$ & The $i$-th element of $\mathbf{x}=\{\mathbf{x}_{i}\}_{i=0}^{N-1}=\{\mathbf{x}_{i}\}$ \\
   %$A[b]$ & The $b$-th element of the sampled version of $A(b)$ \\
   $\{i\}$ & The set $i$ \\
-  $\mathbf{s}_{\{i\}}$ & The elements of $\mathbf{s}$ with indices $\{i\}$ \\
-  $\mathbf{s}_{[i]}$ & A window of samples of $\mathbf{s}$ centered at the $i$-th sample \\
-  $\mathbf{s}_{\href{https://numpy.org/doc/stable/user/basics.indexing.html#slicing-and-striding}{y,:}}$ & The $y$-th row of the image $\mathbf{s}$ \\
-  $\mathbf{s}_{:,x}$ & The $x$-th column of the image $\mathbf{s}$ \\
-  $\mathbf{s}_{y,x}$ & The pixel $(y,x)$ of the image $\mathbf{s}$ \\
+  $\mathbf{x}_{\{i\}}$ & The elements of $\mathbf{x}$ with indices $\{i\}$ \\
+  $\mathbf{x}_{[i]}$ & A window of samples of $\mathbf{x}$ centered at the $i$-th sample \\
+  $\mathbf{x}_{\href{https://numpy.org/doc/stable/user/basics.indexing.html#slicing-and-striding}{y,:}}$ & The $y$-th row of the image $\mathbf{x}$ \\
+  $\mathbf{x}_{:,x}$ & The $x$-th column of the image $\mathbf{x}$ \\
+  $\mathbf{x}_{y,x}$ & The pixel $(y,x)$ of the image $\mathbf{x}$ \\
   %$\mathbf{x}^{(i)}$ & The $i$-th real-noisy instance of the signal $\mathbf{x}$ \\
   %$\mathbf{s}^{()}$ & An instance of $\mathbf{s}$, possibly noisy \\
-  $\mathbf{s}^{(i)}$ & The $i$-th instance of the signal $\mathbf{s}$ \\
-  $\tilde{\mathbf{s}}^{(I)}$ & Approximation to $\mathbf{s}$ using $I$ instances \\ 
-  $\overline{\mathbf{s}}$ & A mean of the samples of $\mathbf{s}$ \\ 
-  $\href{https://docs.python.org/3/library/functions.html#len}{\text{len}}(\mathbf{s})$ & $=\mathbf{s}.\href{https://numpy.org/doc/stable/reference/generated/numpy.ndarray.size.html}{\mathsf{size}}$ Number of elements in $\mathbf{s}$ \\
-  $\href{https://numpy.org/doc/stable/reference/generated/numpy.shape.html}{\text{shape}}(\mathbf{s})$ & ($=\mathbf{s}.{\mathsf{shape}}$) Shape of $\mathbf{s}$ \\
-  $\text{rank}(\mathbf{s})$ & ($=\mathbf{s}.\mathsf{rank}=\text{len}(\mathbf{s}.\mathsf{shape})$) Dimensionality of $\mathbf{s}$ \\
-  $\mathsf{\href{https://docs.python.org/3/library/functions.html\#func-range}{range}}(s)$ & $=\{0, 1, \cdots, s-1\}$ \\
-  $\mathsf{\href{https://numpy.org/doc/stable/reference/generated/numpy.zeros_like.html}{zeros\_like}}(\mathbf{s})$ & $=\{0\}_{i=0}^{\mathbf{s}.\mathsf{size}-1}$ \\
+  $\mathbf{x}^{(i)}$ & The $i$-th instance of the signal $\mathbf{x}$ \\
+  $\tilde{\mathbf{x}}^{(I)}$ & Approximation to $\mathbf{x}$ using $I$ instances \\ 
+  $\overline{\mathbf{x}}$ & Mean of the samples of $\mathbf{x}$ \\ 
+  $\href{https://docs.python.org/3/library/functions.html#len}{\text{len}}(\mathbf{x})$ & $=\mathbf{x}.\href{https://numpy.org/doc/stable/reference/generated/numpy.ndarray.size.html}{\mathsf{size}}$ Number of elements in $\mathbf{x}$ \\
+  $\href{https://numpy.org/doc/stable/reference/generated/numpy.shape.html}{\text{shape}}(\mathbf{x})$ & ($=\mathbf{x}.{\mathsf{shape}}$) Shape of $\mathbf{x}$ \\
+  $\text{rank}(\mathbf{x})$ & ($=\mathbf{x}.\mathsf{rank}=\text{len}(\mathbf{x}.\mathsf{shape})$) Dimensionality of $\mathbf{x}$ \\
+  $\mathsf{\href{https://docs.python.org/3/library/functions.html\#func-range}{range}}(x)$ & $=\{0, 1, \cdots, x-1\}$ \\
+  $\mathsf{\href{https://numpy.org/doc/stable/reference/generated/numpy.zeros_like.html}{zeros\_like}}(\mathbf{x})$ & $=\{0\}_{i=0}^{\mathbf{x}.\mathsf{size}-1}$ \\
   % $|\mathbf{X}_i|$ & The absolute value of $\mathbf{X}_i$ \\
-  $\alpha\mathbf{s}$ & $=\{\alpha\mathbf{s}_i\}$ (scalar multiplication) \\
+  $\alpha\mathbf{x}$ & $=\{\alpha\mathbf{x}_i\}$ (scalar multiplication) \\
   $\mathbf{x}+\mathbf{y}$ & $=\{\mathbf{x}_i + \mathbf{y}_i\}$ (Hadamard addition) \\ 
   $\mathbf{x}\mathbf{y}$ & $=\{\mathbf{x}_i\mathbf{y}_i\}$ (Hadamard product) \\ 
   $\mathcal{N}$ & The normal distribution \\ 
@@ -33,21 +33,21 @@
   $\Pr(\mathbf{x}=a, \mathbf{y}=b)$ & $\Pr(\mathbf{x}=a)$ and $\Pr(\mathbf{y}=b)$ (joint probability)  \\
   $\text{Su}(\mathbf{x})$ & $=\{x\in\mathbb{R}|\Pr(\mathbf{x}=x)>0\}$ (support of $\mathbf{x}$)\\
   $\Pr(A|B)$ & Conditional probability of $A$ given $B$ \\
-  $\mathbb{E}(\mathbf{s})$ & Expectation of $\mathbf{s}$ \\
-  $\mathbb{V}(\mathbf{s})$ & Variance of $\mathbf{s}$ \\
-  $||\mathbf{s}||_2$ & $L_2$ norm of $\mathbf{s}$ \\
+  $\mathbb{E}(\mathbf{x})$ & Expectation of $\mathbf{x}$ \\
+  $\mathbb{V}(\mathbf{x})$ & Variance of $\mathbf{x}$ \\
+  $||\mathbf{x}||_2$ & $L_2$ norm of $\mathbf{x}$ \\
   $f_s$ & Sampling frequency \\
-  $\mathcal{F}$ & The (forward) Fourier transform ($\mathcal{F}(\mathbf{s})=\mathbf{S}$) (see Section~\ref{sec:Fourier_transform})\\
-  $\mathcal{F}^{-1}$ & The inverse Fourier transform ($\mathcal{F}^{-1}(\mathbf{S})=\mathbf{s}$)  (see Section~\ref{sec:Fourier_transform})\\
+  $\mathcal{F}$ & The (forward) Fourier transform ($\mathcal{F}(\mathbf{x})=\mathbf{X}$) (see Section~\ref{sec:Fourier_transform})\\
+  $\mathcal{F}^{-1}$ & The inverse Fourier transform ($\mathcal{F}^{-1}(\mathbf{X})=\mathbf{x}$)  (see Section~\ref{sec:Fourier_transform})\\
   $\cdot^*$ & the complex conjugate of $\cdot$ \\
   $\mathbf{x}*\mathbf{y}$ & $=\mathcal{F}^{-1}(\mathcal{F}(\mathbf{x})\mathcal{F}(\mathbf{y}))=\mathcal{F}^{-1}(\mathbf{X}\mathbf{Y})$ (convolution) \\
   $A(b)$ & $A$ depends on (parameter) $b$ \\
   $A.b$ & The $b$ component of the data structure $A$ \\
   $(A)b$ & First $A$, then $b$ \\
-  $E(\mathbf{s})$ & Energy of $\mathbf{s}$ (see Section~\ref{sec:energy_signal}) \\
-  $P(\mathbf{s})$ & Power of $\mathbf{s}$ (see Section~\ref{sec:power_signal}) \\
-  $\text{PS}(\mathbf{s})$ & Power spectrum of $\mathbf{s}$ (see Section~\ref{sec:power_spectrum}) \\
-  $\text{PSD}(\mathbf{s})$ & Power spectral density of $\mathbf{s}$ (see Section~\ref{sec:PSD}) \\
+  $E(\mathbf{x})$ & Energy of $\mathbf{x}$ (see Section~\ref{sec:energy_signal}) \\
+  $P(\mathbf{x})$ & Power of $\mathbf{x}$ (see Section~\ref{sec:power_signal}) \\
+  $\text{PS}(\mathbf{x})$ & Power spectrum of $\mathbf{x}$ (see Section~\ref{sec:power_spectrum}) \\
+  $\text{PSD}(\mathbf{x})$ & Power spectral density of $\mathbf{x}$ (see Section~\ref{sec:PSD}) \\
   $\text{CC}(\mathbf{x},\mathbf{y})$ & Cross-correlation between $\mathbf{x}$ and $\mathbf{y}$ (see Section~\ref{sec:cross-correlation}) \\
   $\text{NCC}(\mathbf{x},\mathbf{y})$ & Normalized cross-correlation between $\mathbf{x}$ and $\mathbf{y}$ (see Section~\ref{sec:cross-correlation}) \\
   $\mathbf{a}\bot \mathbf{b}$ & $\mathbf{a}$ and $\mathbf{b}$ are orthogonal or independent                                
