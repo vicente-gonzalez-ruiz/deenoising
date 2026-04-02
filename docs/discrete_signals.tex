@@ -9,7 +9,8 @@ $\mathbf{x}$ will be denoted as
 \begin{equation}
   \mathbf{x} = \{\mathbf{x}_n\}_{n=0}^{N-1},
 \end{equation}
-where $N$ is the signal length.
+where $N$ is the signal length, and $\mathbf{x}_n$ is the $n$-th
+(digital-)sample of $\mathbf{x}$.
 
 %However, notice that the assumption of this constrain ($N$ finite)
 %only obey to the idea of focusing our analysis into the
@@ -20,9 +21,9 @@ where $N$ is the signal length.
 \section{Signal sampling}
 %{{{
 
-Discrete signal are (a priori, infinite) sequences of samples. For
-example, if $x(t)$ is a analog signal that depends on time, the $n$-th
-signal sample is defined by
+Discrete signal are sequences of samples. For example, if $x(t)$ is a
+analog signal that depends on time, the $n$-th signal analog-sample is
+defined by
 \begin{equation}
   \mathbf{x}_n = x(t)\delta(t-nT),
 \end{equation}
