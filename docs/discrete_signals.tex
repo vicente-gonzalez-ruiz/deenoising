@@ -1,29 +1,43 @@
 \chapter{Discrete signals}
 
-A discrete signal is the result of discretizing an analog signal in
-the signal domain (time, for example), producing a sequence of
-(signal) samples. Discrete signals will be represented with lower-case
-bold-faced symbols, such as $\mathbf{x}$. By physical reasons, we will
-suppose that discrete signals are finite. A discrete signal
-$\mathbf{x}$ will be denoted as
+\section{Signals}
+
+An (analog) signal is the result of the measurement of some physical
+event. For example, if $x$ represents a SPL (sound preasure level),
+$x(t)$ is the SPL value at the instant of time $t$.
+
+\section{Discrete signals}
+A discrete signal
 \begin{equation}
   \mathbf{x} = \{\mathbf{x}_n\}_{n=0}^{N-1},
 \end{equation}
-where $N$ is the signal length, and $\mathbf{x}_n$ is the $n$-th
-(digital-)sample of $\mathbf{x}$.
+where $N$ is the signal length\footnote{By physical reasons, we will
+suppose that discrete signals are finite.}, and $\mathbf{x}_n$ is the
+$n$-th (digital-)sample of $\mathbf{x}$, is a sequence of
+samples. Continuing with the SPL example, each sample is found with
+\begin{equation}
+  \mathbf{x}_n = x(t)\delta(t-nT),
+\end{equation}
+where  $T$ is the sampling period, and
+$\delta(t-nT)$ is the \emph{unit impulse function} defined by
+\begin{equation}
+\delta(t) =
+\begin{cases}
+\infty & \text{for } t = 0 \\
+0 & \text{for } t \neq 0,
+\end{cases}
+\end{equation}
+where
+\begin{equation}
+\int_{-\infty}^{\infty} \delta(t) \, dt = 1.
+\end{equation}
 
-%However, notice that the assumption of this constrain ($N$ finite)
-%only obey to the idea of focusing our analysis into the
-%\emph{expected} case. In other words, a similar
-%presentation could be done considering infinite discrete signals. In
-%some results, we will see what happens.
-
-\section{Signal sampling}
+\section{Sampling}
 %{{{
 
-Discrete signal are sequences of samples. For example, if $x(t)$ is a
-analog signal that depends on time, the $n$-th signal analog-sample is
-defined by
+Discrete signal are sequences of (analog) samples. For example, if
+$x(t)$ is a analog signal that depends on time, the $n$-th signal
+analog-sample is defined by
 \begin{equation}
   \mathbf{x}_n = x(t)\delta(t-nT),
 \end{equation}
@@ -55,6 +69,27 @@ provided that $x(t)$ is continuous at $t=0$ \cite{gonzalez1992digital}.
 %where $s[]$ represents to the sequence of samples.
 
 %}}}
+
+\section{}
+
+A discrete signal is the result of discretizing an analog signal in
+the signal domain (time, for example), producing a sequence of
+(signal) samples. Discrete signals will be represented with lower-case
+bold-faced symbols, such as $\mathbf{x}$. A discrete signal
+$\mathbf{x}$ will be denoted as
+\begin{equation}
+  \mathbf{x} = \{\mathbf{x}_n\}_{n=0}^{N-1},
+\end{equation}
+where $N$ is the signal length\footnote{By physical reasons, we will
+suppose that discrete signals are finite.}, and $\mathbf{x}_n$ is the
+$n$-th (digital-)sample of $\mathbf{x}$.
+
+%However, notice that the assumption of this constrain ($N$ finite)
+%only obey to the idea of focusing our analysis into the
+%\emph{expected} case. In other words, a similar
+%presentation could be done considering infinite discrete signals. In
+%some results, we will see what happens.
+
 
 \section{Energy of a discrete signal}
 \label{sec:energy_signal}
