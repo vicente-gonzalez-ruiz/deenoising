@@ -4,32 +4,43 @@ Quantization is a fundamental concept in digital signal processing
 that involves mapping a continuous or high-resolution discrete signal
 to a finite set of levels. It is a key step in converting analog
 signals to digital form. Quantization is a non-linear operation that
-introduces quantization error.
+introduces quantization error (quantization is a lossy process).
 
-Notice that this concept implies as input a discretized signal in the
-signal domain (in general, \emph{analog} signal samples) and the
-output is a digital signal (where the signal samples are discretized
-in amplitude). However, quantization can be also used to re-encode
-already quantized signals (re-quantization), a process that is
-involved in lossy data compression. A similar idea is used when we
-quantize the parameters of machine learning model.
+Quantization implies as input a discretized signal in the signal
+domain (in general, \emph{analog} signal samples) and the output is a
+digital signal (where the signal samples are discretized in
+amplitude). However, quantization can be also used to re-quantize
+already quantized signals.
 
-\section{Definition}
-In general, quantization is a mathematical injective projection
-between the elements of two sets $A$ and $B$, where $|A|>|B|$, and
-obviously, this is an irreversible action.
-
-In the context of discrete signals, quantization of signals the process
-of approximating a continuous range of values (or a large discrete
-set) with a limited number of levels.
+In general, quantization can be considered as a injective
+projection between the elements of two sets $A$ and $B$, where
+$|A|>|B|$, and obviously, this is an irreversible action.
 
 \section{The quantization error}
 
 The quantization error is the difference between the
 discrete-but-still-analog input signal and the digital output signal
 \begin{equation}
-  e_n = s_n - \hat{s}_n
+  \mathbf{e}_n = \mathbf{x}_n - \hat{\mathbf{x}}_n
 \end{equation}
 
 Under a high enough number of quantization levels, quantization error
-is typically modeled as a uniform random variable.
+is typically modeled as an uniform random variable.
+
+\section{Uniform quantization}
+
+An uniform quantizer use equidistant decision levels (constant
+quantization step size (QSS)). The representation levels (one per
+interval) are usually in the middle of each interval to minimize the
+quantization error, on average.
+
+\section{Non-unidorm quantization}
+
+Uniform quantizers are only optimal if the input samples follow an
+uniform distribution. In we know, a priori, that actual statistical
+distribution, the QSS can be different over the dynamic range of the
+input signal $\mathbf{x}$.
+
+\section{Adaptive quantization}
+
+In adaptive quantizers the QSS is adapted depending on the 
