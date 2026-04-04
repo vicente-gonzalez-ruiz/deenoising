@@ -1,47 +1,23 @@
 \chapter{Discrete signals}
 
-\section{Signals}
+\section{(Continuous) Signals}
 
-An (analog) signal is the result of the measurement of some physical
+An signal $s$ is the result of the measurement of some physical
 event. For example, if $x$ represents a SPL (sound preasure level),
 $x(t)$ is the SPL value at the instant of time $t$.
 
 \section{Discrete signals}
-A discrete signal
+A discrete signal $\mathbf{x}$ is a sequence of samples $\mathbf{x}_n$,
 \begin{equation}
   \mathbf{x} = \{\mathbf{x}_n\}_{n=0}^{N-1},
 \end{equation}
 where $N$ is the signal length\footnote{By physical reasons, we will
-suppose that discrete signals are finite.}, and $\mathbf{x}_n$ is the
-$n$-th (digital-)sample of $\mathbf{x}$, is a sequence of
-samples. Continuing with the SPL example, each sample is found with
+suppose that discrete signals are finite.}. Continuing with the SPL
+example, each sample is ideally found with
 \begin{equation}
   \mathbf{x}_n = x(t)\delta(t-nT),
 \end{equation}
-where  $T$ is the sampling period, and
-$\delta(t-nT)$ is the \emph{unit impulse function} defined by
-\begin{equation}
-\delta(t) =
-\begin{cases}
-\infty & \text{for } t = 0 \\
-0 & \text{for } t \neq 0,
-\end{cases}
-\end{equation}
-where
-\begin{equation}
-\int_{-\infty}^{\infty} \delta(t) \, dt = 1.
-\end{equation}
-
-\section{Sampling}
-%{{{
-
-Discrete signal are sequences of (analog) samples. For example, if
-$x(t)$ is a analog signal that depends on time, the $n$-th signal
-analog-sample is defined by
-\begin{equation}
-  \mathbf{x}_n = x(t)\delta(t-nT),
-\end{equation}
-where  $T$ is the sampling period, and
+where $T$ is the sampling period, and
 $\delta(t-nT)$ is the \emph{unit impulse function} defined by
 \begin{equation}
 \delta(t) =
@@ -68,29 +44,6 @@ provided that $x(t)$ is continuous at $t=0$ \cite{gonzalez1992digital}.
 %\end{equation}
 %where $s[]$ represents to the sequence of samples.
 
-%}}}
-
-\section{}
-
-A discrete signal is the result of discretizing an analog signal in
-the signal domain (time, for example), producing a sequence of
-(signal) samples. Discrete signals will be represented with lower-case
-bold-faced symbols, such as $\mathbf{x}$. A discrete signal
-$\mathbf{x}$ will be denoted as
-\begin{equation}
-  \mathbf{x} = \{\mathbf{x}_n\}_{n=0}^{N-1},
-\end{equation}
-where $N$ is the signal length\footnote{By physical reasons, we will
-suppose that discrete signals are finite.}, and $\mathbf{x}_n$ is the
-$n$-th (digital-)sample of $\mathbf{x}$.
-
-%However, notice that the assumption of this constrain ($N$ finite)
-%only obey to the idea of focusing our analysis into the
-%\emph{expected} case. In other words, a similar
-%presentation could be done considering infinite discrete signals. In
-%some results, we will see what happens.
-
-
 \section{Energy of a discrete signal}
 \label{sec:energy_signal}
 %{{{
@@ -102,8 +55,8 @@ of all its samples:
 \end{equation}
 
 Notice that, by definition, the energy of a finite-length discrete
-signal is finite, but grows with $N$. Obviously, if $N$ is infinite,
-the energy can be also infinite.
+signal is finite, but grows with $N$. Obviously, if $N$ where infinite,
+the energy would be also infinite.
 
 %}}}
 
@@ -119,10 +72,9 @@ The power of a discrete signal $\mathbf{x}$ is
 i.e., its average energy (average of the squared magnitude of the
 signal values).
 
-Notice that, compared to the energy of a signal, the use of the power
-of a signal can be more convenient to avoid arithmetic overflow in
-computations with long signals, and this is true even if
-$N\rightarrow\infty$.
+Compared to the energy of a signal, the use of the power of a signal
+can be more convenient to avoid arithmetic overflow in computations
+with long signals.
 
 %}}}
 
@@ -143,8 +95,8 @@ and its inverse, denoted by $\mathcal{F}^{-1}$ is
 where $w=2\pi f$ denotes angular frequency, $j=\sqrt{-1}$, and
 $f$ is frequency.
 
-Notice that, the Fourier transform of a signal $s$ is a complex signal
-$S$, even if $s$ is real.
+Notice that, the Fourier transform of a signal $x$ is a complex signal
+$X$, even if $x$ is real.
 
 %}}}
 
@@ -152,25 +104,27 @@ $S$, even if $s$ is real.
 \label{sec:DFT}
 %{{{
 
-The \acrshort{DFT} is the Fourier transform of a discrete finite signal $\mathbf{x}$ is defined as
+The \acrshort{DFT} of a (by definition, discrete finite) signal
+$\mathbf{x}$ is determined by
 \begin{equation}
   \mathcal{F}(\mathbf{x}) = \mathbf{X} = \{\mathbf{X}_f\}_{f=0}^{N-1} \quad \text{with} \quad \mathbf{X}_f=\sum_{n=0}^{N-1}\mathbf{x}_ne^{-2\pi jf\frac{n}{N}},
   \label{eq:DFT}
 \end{equation}
-where $f$ denotes (discrete) frequency bins. The inverse \gls{DFT} is
+where $f$ denotes (discrete) frequency bins. The inverse \gls{DFT} is defined by
 \begin{equation}
   \mathbf{x} = \mathcal{F}^{-1}(\mathbf{X}) \quad \text{with} \quad \mathbf{x}_n = \frac{1}{N}\sum_{f=0}^{N-1}\mathbf{X}_fe^{2\pi jn\frac{f}{N}}.
 \end{equation}
 
 The \gls{DFT} can be interpreted as sampling the \gls{FTDF} (see
-Appendix~\ref{sec:FTDF}) at $N$ evenly spaced points over
-$[-\pi, \pi)$. So, the \gls{DFT} is a discrete approximation of the
-\gls{FTDF} for finite-length signals. If $N$ were infinite, what
-happens is that the frequency bins would be infinitesimally narrow,
-and the Fourier transform of the discrete signal would be continuous.
+Appendix~\ref{sec:FTDF}) at $N$ evenly spaced points over $[-\pi,
+  \pi)$. So, the \gls{DFT} is a discrete approximation of the
+  \gls{FTDF} for finite-length signals. If $N$ were infinite, what
+  happens is that the frequency bins would be infinitesimally narrow,
+  and the Fourier transform of the discrete signal would be
+  continuous.
 
-Finally, there exists a faster version of the \gls{DFT} (with have a
-complexity of $\mathcal{O}^2$ called \gls{FFT} with complexity
+Notice that there exists a faster version of the \gls{DFT} (with have
+a complexity of $\mathcal{O}^2$ called \gls{FFT} with complexity
 $\mathcal{O}\log_2\mathcal{O}$.
 
 %}}}
