@@ -157,8 +157,8 @@ $\mathbf{X}$, that is
 \begin{equation}
   |\mathbf{X}| = \sqrt{(\text{Re}(\mathbf{X}))^2+(\text{Im}(\mathbf{X}))^2}.
 \end{equation}
-As a complex function, we can also find the \emph{phase angle}, \emph{argument} or
-\emph{phase spectrum} using
+As a complex function, we can also find the \emph{phase angle},
+\emph{argument} or \emph{phase spectrum} using
 \begin{equation}
   \arg({\mathbf{X}}) = \text{arctan}\left(\frac{\text{Re}(\mathbf{X})}{\text{Im}(\mathbf{X})}\right),
 \end{equation}
@@ -181,7 +181,7 @@ $\mathbf{x}$. Then,
 where $f$ denotes the frequency bin.
 
 Notice that, for real-valued digital signals, the spectrum is
-symmetric about $N/2$ (Nyquist frequency).
+symmetric about the $N/2$-th bin (Nyquist frequency).
 
 %}}}
 
@@ -189,23 +189,24 @@ symmetric about $N/2$ (Nyquist frequency).
 \label{sec:convolution}
 %{{{
 
-Convolution, typically represented with the symbol $\ast$, is a
+Typically represented with the symbol $\ast$, convolution is a
 mathematical operation that combines two signals to produce a third
-signal. From a physical perspective, convolution models how a signal
+one. From a physical perspective, convolution models how a signal
 is transformed by a system's behavior what is itself described by
 another signal (usually, the response of the system to the an
-impulse). An example of such system can be a digital filter.
+impulse). An example of such system can be a filter.
 
-For two signals $\mathbf{x}$ (the signal to filter) and
-$\mathbf{h}$ (the filter coefficients), the convolution is defined as
+For two signals $\mathbf{x}$ (the signal to be filtered) and
+$\mathbf{h}$ (the filter weights), the convolution is defined as
 \begin{equation}
 (\mathbf{x}\ast\mathbf{h})_{n}=\sum_{k=0}^{K-1}\mathbf{x}_{n-k}\mathbf{h}_{k},
 \label{eq:convolution}
 \end{equation}
-where $K$ is the number of weights (of the filter), and $n$ is
-known as the \emph{lag} (where the filter is applied in $\mathbf{x}$).
+where $K$ is the number of weights, and $n$ is known as the \emph{lag}
+(where the filter is applied in $\mathbf{x}$).
 
-Notice that we could need to extend $\mathbf{x}$ to convolve.
+Notice that we could need to extend $\mathbf{x}$ to convolve it with
+$\mathbf{h}$.
 
 %}}}
 
@@ -219,22 +220,23 @@ signal. In the analog world, it is defined as
   H(s) = \frac{Y(s)}{X(s)},
 \end{equation}
 where $Y(s)$ is the Laplace transform of the output, $X(s)$ is the
-Laplace transform of the input, and $s$ represents a complex
-frequency. In the digital case, the Laplace-domain is changed by the
-Z-domain, resulting (\gls{IIR} filter)
+Laplace transform of the input, and $s$ represents a complex frequency
+(a point in the complex $s$-plane). In the digital case, the
+Laplace-domain is changed by the Z-domain ($z$-plane), resulting
+(for the case of a \gls{IIR} filter)
 \begin{equation}
   H(z) = \frac{Y(z)}{X(z)} = \frac{b_0 + b_1 z^{-1} + b_2 z^{-2} + \dots + b_M z^{-M}}{1 + a_1 z^{-1} + a_2 z^{-2} + \dots + a_N z^{-N}}
 \end{equation}
 where $z=e^{jw}$, $Y(z)$ is the Z-transform of the output, $X(z)$ is the
-Z-transform of the input, $\{b_k\}$ are the feedforward coefficients,
-and $\{a_k\}$ are the feedback coefficients. In the \gls{FIR} case,
+Z-transform of the input, $\{b_k\}$ are the feedforward weights,
+and $\{a_k\}$ are the feedback weights. In the \gls{FIR} case,
 all $a_k=0$ for $k\ge 1$, and therefore
 \begin{equation}
   H(z) = b_0 + b_1 z^{-1} + b_2 z^{-2} + \dots + b_M z^{-M}.
 \end{equation}
 
-In both analog and digital cases, evaluating the transfer function on
-the imaginary axis or unit circle, respectively, gives the frequency
+In both analog and digital cases, the evaluation of the transfer function on
+the imaginary axis (unit circle), respectively, gives the frequency
 response: $H(j\omega)$ (analog), $H(e^{j\omega})$ (digital).
 
 \section{Fourier-based convolution (the convolution theorem)}
@@ -243,7 +245,7 @@ response: $H(j\omega)$ (analog), $H(e^{j\omega})$ (digital).
 
 The convolution theorem states that the convolution of two signals in
 the signal domain is equivalent to the (coefficient-wise)
-multiplication of their Fourier transforms and then performs the
+multiplication of their Fourier transforms and then using the
 inverse Fourier transform:
 \begin{equation}
   \mathbf{x}\ast\mathbf{h} = \mathcal{F}^{-1}(\mathbf{X}\mathbf{H}).
@@ -255,9 +257,8 @@ the convolution of their individual Fourier transforms:
   \mathcal{F}(\mathbf{x}\mathbf{h}) = \mathbf{X}\ast\mathbf{H}.
 \end{equation}
 
-We can compute the convolution in the Fourier
-domain with a
-complexity of $O(N\log N)$, using the following steps:
+We can compute the convolution in the Fourier domain with a complexity
+of $O(N\log N)$, using the following steps:
 \begin{enumerate}
 \item Take the FFT of $\mathbf{x}$ ($O(N\log N)$):
   \begin{equation}
@@ -291,23 +292,23 @@ convolution if we use \gls{FFT} algorithms.
 %{{{
 
 Essentially, \gls{CC}, usually represented by the symbol
-$\circledast$, is the measure of how two or more variables are related
-to one another. In the context of this chapter, \gls{CC} can be used
-to measure the similarity between two signals $\mathbf{s}$ and
-$\mathbf{h}$ (both usually with the same shape) of one relative to the
-other, as a function of a time lag $n\in\{n\}_{n=0}^{N-1}$. The
-\gls{CC} is defined as
+$\circledast$, is a measurement of how much two or more variables are
+related to one another. The \gls{CC} can be used to find the
+similarity between two signals $\mathbf{x}$ and $\mathbf{h}$ (both
+usually with the same shape) of one relative to the other, as a
+function of a time lag $n\in\{n\}_{n=0}^{N-1}$. The \gls{CC} is
+defined as
 \begin{equation}
-  (\mathbf{s}\circledast\mathbf{h})_n=\sum_{k=0}^{N-1}{\mathbf{s}}_{n+k} \mathbf{h}_n.
+  (\mathbf{x}\circledast\mathbf{h})_n=\sum_{k=0}^{N-1}{\mathbf{x}}_{n+k} \mathbf{h}_n.
   \label{eq:cross-correlation}
 \end{equation}
 
 Notice that the \gls{CC} is identical to the convolution except that
-one of the signals is \emph{flipped} ($\mathbf{s}$ in our case).
+one of the signals is \emph{flipped} ($\mathbf{x}$ in our case).
 
 The \gls{CC} can be normalized between 0 and 1 (\gls{NCC}) using
 \begin{equation}
-  \text{NCC}(\mathbf{s},\mathbf{h})=\frac{{\mathbf{s}\circledast\mathbf{h}}}{\sqrt{\sum_n \mathbf{s}_n^2 \sum_n \mathbf{h}_n^2}}.
+  \text{NCC}(\mathbf{x},\mathbf{h})=\frac{{\mathbf{s}\circledast\mathbf{h}}}{\sqrt{\sum_n \mathbf{x}_n^2 \sum_n \mathbf{h}_n^2}}.
 \end{equation}
 
 %}}}
@@ -345,16 +346,14 @@ signals:
 \section{Fourier-based cross-correlation (the cross-correlation theorem)}
 %{{{
 
-See the convolution in the Fourier fomain (Section~\ref{sec:convolution_theorem}):
+Considering the convolution in the Fourier fomain (Section~\ref{sec:convolution_theorem}), i.e.,
 \begin{equation}
   \mathbf{x}\circledast\mathbf{h} = \mathcal{F}^{-1}(\mathbf{X}\mathbf{H}^*),
   \label{eq:FFT_CC}
 \end{equation}
-where $\mathbf{H}^*$ is the complex conjugate of $\mathbf{H}$.
-
-We can compute the cross-correlation in the Fourier
-domain with a
-complexity of $O(N\log N)$, using the following steps:
+where $\mathbf{H}^*$ is the complex conjugate of $\mathbf{H}$, we can
+compute the cross-correlation in the Fourier domain with a complexity
+of $O(N\log N)$, using the following steps:
 \begin{enumerate}
 \item Take the FFT of $\mathbf{x}$ ($O(N\log N)$):
   \begin{equation}
@@ -386,11 +385,11 @@ complexity of $O(N\log N)$, using the following steps:
 between a signal and a shifted version of it. Therefore (see
 Eq.~\ref{eq:cross-correlation}),
 \begin{equation}
-  \text{AC}(\mathbf{s})_n = (\mathbf{s}\circledast\mathbf{s})_n.
+  \text{AC}(\mathbf{s})_n = (\mathbf{x}\circledast\mathbf{x})_n.
 \end{equation}
 
 Notice that if we are insterested in the \gls{AC} for all the possible
-lag values, Eq.~\ref{eq:FFT_CC} offers an efficient technique.
+lag values, Eq.~\ref{eq:FFT_CC} offers an efficient algorithm.
 
 %The \gls{AC} of a digital signal is another digital signal that
 %measures the similarity between the signal and a time-delayed version
@@ -433,11 +432,12 @@ signal $\mathbf{x}$ is the Fourier transform of its \gls{AC}:
 The Wiener-Khinching theorem states that the \gls{PSD} of a signal is
 the Fourier transform of its autocorrelation function:
 \begin{equation}
-  \text{PSD}(\mathbf{s}) = \mathcal{F}(\text{AC}(\mathbf{s})).
+  \text{PSD}(\mathbf{x}) = \mathcal{F}(\text{AC}(\mathbf{x})).
 \end{equation}
-Therefore, taking the inverse Fourier transform on both sides,
+Therefore, taking the inverse Fourier transform on both sides, we
+obtain that
 \begin{equation}
-  \mathcal{F}^{-1}(\text{PSD}(\mathbf{s})) = \text{AC}(\mathbf{s}),
+  \mathcal{F}^{-1}(\text{PSD}(\mathbf{x})) = \text{AC}(\mathbf{x}),
 \end{equation}
 which matches the Eq.~\ref{eq:FFT_CC}.
 
