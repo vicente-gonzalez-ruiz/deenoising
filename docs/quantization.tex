@@ -27,6 +27,24 @@ discrete-but-still-analog input signal and the digital output signal
 Under a high enough number of quantization levels, quantization error
 is typically modeled as an uniform random variable.
 
+\section{The rate/distortion curve}
+
+The ultimate goal of all quantizers is to minimize the (bit-)rate and
+the quantization error, which is a tradeoff (for a given quantizer, we
+cannot minimize the bit-rate and the quantization error at the same
+time). In terms of Rate/Distortion (R/D), the \emph{R/D efficiency} of
+a quantizer can be described plotting the distortion generated for
+each (possible) number of bits/sample, that at the end, determine the
+number of quantization levels. Notice that, for a given bit-rate, a
+quantizer is more efficient if the distortion is smaller.
+
+\section{Scalar quantization VS vectorial quantization}
+
+Quantizers can process the samples individually (scalar) or in groups
+(vectors). Scalar quantizers are optimal in terms of R/D only if the
+samples are uncorrelated. Otherwhise, vectorial quantizers (which can
+exploit such correlation) are more efficient.
+
 \section{Uniform quantization}
 
 An uniform quantizer use equidistant decision levels (constant
@@ -36,10 +54,12 @@ quantization error, on average.
 
 \section{Non-unidorm quantization}
 
-Uniform quantizers are only optimal if the input samples follow an
-uniform distribution. In we know, a priori, that actual statistical
-distribution, the QSS can be different over the dynamic range of the
-input signal $\mathbf{x}$.
+Uniform quantizers only minimize the quantization error if the input
+samples follow an uniform distribution. Better 
+
+Therefore, if we know, a priori, that
+actual statistical distribution, the QSS can be different over the
+dynamic range of the input signal $\mathbf{x}$.
 
 \section{Adaptive quantization}
 
