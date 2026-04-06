@@ -21,24 +21,27 @@ always). The ``randomness'' comes from the fact that the outcome
 $\omega$ is random (governed by the probability of resulting heads or
 tails).
 
-\section{Discrete randon vector} 
+\section{\gls{DRVec}} 
 
-A \gls{DRVect} expands the concept of a random variable by
+A \gls{DRVec} expands the concept of a random variable by
 mapping outcomes to a point in multi-dimensional space rather than a
-single number. Eq.~\cite{eq:DRV} holds, but now $\mathcal{X}$ is a
-countable subset of $n$-dimensional space.
-
+single number. Now Eq.~\ref{eq:DRV} becomes
 \begin{equation}
-\mathbf{X}(\omega) = [ X_1(\omega), X_2(\omega), \cdots, X_n(\omega)]^\text{T}
+  \mathbf{X}:\Omega\rightarrow \mathcal{X},
+  \label{eq:DRVec}
+\end{equation}
+where $\mathcal{X}$ is a countable subset of a $n$-dimensional space, and 
+\begin{equation}
+\mathbf{X}(\omega) = [\mathbf{X}_1(\omega), \mathbf{X}_2(\omega), \cdots, \mathbf{X}_n(\omega)]^\text{T}.
 \end{equation}
 
-The use of \glspl{DRVect} allows us to bundle multiple characteristics
+The use of \glspl{DRVec} allows us to bundle multiple characteristics
 of a single experiment into a single mathematical object. For example,
 suppose we roll two fair six-sided dice. The sample space $\Omega$
 consists of 36 ordered pairs $(d_1,d_2)$ where
 $d_i\in\{1,\cdots,6\}$. We define a \gls{DRVect} $\mathbf{X}=(S,D)$
 where $S$ is the sum of the dice ($d_1 + d_2$) and $D$ is the
-absolute difference ($|d_1-d_2|$).
+absolute difference ($|d_1-d_2|$). Now, we define our random vector as $\mathbf{X=[X1​,X2​]T
 
 If the outcome is $\omega=(4,6)$, the random vector maps this to:
 \begin{equation}
