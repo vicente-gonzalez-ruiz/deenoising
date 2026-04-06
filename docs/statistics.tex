@@ -1,22 +1,47 @@
 \chapter{Statistics for digital data}
 
-\section{Random variable}
-A random variable is a function
+\section{\gls{DRV}} % Discrete Random Variable
+A \gls{DRV} is a function
 \begin{equation}
   X:\Omega\rightarrow \mathcal{X}
+  \label{eq:DRV}
 \end{equation}
 that maps outcomes $\omega\in\Omega$ (the samples space) to numerical
-values in some set $\mathcal{X}$ (usually $\mathbb{R}$, or a
-countable/continuos subset). For example, if we toss a coin, $X$ is a
+values in some set $\mathcal{X}$, usually $\mathbb{N}^+$ or a
+countable subset. For example, if we toss a coin, $X$ is a
 random variable that numerically represents the coin flip,
 $\Omega=\{\text{Heads},\text{Tails}\}$, and for example, if were
 $\omega=\text{Heads}$ then $X(\omega)=0$, and viceversa, $X(\omega)=1$
 if $\omega=\text{Tails}$.
 
-Notice that a randon variable is not random itself (it's a
-deterministic function of the underlying outcome). The ``randomness''
-comes from the fact that the outcome $\omega$ is random (governed by
-the probability of resulting heads or tails).
+Notice that, in general, a randon variable is not random itself (it's a
+deterministic function of the underlying outcome: $X(\text{Heads}=0$,
+always). The ``randomness'' comes from the fact that the outcome
+$\omega$ is random (governed by the probability of resulting heads or
+tails).
+
+\section{Discrete randon vector} 
+
+A \gls{DRVect} expands the concept of a random variable by
+mapping outcomes to a point in multi-dimensional space rather than a
+single number. Eq.~\cite{eq:DRV} holds, but now $\mathcal{X}$ is a
+countable subset of $n$-dimensional space.
+
+\begin{equation}
+\mathbf{X}(\omega) = \begin{bmatrix} X_1(\omega) \ X_2(\omega) \ \vdots \ X_n(\omega) \end{bmatrix}
+\end{equation}
+
+It allows us to bundle multiple characteristics of a single experiment into a single mathematical object:
+\begin{equation}
+\mathbf{X}(\omega) = (X_1(\omega), X_2(\omega), \dots, X_n(\omega))
+\end{equation}
+
+\section{\glspl{SRV}}
+A \gls{SRV} is the result of a stochastic process whose statistical
+properties do not change. For example, if we say that a digital signal
+is a \gls{SRV}, then the probability distribution of a signal at any
+given set of time/space points is the same as the distribution at
+those same samples shifted by any constant amount in time or space.
 
 \section{Probability mass function}
 The \gls{PMF} of a random variable $X$, defined as
@@ -31,24 +56,24 @@ values in a countable set $\mathcal{X}$, where it must be true that
 
 % We will assume that discrete signals are stationary (discrete) random processes
 
-Discrete data only can take countable values (like 0, 1, 2, ...).
+%Discrete data only can take countable values (like 0, 1, 2, ...).
 
 \section{Discrete signals and discrete random variables}
 \label{sec:DSRV}
 %{{{
 
-Mathematically, we can model discrete signals as \glspl{SRV}. A
-\gls{SRV} can be described as the output of a stochastic process whose
-statistical properties do not change with time or space. This means,
-basically, that the probability distribution of a signal at any given
-set of time/space points is the same as the distribution at those same
-samples shifted by any constant amount in time or space.
+%Mathematically, we can model discrete signals as \glspl{SRV}. A
+%\gls{SRV} can be described as the output of a stochastic process whose
+%statistical properties do not change with time or space. This means,
+%basically, that the probability distribution of a signal at any given
+%set of time/space points is the same as the distribution at those same
+%samples shifted by any constant amount in time or space.
 
-A digital signal is the results of discretizing a discrete signal in
-amplitude. By physical reasons, a digital signal is finite in length
-(the number of signal samples is a known number) and in amplitude
-(each sample requires a finite number of bits to be
-represented). Therefore, digital signals are discrete and finite.
+%A digital signal is the results of discretizing a discrete signal in
+%amplitude. By physical reasons, a digital signal is finite in length
+%(the number of signal samples is a known number) and in amplitude
+%(each sample requires a finite number of bits to be
+%represented). Therefore, digital signals are discrete and finite.
 
 A random variable is a mathematical formalization of a quantity or
 object which depends on random events. A \gls{DRV} is a random
