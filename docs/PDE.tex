@@ -1,0 +1,38 @@
+\chapter{PDE-Constrained Image Denoising}
+
+https://www.aimsciences.org/article/doi/10.3934/eect.2026037
+To understand this algorithm without the complex math, imagine you are an art restorer trying to fix a beautiful, old photograph that has been damaged in two distinct ways:
+
+    General Static (Gaussian Noise): The picture looks grainy everywhere, like a TV with a bad signal or a photo taken in the dark.
+
+    Paint Splatters (Impulse Noise): Someone flicked tiny drops of pure black and pure white paint randomly all over the picture (often called "salt-and-pepper" noise).
+
+Traditional cleaning methods often struggle here. If you scrub too hard to remove the static, the whole picture becomes blurry. If you try to pick off the paint splatters, you might accidentally erase sharp, natural details like the edge of a person's face or the leaves on a tree.
+
+Here is how this new algorithm solves the problem, step-by-step, using a "smart balancing act":
+Step 1: The Detective Work (Identifying the Spots)
+
+Instead of just blindly smoothing out the whole image, the algorithm acts as a detective. Its first goal is to build a hidden "map" of the image to figure out exactly where those pure black and white paint splatters (impulse noise) landed.
+Step 2: The Physical Smoothing Process (The "PDE")
+
+The "PDE" (Partial Differential Equation) part of the name refers to how mathematicians describe physical processes, like how heat flows through a metal plate or how syrup spreads out on a pancake.
+
+The algorithm treats the colors in the image like a physical substance. It allows the colors to "flow" into each other to smooth out that general grainy static. However, it is programmed with a special rule: stop flowing when you hit an edge. This is why the edges of objects stay sharp while the flat areas (like a clear sky or a smooth cheek) get nicely blended and cleaned up.
+Step 3: The Balancing Act (The "Optimization")
+
+This is where the magic of the algorithm happens. The computer sets up a massive balancing act (optimization) with two competing goals:
+
+    Goal A: Make the image as perfectly smooth and clean as possible (using the flowing process from Step 2).
+
+    Goal B: Don't let the new image look completely different from the original, damaged photo (you don't want to accidentally erase someone's eye just because it looked like a paint splatter).
+
+Putting it all together (The "Simultaneous" part)
+
+What makes this specific algorithm special is that it does all of these things at the exact same time.
+
+It creates a draft of the cleaned image, checks it against the "map" of the splatters, lets the colors flow a little bit to smooth the static, and then checks the balance to make sure it hasn't drifted too far from the original photo. It repeats this cycle over and over, thousands of times a second.
+
+Because it is simultaneously updating its map of the "bad spots" while it smooths the image, it knows exactly how much "scrubbing" to apply to each individual pixel. It scrubs hard on the paint splatters, lightly on the grainy static, and leaves the sharp, natural edges alone.
+
+The Result: You get a restored image that removes both types of damage without turning the whole picture into a blurry mess.
+
