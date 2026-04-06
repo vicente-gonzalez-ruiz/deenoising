@@ -6,10 +6,11 @@ A \gls{DRV} is a function
   X:\Omega\rightarrow \mathcal{X}
   \label{eq:DRV}
 \end{equation}
-that maps outcomes $\omega\in\Omega$ (the samples space) to numerical
-values in some set $\mathcal{X}$, usually $\mathbb{N}^+$ or a
-countable subset. For example, if we toss a coin, $X$ is a
-random variable that numerically represents the coin flip,
+that maps outcomes $\omega\in\Omega$ (the sample space\footnote{That
+in the context of digital data, also is the samples space.}) to
+numerical values in some set $\mathcal{X}$, usually $\mathbb{N}^+$ or
+a countable subset. For example, if we toss a coin, $X$ is a random
+variable that numerically represents the coin flip,
 $\Omega=\{\text{Heads},\text{Tails}\}$, and for example, if were
 $\omega=\text{Heads}$ then $X(\omega)=0$, and viceversa, $X(\omega)=1$
 if $\omega=\text{Tails}$.
@@ -33,7 +34,16 @@ countable subset of $n$-dimensional space.
 
 The use of \glspl{DRVect} allows us to bundle multiple characteristics
 of a single experiment into a single mathematical object. For example,
-suppose we roll two fair six-sided dice.
+suppose we roll two fair six-sided dice. The sample space $\Omega$
+consists of 36 ordered pairs $(d_1​,d_2​)$ where
+$d_i\in\{1,\cdots,6\}$. We define a \gls{DRVct} $\mathbf{X}=(S,D)$
+where $S$ is the sum of the dice ($d_1​ + d_2$) and $D$ is the
+absolute difference ($|d_1​-d_2​|$).
+
+If the outcome is $\omega=(4,6)$, the random vector maps this to:
+\begin{equation}
+\mathbf{X}(4, 6) = \begin{bmatrix} 10 \ 2 \end{bmatrix}
+\end{equation}
 
 \section{\glspl{SRV}}
 A \gls{SRV} is the result of a stochastic process whose statistical
