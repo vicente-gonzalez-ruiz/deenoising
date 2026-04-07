@@ -1,6 +1,6 @@
 \chapter{Statistics for digital data}
 
-\section{\gls{DRV}} % Discrete Random Variable
+\section{\glsentryfull{ARV}}
 A \gls{DRV} is a function
 \begin{equation}
   X:\Omega\rightarrow \mathcal{X}
@@ -11,9 +11,9 @@ in the context of digital data, also is the samples space.}) to
 numerical values in some set $\mathcal{X}$, usually $\mathbb{N}^+$ or
 a countable subset. For example, if we toss a coin, $X$ is a random
 variable that numerically represents the coin flip,
-$\Omega=\{\text{Heads},\text{Tails}\}$, and for example, if were
-$\omega=\text{Heads}$ then $X(\omega)=0$, and viceversa, $X(\omega)=1$
-if $\omega=\text{Tails}$.
+$\Omega=\{\text{``Heads''},\text{``Tails''}\}$, and for example, if were
+$\omega=\text{``Heads''}$ then $X(\omega)=0$, and viceversa, $X(\omega)=1$
+if $\omega=\text{``Tails''}$.
 
 Notice that, in general, a randon variable is not random itself (it's a
 deterministic function of the underlying outcome: $X(\text{Heads}=0$,
@@ -21,7 +21,7 @@ always). The ``randomness'' comes from the fact that the outcome
 $\omega$ is random (governed by the probability of resulting heads or
 tails).
 
-\section{\gls{DRVec}} 
+\section{Discrete Random Vectors} 
 
 A \gls{DRVec} expands the concept of a random variable by
 mapping outcomes to a point in multi-dimensional space rather than a
@@ -32,21 +32,24 @@ single number. Now Eq.~\ref{eq:DRV} becomes
 \end{equation}
 where $\mathcal{X}$ is a countable subset of a $n$-dimensional space, and 
 \begin{equation}
-\mathbf{X}(\omega) = [\mathbf{X}_1(\omega), \mathbf{X}_2(\omega), \cdots, \mathbf{X}_n(\omega)]^\text{T}.
+\mathbf{X} = [\mathbf{X}_1, \mathbf{X}_2, \cdots, \mathbf{X}_n]^\text{T}.
 \end{equation}
 
 The use of \glspl{DRVec} allows us to bundle multiple characteristics
 of a single experiment into a single mathematical object. For example,
 suppose we roll two fair six-sided dice. The sample space $\Omega$
 consists of 36 ordered pairs $(d_1,d_2)$ where
-$d_i\in\{1,\cdots,6\}$. We define a \gls{DRVec} $\mathbf{X}=(S,D)$
-where $S$ is the sum of the dice ($d_1 + d_2$) and $D$ is the
-absolute difference ($|d_1-d_2|$). Now, we define our random vector as $\mathbf{X}=[X_1,X_2]^{\text{T}}$
+$d_i\in\{1,\cdots,6\}$. Now, we define a \gls{DRVec}
+$\mathbf{X}=[S,D]^{\text{T}}$ where $S=d_1 + d_2$ and $D=|d_1-d_2|$
+are discrete random variables. For example, if the outcome is
+$\omega=(4,6)$, the random vector maps this to
+$\mathbf{X}(4,6)=[10,2]^{\text{T}$.
 
-If the outcome is $\omega=(4,6)$, the random vector maps this to:
-\begin{equation}
-\mathbf{X}(4, 6) = \begin{bmatrix} 10 \ 2 \end{bmatrix}
-\end{equation}
+Notice that the vector representation expresses a dependency between
+$S$ and $D$. For example, if you know hat $S=12$,
+then the $D$ must be 0 (the dice must be 6 and 6). Such dependency
+allows the definition of the Joint Probability Mass Function (PMF),
+and the existence of the terms covariance and correlation.
 
 \section{\glspl{SRV}}
 A \gls{SRV} is the result of a stochastic process whose statistical
@@ -69,6 +72,15 @@ values in a countable set $\mathcal{X}$, where it must be true that
 % We will assume that discrete signals are stationary (discrete) random processes
 
 %Discrete data only can take countable values (like 0, 1, 2, ...).
+
+\section{Joint Probability Mass Function (PMF)}
+A random vector variable allows us to define a single function $P(\mathbf{X}=\mathbf{x})$, which is shorthand for:
+\begin{equation}
+P(S = s \text{ and } D = d)
+\end{equation}
+This joint PMF tells us the probability of specific coordinates in the 2D space X. Without the vector framework, we could only describe the "marginal" probabilities (the probability of the sum regardless of the difference), losing the context of the experiment.
+
+
 
 \section{Discrete signals and discrete random variables}
 \label{sec:DSRV}
