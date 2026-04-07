@@ -1,5 +1,15 @@
 \chapter{Noise2Noise (N2N)} % https://arxiv.org/pdf/2510.01666
 
+self-supervised deep learning (SSDL) method
+
+Noise2Noise is famous for its originality in SSDL-based image denoising [16]. In the theory of Noise2Noise, when the same image is contaminated by two independent but identically distributed zero-mean noise instances, this pair of noisy images can be used to construct a training objective function that is equivalent to a supervised learning one associated with the noise-free image. % https://ieeexplore.ieee.org/abstract/document/11077678
+
+In the theory of Noise2Noise, when the same image is contaminated by two independent but identically distributed zero-mean noise instances, this pair of noisy images can be used to construct a training objective function that is equivalent to a supervised learning one associated with the noise-free image. % https://ieeexplore.ieee.org/abstract/document/11077678
+
+Following the theories of Noise2Noise and Noiser2Noise, various efforts have been endeavored, trying to construct paired images with “independent and identically distributed noises” from the real noisy images, such that the theories of Noise2Noise and Noiser2Noise can be applied in real-world denoising scenarios. For example, the Neighbor2Neighbor method addresses the limitation of Noise2Noise by leveraging the local similarity within a single noisy image [18]. It employs random neighborhood subsampling techniques to generate training image pairs, achieving self-supervised denoising. Furthermore, zero-shot Noise2Noise simplifies the training process by using a single noisy image and two fixed convolution kernels for downsampling. It generates paired images with halved resolution as both training inputs and targets [19]. % https://ieeexplore.ieee.org/abstract/document/11077678
+
+To suit the specific context of CT images, Wu et al. simply utilized the Neighbor2Neighbor network flow but with input data originating from the sinogram domain [20]. Niu et al. proposed a similarity-based self-supervised deep denoising method that relies on similarity features between images to learn and extract stable image representations for denoising [21]. Additionally, Wu et al. developed a method in the sinogram domain, generating training image pairs using the odd-even projection differences in CT scans, providing a new direction for training the self-supervised LDCT denoising networks [22]. % https://ieeexplore.ieee.org/abstract/document/11077678
+
 train a network to map one noisy realization of an image to another
 
 Zero-shot Noise2Noise (ZS-N2N) [14]
