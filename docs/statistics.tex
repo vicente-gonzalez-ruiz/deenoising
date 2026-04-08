@@ -1,14 +1,14 @@
 \chapter{Statistics for digital data}
 
-\section{\glsentryfull{DRV}}
-A \gls{DRV} is a function
+\section{\glsentryfull{DRV}s}
+
+In general, a \gls{DRV} $X$ is a function
 \begin{equation}
   X:\Omega\rightarrow \mathcal{X}
   \label{eq:DRV}
 \end{equation}
-that maps outcomes $\omega\in\Omega$ (the sample space\footnote{That
-in the context of digital data, also is the samples space.}) to
-numerical values in some set $\mathcal{X}$, usually $\mathbb{N}^+$ or
+that maps outcomes a single value $\omega\in\Omega$ (the sample space) to
+a numerical value in some set $\mathcal{X}$, usually $\mathbb{N}$ or
 a countable subset. For example, if we toss a coin, $X$ is a random
 variable that numerically represents the coin flip,
 $\Omega=\{\text{``Heads''},\text{``Tails''}\}$, and for example, if were
@@ -16,16 +16,24 @@ $\omega=\text{``Heads''}$ then $X(\omega)=0$, and viceversa, $X(\omega)=1$
 if $\omega=\text{``Tails''}$.
 
 Notice that, in general, a randon variable is not random itself (it's a
-deterministic function of the underlying outcome: $X(\text{Heads}=0$,
+deterministic function of the underlying outcome: $X(\text{Heads})=0$,
 always). The ``randomness'' comes from the fact that the outcome
 $\omega$ is random (governed by the probability of resulting heads or
 tails).
 
-\section{Discrete Random Vectors} 
+In the context of digital signals,  the samples can be considered as the output of a \gls{DRV}.
 
-A \gls{DRVec} expands the concept of a random variable by
-mapping outcomes to a point in multi-dimensional space rather than a
-single number. Now Eq.~\ref{eq:DRV} becomes
+\section{\glsentryfull{DRVec}s} 
+
+By definition, a \gls{DRV} can only model the generation of a
+$x\in\mathcal{X}$ (in the context of digital signal, a \gls{DRV} would
+handle a single sample). To deal with a complete digital signal (or
+sequence or samples) we need to extend the concept of \gls{DRV} to
+\gls{DRVec}.
+
+A \gls{DRVec} $\mathbf{X}$ maps outcomes to a point in
+multi-dimensional space rather than a single number. Now
+Eq.~\ref{eq:DRV} becomes
 \begin{equation}
   \mathbf{X}:\Omega\rightarrow \mathcal{X},
   \label{eq:DRVec}
