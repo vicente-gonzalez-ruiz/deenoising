@@ -1,35 +1,35 @@
 \chapter{Statistics for digital data}
 
-\section{\glsentryfull{DRV}s}
+\section{\glsentryfullpl{DRV}}
 
 In general, a \gls{DRV} $X$ is a function
 \begin{equation}
   X:\Omega\rightarrow \mathcal{X}
   \label{eq:DRV}
 \end{equation}
-that maps outcomes a single value $\omega\in\Omega$ (the sample space) to
+that maps outcomes a single random value $\omega\in\Omega$ (the sample space) to
 a numerical value in some set $\mathcal{X}$, usually $\mathbb{N}$ or
 a countable subset. For example, if we toss a coin, $X$ is a random
-variable that numerically represents the coin flip,
-$\Omega=\{\text{``Heads''},\text{``Tails''}\}$, and for example, if were
+variable that numerically represents a coin flip $\omega''
+($\Omega=\{\text{``Heads''},\text{``Tails''}\}$), and for example, if were
 $\omega=\text{``Heads''}$ then $X(\omega)=0$, and viceversa, $X(\omega)=1$
 if $\omega=\text{``Tails''}$.
 
-Notice that, in general, a randon variable is not random itself (it's a
-deterministic function of the underlying outcome: $X(\text{Heads})=0$,
-always). The ``randomness'' comes from the fact that the outcome
-$\omega$ is random (governed by the probability of resulting heads or
-tails).
+Notice that, in general, a randon variable $X$ is not random itself;
+it's a deterministic function of the underlying outcome (for example,
+$X(\text{Heads})=0$, always). The ``randomness'' comes from the fact
+that the outcome $\omega$ is random (governed by the probability of
+resulting heads or tails).
 
-In the context of digital signals,  the samples can be considered as the output of a \gls{DRV}.
+\section{\glsentryfull{DRVec}} 
 
-\section{\glsentryfull{DRVec}s} 
-
-By definition, a \gls{DRV} can only model the generation of a
-$x\in\mathcal{X}$ (in the context of digital signal, a \gls{DRV} would
-handle a single sample). To deal with a complete digital signal (or
-sequence or samples) we need to extend the concept of \gls{DRV} to
-\gls{DRVec}.
+By definition, a \gls{DRV} $X$ can only model the transformation of a
+single $w\in\Omega$, that is the same, can only model the generation
+of a single $x\in\mathcal{X}$ (in the context of digital signals, a
+\gls{DRV} would only handle a single sample). To deal with a complete
+digital signal (or sequence of samples) we need to extend the concept
+of \gls{DRV} to finite sequences (of possiblely correlated)
+\glspl{DRV}.
 
 A \gls{DRVec} $\mathbf{X}$ maps outcomes to a point in
 multi-dimensional space rather than a single number. Now
