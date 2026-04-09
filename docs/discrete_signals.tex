@@ -2,9 +2,9 @@
 
 \section{(Continuous) Signals}
 
-An signal $s$ is the result of the measurement of some physical
-event. For example, if $x$ represents a SPL (sound preasure level),
-$x(t)$ is the SPL value at the instant of time $t$.
+A signal $s$ is the result of the measurement of some physical
+event. For example, if $x$ represents a SPL (Sound Preasure Level),
+$x(t)$ is the SPL at the instant of time $t$.
 
 \section{Discrete signals}
 \label{sec:sampling}
@@ -89,7 +89,7 @@ continuous function $x(t)$ is
   \mathcal{F}(x) = X(w) = \int_{-\infty}^{\infty}x(t)e^{-jwt}dt
   \label{eq:FT}
 \end{equation}
-and its inverse, denoted by $\mathcal{F}^{-1}$ is
+and its inverse, denoted by $\mathcal{F}^{-1}$, is
 \begin{equation}
   x(t) = \mathcal{F}^{-1}(X(w)) = \int_{-\infty}^{\infty}X(w)e^{jtw}dw,
 \end{equation}
@@ -105,7 +105,7 @@ $X$, even if $x$ is real.
 \label{sec:DFT}
 %{{{
 
-The \acrshort{DFT} of a (by definition, discrete finite) signal
+The \gls{DFT} of a (by definition, discrete and finite) signal
 $\mathbf{x}$ is determined by
 \begin{equation}
   \mathcal{F}(\mathbf{x}) = \mathbf{X} = \{\mathbf{X}_f\}_{f=0}^{N-1} \quad \text{with} \quad \mathbf{X}_f=\sum_{n=0}^{N-1}\mathbf{x}_ne^{-2\pi jf\frac{n}{N}},
