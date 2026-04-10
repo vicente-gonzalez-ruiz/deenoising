@@ -7,22 +7,88 @@ $\omega\in\Omega$ to a \emph{realization} $\mathcal{x}\in\mathcal{X}$:
   X:\Omega\rightarrow \mathcal{X}.
   \label{eq:DRV}
 \end{equation}
-$\Omage$ is known as the \emph{sample space} and $\mathcal{X}$ is
+$\Omega$ is known as the \emph{sample space} and $\mathcal{X}$ is
 called the \emph{realization space}. Notice that $X$ is a
-deterministic function of the underlying outcome. The randomness comes
-from the fact that the outcome is random (governed by some probability
-function).
+deterministic function. The randomness comes from the fact that the
+underlying outcome is random. $\mathcal{X}$ must be also measurable
+(otherwise it could be impossible to assign a probability
+$P(X\leq x)$.
 
 An example of a random variable is the The 10-Minute Bus
 Scenario. Imagine you arrive at a bus stop where a bus comes exactly
 every 10 minutes. You don't know when the last one left, so you could
 wait anywhere from 0 to 10 minutes. In this example, the outcome
 $\omega$ is the actual, physical event of you standing at the curb and
-the bus eventually pulling up, and the sample space $\Omega$ is continuous
-because you could arrive at any point in time between the bus
-cycles. We define the random variable $X$ as "The (real) number of
-minutes you wait."
+the bus eventually pulling up, and the sample space $\Omega$ is
+continuous because you could arrive at any point in time between the
+bus cycles. The random variable $X$ is ``how many minutes you wait'',
+and $x\in\mathbb{R}$ is such number. Obviously $X$ measurable, because
+we can compute, for example, $P(X\leq 5)$. This is an example of a
+continuous random variable.
 
+\section{\glsentryfullpl{DRV}} % Discrete Random Variable
+
+A \gls{DRV} is a random variable where $\mathcal{X}$ is conuntable,
+regardless of whether the input $\Omega$ is discrete or continuous.
+
+Example (continuous input): Let's consider again the 10-Minute Bus Scenario. Here
+$\Omega=[0,10]$. Now, if we define $\mathcal{X}=\{0,1\}$ as:
+\begin{enumerate}
+\item $X(\omega)=1$ if you wait more than 5 minutes ($\omega<5$), and
+\item $X(\omega)=0$ otherwise,
+\end{enumerate}
+$X$ would be (continuous to) discrete.
+
+Example (discrete input): If we toss a coin, and define
+$\mathcal{X}=\{0,1\}$ as:
+\begin{enumerate}
+\item $X(\omega)=0$ if $\omega=\text{``Heads''}$, and
+\item $X(\omega)=1$ if $\omega=\text{``Tails''}$,
+\end{enumerate}
+$X$ would be (discrete to) discrete.
+
+\section{\glsentryfullpl{DRVec}} 
+
+A \gls{DRVec} (also called a multivariate random variable) is a
+generatization of a \gls{DRV} where $\mathcal{X}$ is
+multi-dimensional. Let's $N$ the dimension of $\mathcal{X}$.
+
+For example, suppose we roll two fair six-sided dice. The sample
+space $\Omega$ consists of 36 ordered pairs $(d_1,d_2)$ where
+$d_i\in\{1,\cdots,6\}$. Now, we define a \gls{DRVec}
+$\mathcal{X}=[S,D]^{\text{T}}$, where $S=d_1 + d_2$ and $D=|d_1-d_2|$
+are \glspl{DRV}. For example, if $\omega=(4,6)$, we get
+$\mathcal{X}(4,6)=[10,2]^{\text{T}}$. In this example, $N=2$.
+
+Notice that the vector representation expresses a dependency between
+$S$ and $D$. For example, if you know hat $S=12$,
+then the $D$ must be 0 (the dice must be 6 and 6). Such dependency
+allows the definition of the Joint Probability Mass Function (PMF),
+and the existence of the concepts covariance and correlation.
+
+\section{A statistical model of signal digitalization}
+
+$N$ samples of a digital signal can be modeled statistically using a
+\gls{DRVec}. In this case:
+\begin{itemize}
+\item $\Omega$ (the sample space) is the set of all possible physical
+  continuous-time waveforms that the sensor could encounter during the
+  sampling window. $\omega$ is single, specific continuous voltage
+  waveform that actually occurs during your measurement window. It is
+  the ``analog reality.''
+\item $X$ is the ADC (Analog-to-Digital Converter). It is a
+  deterministic function that performs two operations on the outcome
+  $\omega$:
+  \begin{enumerate}
+  \item Sampling: It looks at $\omega$ at $N$ specific time points
+    ($t_1$​,$t_2$​, ...,$t_N$​).
+  \item Quantization: It rounds the voltage at those points to the
+    nearest digital integer (for example).
+\end{itemize}
+
+If we are dealing with finite-length digital signals, with length $N$, the generation of a chunk of 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ; a way of mapping \emph{outcomes}
 $\omega\in\Omega$ (or sample points from a \emph{sample space})
@@ -52,7 +118,7 @@ the dart hits) is a continuous and uncountable (an infinite decimal
 coordinate) space. Notice that even though at the input we are dealing
 with an infinite, uncountable number of points where the dart could
 land, the random variable only has two possible outputs:
-$\{0,1\}$}.\footnote{Continuous randon variables usually involve
+$\{0,1\}$}.\footnote{Continuous random variables usually involve
 ``measuring'' something. Examples: The exact height of a person, the
 time it takes for a battery to die, or the temperature outside.}
 
@@ -103,7 +169,7 @@ where $\mathcal{X}$ is a countable subset of a $n$-dimensional space, and
 
 The use of \glspl{DRVec} allows us to bundle multiple characteristics
 of a single experiment into a single mathematical object. For example,
-suppose we roll two fair six-sided dice. The sample space $\Omega$
+suppose we roll two fair six-sided dices. The sample space $\Omega$
 consists of 36 ordered pairs $(d_1,d_2)$ where
 $d_i\in\{1,\cdots,6\}$. Now, we define a \gls{DRVec}
 $\mathbf{X}=[S,D]^{\text{T}}$ where $S=d_1 + d_2$ and $D=|d_1-d_2|$
