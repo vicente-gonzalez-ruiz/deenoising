@@ -1,8 +1,10 @@
 \chapter{Statistics for digital data}
 
 \section{Random variables}
-A random variable $X$ is a function that maps an \emph{outcome}
-$\omega\in\Omega$ to a \emph{realization} $\mathcal{x}\in\mathcal{X}$:
+A random variable is a mathematical formalization of a quantity or
+object which depends on random events. Specifically, a random variable
+$X$ is a function that maps an \emph{outcome} $\omega\in\Omega$ to a
+\emph{realization} $x\in\mathcal{X}$:
 \begin{equation}
   X:\Omega\rightarrow \mathcal{X}.
   \label{eq:DRV}
@@ -81,8 +83,9 @@ and the existence of the concepts covariance and correlation.
 
 \section{A statistical model of signal digitalization}
 
-The digitalization of a sequence of $N$ samples
-can be modeled statistically using a \gls{DRVec}. We can recognize that:
+By physical requirements, digital signals are finite in length. The
+digitalization of a sequence of $N$ samples can be modeled
+statistically using a \gls{DRVec}. We can recognize that:
 \begin{itemize}
 \item $\Omega$ (the sample space) is the set of all possible physical
   continuous-time waveforms that the sensor could encounter during the
@@ -114,52 +117,56 @@ is a \gls{SRV}, then the probability distribution of a signal at any
 given set of time/space points is the same as the distribution at
 those same samples shifted by any constant amount in time or space.
 
-%%%%%%%%%%%%%
+\section{\glsentryfull{PMF}} % Probability mass function
+The \gls{PMF}, shows the probability for each specific value that a
+\gls{DRV} can take.\footnote{This information in the case of a
+  continuous random variable is represented by a Probability Density
+  Function (PDF).}
 
-\section{Probability mass function}
-Probability Mass Function (PMF), shows the probability for each
-specific value that a \gls{DRV} can take.\footnote{A continuous random
-variable is represented by a Probability Density Function (PDF).}
-
-The \gls{PMF} of a random variable $X$, defined as
+The \gls{PMF} of a random variable (or vector) $X$ is defined as
 \begin{equation}
   p(x) = \Pr(X=x), \quad x\in\mathcal{X},
 \end{equation}
-describes the probability with which a random variable $X$ takes
-values in a countable set $\mathcal{X}$, where it must be true that
+that is the probability with which a random variable $X$ takes
+the value $x$ in a countable set $\mathcal{X}$, where it must be true that
 \begin{equation*}
   p(x)\ge 0,\quad\sum_{x\in\mathcal{X}}p(x)=1.
 \end{equation*}
 
-% We will assume that discrete signals are stationary (discrete) random processes
+\section{Marginal of a random variable}
+The marginal of a variable is its probability distribution, ignoring
+the other variables. For example, imagine we survey a neighborhood and
+record the type of pet (cat or dog) and its color (brown or
+black). The marginal of pet type considers just the number of cat and
+dogs, not their color.
 
-%Discrete data only can take countable values (like 0, 1, 2, ...).
+\section{Conditional distribution}
 
-\section{Joint Probability Mass Function (PMF)}
-A random vector variable allows us to define a single function $P(\mathbf{X}=\mathbf{x})$, which is shorthand for:
+The conditional probability mass function is
+$$ p(y \mid x) = \frac{p(x,y)}{p(x)} \quad \text{if } p(x) > 0, $$
+where $p(x) = \sum_{y} p(x,y)$ is the marginal of $X$.
+
+The conditional expectation of $h(x,Y)$ given $X=x$ is then
+$$ E_{Y \mid X=x}[h(x,Y)] = \sum_{y} h(x,y) p(y \mid x). $$
+
+\section{Joint \gls{PMF}}
+A random vector variable allows us to define a single function
+$P(\mathbf{X}=\mathbf{x})$, which is shorthand for:
 \begin{equation}
 P(S = s \text{ and } D = d)
 \end{equation}
-This joint PMF tells us the probability of specific coordinates in the 2D space X. Without the vector framework, we could only describe the "marginal" probabilities (the probability of the sum regardless of the difference), losing the context of the experiment.
+This joint \gls{PMF} tells us the probability of specific coordinates
+in the 2D space X. Without the vector framework, we could only
+describe the marginal probabilities (the probability of the sum
+regardless of the difference), losing the context of the experiment.
+
+%%%%%%%%%%%%%
 
 
 
 \section{Discrete signals and discrete random variables}
 \label{sec:DSRV}
 %{{{
-
-%Mathematically, we can model discrete signals as \glspl{SRV}. A
-%\gls{SRV} can be described as the output of a stochastic process whose
-%statistical properties do not change with time or space. This means,
-%basically, that the probability distribution of a signal at any given
-%set of time/space points is the same as the distribution at those same
-%samples shifted by any constant amount in time or space.
-
-%A digital signal is the results of discretizing a discrete signal in
-%amplitude. By physical reasons, a digital signal is finite in length
-%(the number of signal samples is a known number) and in amplitude
-%(each sample requires a finite number of bits to be
-%represented). Therefore, digital signals are discrete and finite.
 
 A random variable is a mathematical formalization of a quantity or
 object which depends on random events. A \gls{DRV} is a random
@@ -250,13 +257,6 @@ Therefore, if $X=1$ (Heads): $f(1)=2(1)-1=1$ (dollar net gain), but if $X=0$ (Ta
 
 So your expected profit in this game is zero.
 
-\section{Marginal of a random variable}
-The marginal of a variable is its probability distribution, ignoring
-the other variables. For example, imagine we survey a neighborhood and
-record the type of pet (cat or dog) and its color (brown or
-black). The marginal of pet type considers just the number of cat and
-dogs, not their color.
-
 \section{Conditional distribution}
 
 The conditional probability mass function is
@@ -266,7 +266,7 @@ where $p(x) = \sum_{y} p(x,y)$ is the marginal of $X$.
 The conditional expectation of $h(x,Y)$ given $X=x$ is then
 $$ E_{Y \mid X=x}[h(x,Y)] = \sum_{y} h(x,y) p(y \mid x). $$
 
-\section{Low of total expectation}
+\section{Law of total expectation}
 The expectation with respect to the joint distribution is
 \begin{equation}
   \mathbb{E}_{(X,Y)}[h(X,Y)]=\mathbb{E}_{X}[\mathbb{E}_{Y\mid X}[h(X,Y)]].
