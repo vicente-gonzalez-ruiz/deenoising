@@ -114,55 +114,12 @@ statistically using a \gls{DRVec}.\footnote{By physical requirements,
   realizations (all posible digital signals of length $N$).
 \end{enumerate}
 
-\section{\glsentryfull{SRV}}
+\section{\glsentryfullpl{SRV}}
 A \gls{SRV} is the result of a stochastic process whose statistical
 properties do not change. For example, if we say that a digital signal
 is a \gls{SRV}, then the probability distribution of a signal at any
 given set of time/space points is the same as the distribution at
 those same samples shifted by any constant amount in time or space.
-
-\section{\glsentryfull{PMF}} % Probability mass function
-The \gls{PMF}, shows the probability for each specific value that a
-\gls{DRV} can take.\footnote{This information in the case of a
-  continuous random variable is represented by a Probability Density
-  Function (PDF).}
-
-The \gls{PMF} of a random variable (or vector) $X$ is defined as
-\begin{equation}
-  p(x) = \Pr(X=x), \quad x\in\mathcal{X},
-\end{equation}
-that is the probability with which a random variable $X$ takes
-the value $x$ in a countable set $\mathcal{X}$, where it must be true that
-\begin{equation*}
-  p(x)\ge 0,\quad\sum_{x\in\mathcal{X}}p(x)=1.
-\end{equation*}
-
-\section{Marginal of a random variable}
-The marginal of a variable is its probability distribution, ignoring
-the other variables. For example, imagine we survey a neighborhood and
-record the type of pet (cat or dog) and its color (brown or
-black). The marginal of pet type considers just the number of cat and
-dogs, not their color.
-
-\section{Conditional distribution}
-
-The conditional probability mass function is
-$$ p(y \mid x) = \frac{p(x,y)}{p(x)} \quad \text{if } p(x) > 0, $$
-where $p(x) = \sum_{y} p(x,y)$ is the marginal of $X$.
-
-The conditional expectation of $h(x,Y)$ given $X=x$ is then
-$$ E_{Y \mid X=x}[h(x,Y)] = \sum_{y} h(x,y) p(y \mid x). $$
-
-\section{Joint \gls{PMF}}
-A random vector variable allows us to define a single function
-$P(\mathbf{X}=\mathbf{x})$, which is shorthand for:
-\begin{equation}
-P(S = s \text{ and } D = d)
-\end{equation}
-This joint \gls{PMF} tells us the probability of specific coordinates
-in the 2D space X. Without the vector framework, we could only
-describe the marginal probabilities (the probability of the sum
-regardless of the difference), losing the context of the experiment.
 
 \section{Expectation of a \gls{DRV}}
 
@@ -204,21 +161,84 @@ a random variable is defined by
 \end{equation}
 where $x_i$ if the $i$-th realization.
 
-Similarly, the average of a vector(-realization)
-$\mathbf{x}$ can be found with
-\begin{equation}
-  \overline{\mathbf{x}} = \frac{1}{N}\sum_{i=1}^{N}\mathbf{x}_i,
-  \label{eq:vector_average}
-\end{equation}
-where $\mathbf{x}_i$ is the $i$-th component(-realization) of
-$\mathbf{x}$.
+%Similarly, the average of a vector(-realization)
+%$\mathbf{x}$ can be found with
+%\begin{equation}
+%  \overline{\mathbf{x}} = \frac{1}{N}\sum_{i=1}^{N}\mathbf{x}_i,
+%  \label{eq:vector_average}
+%\end{equation}
+%where $\mathbf{x}_i$ is the $i$-th component(-realization) of
+%$\mathbf{x}$.
 
+
+\section{Variance}
+\label{sec:variance}
+
+The variance of a random variable $X$, denoted by
+$\mathbb{V}(\mathbf{x})$ (or simply by $\sigma^2$) is a measurement of
+its dispersion (how much the outcomes ``spread out'' from the
+average). It is defined as the expected value of the squared deviation
+from the mean,
+%\begin{equation}
+%  \operatorname{Var}(\mathbf{x}) = \mathbb{E}\left[(X - \mathbb{E}[X])^2 \right].
+%\end{equation}
+%\begin{equation}
+%  \operatorname{Var}(\mathbf{x}) = \operatorname{Exp}\left[(X - \operatorname{Exp}[X])^2 \right].
+%\end{equation}
+\begin{equation}
+  \mathbb{V}(\mathbf{x}) = \mathbb{E}\left((\mathbf{x} - \mathbb{E}(\mathbf{x}))^2 \right) = \mathbb{E}(\mathbf{x}^2)-\mathbb{E}(\mathbf{x})^2.
+  \label{eq:variance}
+\end{equation}
+
+%}}}
 
 
 %%%%%%%%%%%%%
 
 
+\section{\glsentryfull{PMF}} % Probability mass function
+The \gls{PMF}, shows the probability for each specific value that a
+\gls{DRV} can take.\footnote{This information in the case of a
+  continuous random variable is represented by a Probability Density
+  Function (PDF).} The \gls{PMF} of a random variable (or vector) $X$
+is defined as
+\begin{equation}
+  p(x) = \Pr(X=x), \quad x\in\mathcal{X},
+\end{equation}
+that is the probability with which a random variable $X$ takes
+the value $x$ in a countable set $\mathcal{X}$, where it must be true that
+\begin{equation*}
+  p(x)\ge 0,\quad\sum_{x\in\mathcal{X}}p(x)=1.
+\end{equation*}
 
+\section{Marginal of a random variable}
+The marginal of a variable is its probability distribution, ignoring
+the other variables. For example, imagine we survey a neighborhood and
+record the type of pet (cat or dog) and its color (brown or
+black). The marginal of pet type considers just the number of cat and
+dogs, not their color.
+
+\section{Conditional distribution}
+
+The conditional probability mass function is
+$$ p(y \mid x) = \frac{p(x,y)}{p(x)} \quad \text{if } p(x) > 0, $$
+where $p(x) = \sum_{y} p(x,y)$ is the marginal of $X$.
+
+The conditional expectation of $h(x,Y)$ given $X=x$ is then
+$$ E_{Y \mid X=x}[h(x,Y)] = \sum_{y} h(x,y) p(y \mid x). $$
+
+\section{Joint \gls{PMF}}
+A random vector variable allows us to define a single function
+$P(\mathbf{X}=\mathbf{x})$, which is shorthand for:
+\begin{equation}
+P(S = s \text{ and } D = d)
+\end{equation}
+This joint \gls{PMF} tells us the probability of specific coordinates
+in the 2D space X. Without the vector framework, we could only
+describe the marginal probabilities (the probability of the sum
+regardless of the difference), losing the context of the experiment.
+
+\section{Power of a signal}
 Notice that using the expectation operator, the power of a digital
 signal (see Eq.~\ref{eq:power_discrete_signal}) can be found as
 \begin{equation}
@@ -328,28 +348,6 @@ The subscripts in $\mathbb{E}_{(\cdot)}$ clarify which distribution is used for 
     \item $\mathbb{E}_C$: marginal distribution of $C$.
 \end{itemize}
 
-
-\section{Variance}
-\label{sec:variance}
-%{{{
-
-The variance of a random variable $\mathbf{x}$, denoted by
-$\mathbb{V}(\mathbf{x})$ (or simply by $\sigma^2$) is a measurement of
-its dispersion (how much the outcomes ``spread out'' from the
-average). It is defined as the expected value of the squared deviation
-from the mean,
-%\begin{equation}
-%  \operatorname{Var}(\mathbf{x}) = \mathbb{E}\left[(X - \mathbb{E}[X])^2 \right].
-%\end{equation}
-%\begin{equation}
-%  \operatorname{Var}(\mathbf{x}) = \operatorname{Exp}\left[(X - \operatorname{Exp}[X])^2 \right].
-%\end{equation}
-\begin{equation}
-  \mathbb{V}(\mathbf{x}) = \mathbb{E}\left((\mathbf{x} - \mathbb{E}(\mathbf{x}))^2 \right) = \mathbb{E}(\mathbf{x}^2)-\mathbb{E}(\mathbf{x})^2.
-  \label{eq:variance}
-\end{equation}
-
-%}}}
 
 \section{Power of a signal as a function of its mean and variance}
 The average power of a random variable is equal to its variance plus its mean
