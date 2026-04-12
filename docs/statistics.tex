@@ -15,18 +15,20 @@ the fact that the underlying outcome is random. $\mathcal{X}$ must be
 also measurable (otherwise it could be impossible to assign a
 probability, such as for example, $P(X\leq x)$).
 
-An example of a random variable is the The 10-Minutes Bus
-Scenario. Imagine you arrive at a bus stop where a bus comes exactly
-every 10 minutes. You don't know when the last one left, so you could
-wait anywhere from 0 to 10 minutes. In this example, the outcome
-$\omega$ is the actual, physical event of you standing at the curb and
-the bus eventually pulling up, and the sample space $\Omega$ is
-continuous because you could arrive at any point in time between the
-bus cycles. The random variable $X$ is ``how many minutes you wait'',
-and $x\in\mathbb{R}$ is such number. Obviously $X$ is measurable,
-because we can compute, for example, $P(X\leq 5)$. This is an example
-of a continuous random variable.
-
+\begin{itemize}
+\item An example of a random variable is the The 10-Minutes Bus
+  Scenario. Imagine you arrive at a bus stop where a bus comes exactly
+  every 10 minutes. You don't know when the last one left, so you
+  could wait anywhere from 0 to 10 minutes. In this example, the
+  outcome $\omega$ is the actual, physical event of you standing at
+  the curb and the bus eventually pulling up, and the sample space
+  $\Omega$ is continuous because you could arrive at any point in time
+  between the bus cycles. The random variable $X$ is ``how many
+  minutes you wait'', and $x\in\mathbb{R}$ is such number. Obviously
+  $X$ is measurable, because we can compute, for example,
+  $P(X\leq 5)$. This is an example of a continuous random variable.
+\end{itemize}
+  
 \section{\glsentryfullpl{DRV}} % Discrete Random Variable
 
 A \gls{DRV} is a random variable where $\mathcal{X}$ is conuntable,
@@ -45,8 +47,8 @@ continuous.\footnote{It is easy to recognize a \gls{DRV} becayse they
   for a battery to die, or the temperature outside.}
 
 \begin{itemize}
-\item Example (continuous input): Let's consider again the 10-Minute
-  Bus Scenario. Here $\Omega=[0,10]$. Now, if we define
+\item Example (continuous input): Let's consider again the 10-Minutes
+  Bus Scenario. Here $\Omega=[0,10[$. Now, if we define
   $\mathcal{X}=\{0,1\}$ as:
 \begin{enumerate}
 \item $X(\omega)=1$ if you wait more than 5 minutes ($\omega<5$), and
@@ -65,17 +67,19 @@ $X$ would be (discrete to) discrete.
 
 \section{\glsentryfullpl{DRVec}} % Discrete random vector
 
-A \gls{DRVec} (also called a multivariate random variable) is a
+A \gls{DRVec} (also called a \emph{multivariate random variable}) is a
 generatization of a \gls{DRV} where $\mathcal{X}$ is
-multi-dimensional. Let's $N$ the dimension of $\mathcal{X}$.
+$N$-dimensional.
 
-For example, suppose we roll two fair six-sided dice. The sample
-space $\Omega$ consists of 36 ordered pairs $(d_1,d_2)$ where
-$d_i\in\{1,\cdots,6\}$. Now, we define a \gls{DRVec}
-$\mathcal{X}=[S,D]^{\text{T}}$, where $S=d_1 + d_2$ and $D=|d_1-d_2|$
-are \glspl{DRV}. For example, if $\omega=(4,6)$, we get
-$\mathcal{X}(4,6)=[10,2]^{\text{T}}$. In this example, $N=2$.
-
+\begin{itemize}
+\item For example, suppose we roll two fair six-sided dice. The sample
+  space $\Omega$ consists of 36 ordered pairs $(d_1,d_2)$ where
+  $d_i\in\{1,\cdots,6\}$. Now, we define a \gls{DRVec}
+  $\mathcal{X}=[S,D]^{\text{T}}$, where $S=d_1 + d_2$ and
+  $D=|d_1-d_2|$ are \glspl{DRV}. For example, if $\omega=(4,6)$, we
+  get $\mathcal{X}(4,6)=[10,2]^{\text{T}}$. In this example, $N=2$.
+\end{itemize}
+  
 Notice that the vector representation expresses a dependency between
 $S$ and $D$. For example, if you know hat $S=12$,
 then the $D$ must be 0 (the dice must be 6 and 6). Such dependency
