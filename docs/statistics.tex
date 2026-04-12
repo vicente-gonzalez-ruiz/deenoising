@@ -3,20 +3,19 @@
 \section{Random variables}
 A random variable is a mathematical formalization of a quantity or
 object which depends on random events. Specifically, a random variable
-$X$ is a function that maps an \emph{outcome} $\omega\in\Omega$ to a
-\emph{realization} $x\in\mathcal{X}$:
+$X$ is a deterministic function that maps an \emph{outcome}
+$\omega\in\Omega$ to a \emph{realization} $x\in\mathcal{X}$:
 \begin{equation}
   X:\Omega\rightarrow \mathcal{X}.
   \label{eq:DRV}
 \end{equation}
 $\Omega$ is known as the \emph{sample space} and $\mathcal{X}$ is
-called the \emph{realization space}. Notice that $X$ is a
-deterministic function. The randomness comes from the fact that the
-underlying outcome is random. $\mathcal{X}$ must be also measurable
-(otherwise it could be impossible to assign a probability
-$P(X\leq x)$.
+called the \emph{realization space}. Notice the randomness comes from
+the fact that the underlying outcome is random. $\mathcal{X}$ must be
+also measurable (otherwise it could be impossible to assign a
+probability, such as for example, $P(X\leq x)$).
 
-An example of a random variable is the The 10-Minute Bus
+An example of a random variable is the The 10-Minutes Bus
 Scenario. Imagine you arrive at a bus stop where a bus comes exactly
 every 10 minutes. You don't know when the last one left, so you could
 wait anywhere from 0 to 10 minutes. In this example, the outcome
@@ -24,9 +23,9 @@ $\omega$ is the actual, physical event of you standing at the curb and
 the bus eventually pulling up, and the sample space $\Omega$ is
 continuous because you could arrive at any point in time between the
 bus cycles. The random variable $X$ is ``how many minutes you wait'',
-and $x\in\mathbb{R}$ is such number. Obviously $X$ measurable, because
-we can compute, for example, $P(X\leq 5)$. This is an example of a
-continuous random variable.
+and $x\in\mathbb{R}$ is such number. Obviously $X$ is measurable,
+because we can compute, for example, $P(X\leq 5)$. This is an example
+of a continuous random variable.
 
 \section{\glsentryfullpl{DRV}} % Discrete Random Variable
 
@@ -45,22 +44,24 @@ continuous.\footnote{It is easy to recognize a \gls{DRV} becayse they
   something. Examples: The exact height of a person, the time it takes
   for a battery to die, or the temperature outside.}
 
-Example (continuous input): Let's consider again the 10-Minute Bus
-Scenario. Here $\Omega=[0,10]$. Now, if we define
-$\mathcal{X}=\{0,1\}$ as:
+\begin{itemize}
+\item Example (continuous input): Let's consider again the 10-Minute
+  Bus Scenario. Here $\Omega=[0,10]$. Now, if we define
+  $\mathcal{X}=\{0,1\}$ as:
 \begin{enumerate}
 \item $X(\omega)=1$ if you wait more than 5 minutes ($\omega<5$), and
 \item $X(\omega)=0$ otherwise,
 \end{enumerate}
 $X$ would be (continuous to) discrete.
 
-Example (discrete input): If we toss a coin, and define
-$\mathcal{X}=\{0,1\}$ as:
+\item Example (discrete input): If we toss a coin, and define
+  $\mathcal{X}=\{0,1\}$ as:
 \begin{enumerate}
 \item $X(\omega)=0$ if $\omega=\text{``Heads''}$, and
 \item $X(\omega)=1$ if $\omega=\text{``Tails''}$,
 \end{enumerate}
 $X$ would be (discrete to) discrete.
+\end{itemize}
 
 \section{\glsentryfullpl{DRVec}} % Discrete random vector
 
