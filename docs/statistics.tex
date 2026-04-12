@@ -147,19 +147,24 @@ $n$-th power of $X$:
 The sample mean of a \gls{DRV} $X$, usually denoted by $\overline{x}$, is the
 first moment of the realizations
 \begin{equation}
-  \overline{x} = \sum_\Omega X(\omega)d\Pr(\omega).
+  \mu(x) = \sum_\Omega X(\omega)d\Pr(\omega).
   \label{eq:sample_mean}
 \end{equation}
 
+\section{\glsentryfullpl{LLN}}
+
 \section{Average}
 \label{sec:average}
-The average of the realizations $x$ generated after $N$ iterations of
-a random variable is defined by
+The average of the realizations $\{x^{(i)}\}_{i=1}^{N}$ generated after $N$
+iterations of a random variable is defined by
 \begin{equation}
-  \overline{x} = \frac{1}{N}\sum_{i=1}^{N}x_i,
+  \overline{x} = \frac{1}{N}\sum_{i=1}^{N}x^{(i)}.
   \label{eq:average}
 \end{equation}
-where $x_i$ if the $i$-th realization.
+
+Notice that by the law of large numbers, as the number of realizations
+$N\rightarrow\infty$, the average $\overline{x}$ convertes to the
+sample mean $\mu(x)$.
 
 %Similarly, the average of a vector(-realization)
 %$\mathbf{x}$ can be found with
