@@ -72,50 +72,49 @@ generatization of a \gls{DRV} where $\mathcal{X}$ is
 $N$-dimensional.
 
 \begin{itemize}
-\item For example, suppose we roll two fair six-sided dice. The sample
+\item For example, suppose we roll two ($N=2$) fair six-sided dice. The sample
   space $\Omega$ consists of 36 ordered pairs $(d_1,d_2)$ where
   $d_i\in\{1,\cdots,6\}$. Now, we define a \gls{DRVec}
-  $\mathcal{X}=[S,D]^{\text{T}}$, where $S=d_1 + d_2$ and
+  $X=[S,D]^{\text{T}}$, where $S=d_1 + d_2$ and
   $D=|d_1-d_2|$ are \glspl{DRV}. For example, if $\omega=(4,6)$, we
-  get $\mathcal{X}(4,6)=[10,2]^{\text{T}}$. In this example, $N=2$.
-\end{itemize}
+  get $X(4,6)=[10,2]^{\text{T}}$.
   
-Notice that the vector representation expresses a dependency between
-$S$ and $D$. For example, if you know hat $S=12$,
-then the $D$ must be 0 (the dice must be 6 and 6). Such dependency
-allows the definition of the Joint Probability Mass Function (PMF),
-and the existence of the concepts covariance and correlation.
+  Notice that the vector representation expresses a dependency between
+  $S$ and $D$. For example, if you know hat $S=12$, then the $D$ must
+  be 0 (the dice must be 6 and 6). Such dependency allows the
+  definition of the joint \gls{PMF}, and the existence of the concepts
+  of covariance and correlation.
+\end{itemize}
 
 \section{A statistical model of signal digitalization}
 
-By physical requirements, digital signals are finite in length. The
-digitalization of a sequence of $N$ samples can be modeled
-statistically using a \gls{DRVec}. We can recognize that:
-\begin{itemize}
+The digitalization of a sequence of $N$ signal-samples can be modeled
+statistically using a \gls{DRVec}.\footnote{By physical requirements,
+  digital signals are finite in length.} We can identify:
+\begin{enumerate}
 \item $\Omega$ (the sample space) is the set of all possible physical
   continuous-time waveforms that the sensor could encounter during the
-  sampling window, and $\omega$ is a single, specific continuous
-  voltage waveform that actually occurs during your measurement
-  window. $\omega$ is the ``analog reality'' (the signal to
-  digitalize).
-\item $X$ represents the ADC (Analog-to-Digital Converter). It is a
-  deterministic function that performs two operations on the outcome
-  $\omega$:
+  sampling window, and $\omega$ (the ``analog reality'', i.e., the
+  signal to digitalize) is a single, specific continuous voltage
+  waveform that actually occurs during your measurement
+  window.
+\item $X$ represents the \gls{ADC}. It is a deterministic function
+  that performs two operations on the outcome $\omega$:
   \begin{enumerate}
   \item Sampling: $X$ looks at $\omega$ at $N$ specific time points
     $\{t_1,t_2,\cdots,t_N\}$.
-  \item Quantization: Then $X$ rounds the voltage at those points to
-    the nearest integer (for example).
+  \item Quantization: Then $X$ usually rounds the voltage at those
+    points to the nearest integer.
   \end{enumerate}
 \item The realization $\mathbf{x}=X(\omega)$ is the digizalized
   signal. Notice that $X$ is a vector operator that inputs a sample (a
   window of signal) and outputs a sequence of digital samples
-  $\{\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_N\}$.
+  $[\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_N]^{\text{T}}$.
 \item $\mathcal{X}$ (the realization space) is the set of all possible
   realizations (all posible digital signals of length $N$).
-\end{itemize}
+\end{enumerate}
 
-\section{\glspl{SRV}}
+\section{\glsentryfull{SRV}}
 A \gls{SRV} is the result of a stochastic process whose statistical
 properties do not change. For example, if we say that a digital signal
 is a \gls{SRV}, then the probability distribution of a signal at any
