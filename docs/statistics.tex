@@ -122,8 +122,10 @@ given set of time/space points is the same as the distribution at
 those same samples shifted by any constant amount in time or space.
 
 \section{Expectation of a \gls{DRV}}
-
-The expected value, expectation or expectancy of a random variable $X$, denoted by $\mathbb{E}[X]$, is its the long-term average outcome. It is defined as the center of mass of the probability distribution. Specifically, for a \gls{DRV},
+The expected value, expectation or expectancy of a random variable
+$X$, denoted by $\mathbb{E}[X]$, is its the long-term average
+outcome. It is defined as the center of mass of the probability
+distribution. Specifically, for a \gls{DRV},
 \begin{equation}
   \mathbb{E}[X] = \sum_{x\in\mathcal{X}}x\Pr(X=x).
   \label{eq:expectation}
@@ -140,6 +142,7 @@ The $n$-th moment of a random variable $X$ is the expectation of the
 $n$-th power of $X$:
 \begin{equation}
   \mathbb{E}[X^n] = \int_\Omega(X(\omega))^nd\Pr(\omega).
+  \label{eq:moments}
 \end{equation}
 
 \section{The sample mean}
@@ -147,11 +150,16 @@ $n$-th power of $X$:
 The sample mean of a \gls{DRV} $X$, usually denoted by $\overline{x}$, is the
 first moment of the realizations
 \begin{equation}
-  \mu(x) = \sum_\Omega X(\omega)d\Pr(\omega).
+  \mu(x) = \sum_\Omega X(\omega)d\Pr(\omega),
   \label{eq:sample_mean}
 \end{equation}
+i.e. (see Eq.~\ref{eq:expectation} and Eq.~{eq:moments}), is the
+expected value of the \gls{DRV}.
 
-\section{\glsentryfullpl{LLN}}
+\section{\gls{LLN}}
+The \gls{LLN} expresses the fact that our empirical observations will
+eventually align with our theoretical models if we collect enough
+data. Let $X^{(1)}, X^{(2)}, \cdots, X^{(N)}$.
 
 \section{Average}
 \label{sec:average}
