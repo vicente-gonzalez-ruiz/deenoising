@@ -1,14 +1,18 @@
 \chapter{Noise}
 
-\emph{Noise} in digital signals refers to any unwanted or unintended
-alteration of the original signal, which can corrupt the information
-being transmitted or processed. In other words, noise is any
-interference that distorts a \emph{clean} signal, generating a
-\emph{noisy} signal.
+In digital signals, \emph{Noise} refers to any unwanted (and usually
+unpredectible\footnote{Structured noise, for example, can be spatially
+  modeled and therefore, predectible.}) alteration of the original
+signal, which can corrupt the information being transmitted or
+processed. In other words, noise is any interference that distorts a
+\emph{clean} signal, generating a \emph{noisy} signal.
 
 An important idea to keep in mind is that, in general, only one noisy
 version of the clean signal is available (neither the clean signal nor
-the noise are known). However, because we are interested in denoising
+the noise are known).
+
+\begin{comment}
+However, because we are interested in denoising
 a several denoising techniques are based on the concept of
 \emph{signal averaging}, we will treat a digital signal as an single
 sample (instance) of a random variable. Thus, for example, if
@@ -22,7 +26,9 @@ say is that $\mathbb{E}(\hat{\mathbf{s}})=\mathbb{E}(\mathbf{s})$ that
 is a single value, $\mu$, for example. To distinguish between both
 expectations we will use the notation $\overline{\mathbb{E}}$ for the
 scalar case, when there exist some doubt.
+\end{comment}
 
+\begin{comment}
 Conventional denoising methods typically assume that noise follows a
 known statistical model, such as a Gaussian distribution or a mixture
 of well-characterized distributions. These assumptions allow
@@ -30,13 +36,13 @@ classical methods to perform noise removal in a principled
 manner. However, most real-world noise is considerably more complex,
 being neither independent nor accurately represented by analytic
 models.  % https://arxiv.org/pdf/2510.01666
+\end{comment}
 
 \section{Stochastic VS structured noise}
-Noise can be stochastic (i.d.d., independent and identically
-distributed), such as Poisson or Gaussian, or structured (correlated).
-Structured corruptions exhibit correlations along dominant
-orientations and patterns that are coherent spatially, temporally, or
-otherwise. % https://arxiv.org/pdf/2510.01666
+Noise can be stochastic (\gls{idd}), such as Poisson or Gaussian, or
+structured (correlated).  Structured corruptions exhibit correlations
+along dominant orientations and patterns that are coherent spatially,
+temporally, or otherwise. \cite{wang2025median2median} % https://arxiv.org/pdf/2510.01666
 
 % \section{Noise models}
 %{{{
