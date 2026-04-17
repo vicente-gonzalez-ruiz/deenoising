@@ -5,7 +5,8 @@ unpredectible\footnote{Structured noise, for example, can be spatially
   modeled and therefore, predectible.}) alteration of the original
 signal, which can corrupt the information being transmitted or
 processed. In other words, noise is any interference that distorts a
-\emph{clean} signal, generating a \emph{noisy} signal.
+\emph{clean} (ground truth usually unknown) signal, generating a
+\emph{noisy} signal.
 
 An important idea to keep in mind is that, in general, only one noisy
 version of the clean signal is available (neither the clean signal nor
@@ -221,30 +222,31 @@ spatially, temporally, or otherwise
 %-COM-
 %}}}
 
-\section{\glsentryfull{AWG} noise} % Additive White Gaussian
+\section{\glsentryfull{AWG} noise model} % Additive White Gaussian
 \label{sec:AWG}
 %{{{
 
-Zero-mean \footnote{In most of references, this particularity is
-  ignored because if the mean is not zero, we can subtract to the
-  noisy signal the sample mean of the noisy signal.} \acrshort{AWG} noise
-is a type of random\footnote{There exist a different type of noise,
-  not random, sometimes called (depending on the context)
-  \emph{coherent noise}, \emph{procedural noise}, and \emph{gradient
-    noise}, etc., that we will not study.} noise characterized by:
+Let's assume that we are working with digital signals, and that
+$\bf{s}$ and $\bm{n}$ are the clean and the noise signal,
+respectively. Zero-mean \footnote{In most of references, this
+  particularity is ignored because if the mean is not zero, we can
+  subtract to the noisy signal the sample mean of the noisy signal.}
+\acrshort{AWG} noise is a model of noise characterized by:
 \begin{enumerate}
 
-\item \textbf{Additive}: The noise is added to the signal:
+\item \textbf{Additive}: The noise is added to the signal, i.e., 
   \begin{equation}
+    \bf{s} = \bf{s} + \bf{n}\\
     \hat{\mathbf{s}}_i = {\mathbf{s}}_i + {\mathbf{n}}_i,
     \label{eq:AWG_i}
   \end{equation}
-  where $\mathbf{s}$ is the clean signal (without noise, ground truth
-  usually unknown), $\hat{\mathbf{s}}$ is the noisy signal, and
-  ${\mathbf{n}}$ is a sequence of random real values (noise samples)
-  that follow a Gaussian (normal) distribution\footnote{Read and dark
-  noise of most sensors can be treated as additive Gaussian noise.}
-  (see Section~\ref{sec:gaussian_distribution}), centered at zero:
+  where $\hat{\bm{s}}$ is the noisy signal, and ${\mathbf{n}}$ follows
+  a Gaussian (normal) distribution with sample mean 0
+  ($\overline{n}=0$) and variance $\sigma$ (denoted this by
+  ${\mathbf n}_i\sim{\mathcal N}(\mu=0,\sigma^2)$, see
+  Section~\ref{sec:gaussian_distribution}).
+
+  , centered at zero:
   \begin{equation} 
     \mathbb{E}(\mathbf{n}_i) = 0,\quad {\mathbf n}_i\sim{\mathcal N}(\mu=0,\sigma^2).
   \end{equation}
