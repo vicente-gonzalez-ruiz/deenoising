@@ -90,7 +90,7 @@ $N$-dimensional.
 
 The digitalization of a sequence of $N$ signal-samples can be modeled
 statistically using a \gls{DRVec}.\footnote{By physical requirements,
-  digital signals are finite in length.} We can identify:
+  digital signals are finite in length.} We can identify that:
 \begin{enumerate}
 \item $\Omega$ (the sample space) is the set of all possible physical
   continuous-time waveforms that the sensor could encounter during the
@@ -101,16 +101,16 @@ statistically using a \gls{DRVec}.\footnote{By physical requirements,
 \item $X$ represents the \gls{ADC}. It is a deterministic function
   that performs two operations on the outcome $\omega$:
   \begin{enumerate}
-  \item Sampling: $X$ looks at $\omega$ at $N$ specific time points
+  \item \emph{Sampling}: $X$ looks at $\omega$ at $N$ specific time points
     $\{t_1,t_2,\cdots,t_N\}$.
-  \item Quantization: Then $X$ usually rounds the voltage at those
+  \item \emph{Quantization}: Then $X$ usually rounds the voltage at those
     points to the nearest integer.
   \end{enumerate}
 \item The realization $\mathbf{x}=X(\omega)$ is the digizalized
   signal. Notice that $X$ is a vector operator that inputs a sample (a
   window of signal) and outputs a sequence of digital samples
   $\{\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_N\}$.
-\item $\mathcal{X}$ (the realization space) is the set of all possible
+\item $\mathcal{X}^{N}$ (the realization space) is the set of all possible
   realizations (all posible digital signals of length $N$).
 \end{enumerate}
 
