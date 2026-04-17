@@ -70,18 +70,18 @@ $X$ would be (discrete to) discrete.
 A \gls{DRVec} (also called a \emph{multivariate random variable}) is a
 generatization of a \gls{DRV} where $\mathcal{X}$ is
 $N$-dimensional. For this reason, when we deal with \glspl{DRVec}, we
-will denote the sample space with $\mathbf{\Omega}$, a sample as
-$\bm{\omega}$, the \gls{DRVec} as $\mathbf{X}$, and the
-realization space as $\mathcal{X}^N$.
+will denote the sample space with $\bm{\Omega}$, a sample as
+$\bm{\omega}$, the \gls{DRVec} as $X$, a realization with $\bm{x}$,
+and the realization space as $\mathcal{X}^N$.
 
 \begin{itemize}
 \item For example, suppose we roll two ($N=2$) fair six-sided
   dice. The sample space $\Omega$ consists of 36 ordered pairs
   $(d_1,d_2)$ where $d_i\in\{1,\cdots,6\}$. Now, we define a
-  \gls{DRVec} $\mathbf{X}=[S,D]^{\text{T}}$, where $S=d_1 + d_2$ and
+  \gls{DRVec} $X=[S,D]^{\text{T}}$, where $S=d_1 + d_2$ and
   $D=|d_1-d_2|$ are \glspl{DRV}. For example, if
   $\bm{\omega}=[4,6]^{\text{T}}$, we get
-  $\mathbf{X}(\bm{\omega})=[10,2]^{\text{T}}$.
+  $\bm{x}=X(\bm{\omega})=[10,2]^{\text{T}}$.
   
   Notice that the vector representation expresses a dependency between
   $S$ and $D$. For example, if you know hat $S=12$, then the $D$ must
@@ -96,24 +96,24 @@ The digitalization of a sequence of $N$ signal-samples can be modeled
 statistically using a \gls{DRVec}.\footnote{By physical requirements,
   digital signals are finite in length.} We can identify that:
 \begin{enumerate}
-\item $\Omega$ (the sample space) is the set of all possible physical
+\item $\bm{\Omega}$ (the sample space) is the set of all possible physical
   continuous-time waveforms that the sensor could encounter during the
-  sampling window, and $\omega$ (the ``analog reality'', i.e., the
+  sampling window, and $\bm{\omega}$ (the ``analog reality'', i.e., the
   signal to digitalize) is a single, specific continuous voltage
   waveform that actually occurs during your measurement
   window.
-\item $X$ represents the \gls{ADC}. It is a deterministic function
-  that performs two operations on the outcome $\omega$:
+\item $X$ represents the \gls{ADC}. It is a deterministic
+  function that performs two operations on the outcome $\bm{\omega}$:
   \begin{enumerate}
-  \item \emph{Sampling}: $X$ looks at $\omega$ at $N$ specific time points
-    $\{t_1,t_2,\cdots,t_N\}$.
+  \item \emph{Sampling}: $X$ looks at $\bm{\omega}$ at $N$
+    specific time points $\{t_1,t_2,\cdots,t_N\}$.
   \item \emph{Quantization}: Then $X$ usually rounds the voltage at those
     points to the nearest integer.
   \end{enumerate}
-\item The realization $\mathbf{x}=X(\omega)$ is the digizalized
-  signal. Notice that $X$ is a vector operator that inputs a sample (a
-  window of signal) and outputs a sequence of digital samples
-  $\{\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_N\}$.
+\item The realization $\bm{x}=X(\bm{\omega})$ is the digizalized
+  signal. Notice that $X$ is a vector operator that inputs a
+  sample(-segment) (a window of signal) and outputs a sequence of
+  digital numbers $\{\bm{x}_1,\bm{x}_2,\cdots,\bm{x}_N\}$.
 \item $\mathcal{X}^{N}$ (the realization space) is the set of all possible
   realizations (all posible digital signals of length $N$).
 \end{enumerate}
