@@ -69,15 +69,18 @@ $X$ would be (discrete to) discrete.
 
 A \gls{DRVec} (also called a \emph{multivariate random variable}) is a
 generatization of a \gls{DRV} where $\mathcal{X}$ is
-$N$-dimensional.
+$N$-dimensional. For this reason, when we deal with \glspl{DRVec}, we
+will denote the sample space with $\mathbf{\Omega}$, a sample as
+$\mathbf{\omega}$, the \gls{DRVec} as $\mathbf{X}$, and the
+realization space as $\mathcal{X}^N$.
 
 \begin{itemize}
-\item For example, suppose we roll two ($N=2$) fair six-sided dice. The sample
-  space $\Omega$ consists of 36 ordered pairs $(d_1,d_2)$ where
-  $d_i\in\{1,\cdots,6\}$. Now, we define a \gls{DRVec}
-  $X=[S,D]^{\text{T}}$, where $S=d_1 + d_2$ and
-  $D=|d_1-d_2|$ are \glspl{DRV}. For example, if $\omega=(4,6)$, we
-  get $X(4,6)=[10,2]^{\text{T}}$.
+\item For example, suppose we roll two ($N=2$) fair six-sided
+  dice. The sample space $\Omega$ consists of 36 ordered pairs
+  $(d_1,d_2)$ where $d_i\in\{1,\cdots,6\}$. Now, we define a
+  \gls{DRVec} $\mathbf{X}=[S,D]^{\text{T}}$, where $S=d_1 + d_2$ and
+  $D=|d_1-d_2|$ are \glspl{DRV}. For example, if
+  $\mathbf{\omega}=(4,6)$, we get $\mathbf{X}(4,6)=[10,2]^{\text{T}}$.
   
   Notice that the vector representation expresses a dependency between
   $S$ and $D$. For example, if you know hat $S=12$, then the $D$ must
