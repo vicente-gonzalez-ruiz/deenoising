@@ -322,6 +322,28 @@ and
 \end{equation}
 \end{comment}
 
+\subsection{Estimation of the \gls{SNR}}
+The \gls{SNR} is defined as the ration between the power (see
+Eq.~\ref{eq:power_as_expectation} of the clean signal and the power of
+the noise:
+\begin{equation}
+  \text{SNR} = \frac{P(\bm{x})}{P(\bm{n})}.
+\end{equation}
+
+Unfortunately, commonly only the noisy signal is available and
+therefore, the \gls{SNR} only can be estimated. If the clean signal is
+concentrated in the frequency domain, a procedure to do this is:
+\begin{enumerate}
+\item Compute $\mathcal{F}(\hat{\bm{x}})$.
+\item Identify the ``noise floor'' -- the flat part of the spectrum
+  where no signal peaks exist.
+\item Estimate $P(\bm{n})$ as the average level of that flat
+  floor. Notice that in the case of Gaussian noise, you have estimated
+  $\sigma^2$
+\item Estimate $P(\bm{x})$​ by subtracting the noise floor from the
+  total power of the peaks.
+\end{enumerate}
+
 \subsection{\acrshort{SNR} of the \acrshort{AWG} noise model}
 
 The \gls{SNR} is commonly defined as the ratio between the power (see
