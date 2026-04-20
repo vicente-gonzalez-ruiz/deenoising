@@ -224,21 +224,52 @@ spatially, temporally, or otherwise
 %-COM-
 %}}}
 
-\section{Signal samples}
+\section{Samples and signal samples}
 As was exposed in Section~\ref{sec:statistical_model}, the process of
-signal digitalization can be modeled as a \gls{DRVec}. Following this
-statistical formalism, a sample is a collection of elements of the
-sample space. However, notice that in the context of signal
-processing, the term ``sample'' will be used to refer to a
-component-realization in the context of \glspl{RDVec}.
+signal digitalization can be modeled as a \gls{DRVec}. Following
+strictly the statistical formalism, a sample would be a collection of
+elements of the sample space. However, notice that in the context of
+signal processing, the term ``sample'' will be used to refer to a
+component-realization in the context of \glspl{RDVec}. When confusion
+may exist, we will use \emph{element of the sample space} (the
+statistical sample) and \emph{sample} (the signal digital sample).
 
 \section{\glsentryfull{AWG} noise model} % Additive White Gaussian
 \label{sec:AWG}
 %{{{
 
-The \gls{AWG} noise model is used when:
+The \gls{AWG} noise model explains how a clean (digital) signal $\bm{x}$
+is contaminated with a vector of noise $\bm{n}$ in this way:
 \begin{enumerate}
-\item The noise modifies the \emph{samples} of the (usually unknonw)
+\item Both are (sample-wise) added:
+  \begin{equation}
+    \hat{\bm{x}} = \bm{x} + \bm{n}.
+    \label{eq:AWG}
+  \end{equation}
+\item The noise, modeled as a \gls{DRV} $N$, is \gls{iid} and follows
+  Gaussian (normal) distribution with sample mean 0 ($\overline{\bm{n}}=0$)
+  and variance $\sigma^2$ (see
+  Section~\ref{sec:gaussian_distribution}):
+  \begin{equation}
+    N\sim{\mathcal N}(\mu=0,\sigma^2).
+  \end{equation}
+\item The spectrum of $\bf{n}$, $|\cal{F}(\bf{n})|$ has a constant
+  \gls{PSD} over all frequencies (in other words, it is flat).
+\end{enumerate}
+
+Notice that nothing can said about the noise, except that
+\begin{equation}
+  \Pr(N{=}\bm{n}_i|\bm{s}_i) = \Pr(N{=}\bm{n}_i).
+\end{equation}
+
+Finally, it is also expected that the auto-correlation (see
+Section~\ref{sec:auto-correlation}) of the noise is zero for any
+``time'' lag $k$ and in a long enought realization:
+\begin{equation}
+  \Pr(\lim_{l\rightarrow\infty}\text{AC}(n)_k=0)=1.
+\end{equation}
+  
+  noise modifies the \emph{samples} of the (usually unknonw)
   clean signal in any real-number magnitude
 
 Let's assume that we are working with a noisy digital signal 
