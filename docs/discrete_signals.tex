@@ -106,14 +106,14 @@ $X$, even if $x$ is real.
 %{{{
 
 The \gls{DFT} of a (by definition, discrete and finite) signal
-$\mathbf{x}$ is determined by
+$\bm{x}$ is determined by
 \begin{equation}
-  \mathcal{F}(\mathbf{x}) = \mathbf{X} = \{\mathbf{X}_f\}_{f=0}^{N-1} \quad \text{with} \quad \mathbf{X}_f=\sum_{n=0}^{N-1}\mathbf{x}_ne^{-2\pi jf\frac{n}{N}},
+  \mathcal{F}(\bm{x}) = \mathbf{X} = \{\mathbf{X}_f\}_{f=0}^{N-1} \quad \text{with} \quad \mathbf{X}_f=\sum_{n=0}^{N-1}\mathbf{x}_ne^{-2\pi jf\frac{n}{N}},
   \label{eq:DFT}
 \end{equation}
 where $f$ denotes (discrete) frequency bins. The inverse \gls{DFT} is defined by
 \begin{equation}
-  \mathbf{x} = \mathcal{F}^{-1}(\mathbf{X}) \quad \text{with} \quad \mathbf{x}_n = \frac{1}{N}\sum_{f=0}^{N-1}\mathbf{X}_fe^{2\pi jn\frac{f}{N}}.
+  \bm{x} = \mathcal{F}^{-1}(\mathbf{X}) \quad \text{with} \quad \bm{x}_n = \frac{1}{N}\sum_{f=0}^{N-1}\mathbf{X}_fe^{2\pi jn\frac{f}{N}}.
 \end{equation}
 
 The \gls{DFT} can be interpreted as sampling the \gls{FTDF} (see
@@ -138,7 +138,7 @@ The Parseval's theorem for discrete signals states that, except for a
 scale factor, the total energy of a signal in the signal domain (time,
 for example) is equal to the total energy of its representation in the
 frequency domain. Concretely, if $\mathbf{X}$ is the \gls{DFT} of the
-discrete (and finte) signal $\mathbf{x}$, the Parseval’s theorem
+discrete (and finte) signal $\bm{x}$, the Parseval’s theorem
 states that
 \begin{equation}
   E(\mathbf{x}) = \frac{1}{N}E(\mathbf{X}),
@@ -153,7 +153,7 @@ Section~\ref{sec:energy_signal}).
 %{{{
 
 By definition, the Fourier
-(or frequency) spectrum of $\mathbf{x}$ is the magnitude of
+(or frequency) spectrum of $\bm{x}$ is the magnitude of
 $\mathbf{X}$, that is
 \begin{equation}
   |\mathbf{X}| = \sqrt{(\text{Re}(\mathbf{X}))^2+(\text{Im}(\mathbf{X}))^2}.
@@ -172,12 +172,12 @@ arctangent function.
 \label{sec:power_spectrum}
 %{{{
 
-The \gls{PS} of finite-length discrete signal $\mathbf{x}$ shows how
+The \gls{PS} of finite-length discrete signal $\bm{x}$ shows how
 much power (see Section~\ref{sec:power_signal}) a signal has at its
 different frequency bins. Let $\mathbf{X}$ the Fourier transform of
-$\mathbf{x}$. Then,
+$\bm{x}$. Then,
 \begin{equation}
-  \text{PS}(\mathbf{x}) = \{\text{PS}(\mathbf{x})_f\}_{f=0}^{N-1} \quad \text{where} \quad \text{PS}(\mathbf{x})_f = \frac{1}{N}|\mathbf{X}_f|^2,
+  \text{PS}(\bm{x}) = \{\text{PS}(\bmf{x})_f\}_{f=0}^{N-1} \quad \text{where} \quad \text{PS}(\bm{x})_f = \frac{1}{N}|\mathbf{X}_f|^2,
 \end{equation}
 where $f$ denotes the frequency bin.
 
@@ -194,20 +194,20 @@ Typically represented with the symbol $\ast$, convolution is a
 mathematical operation that combines two signals to produce a third
 one. From a physical perspective, convolution models how a signal
 is transformed by a system's behavior what is itself described by
-another signal (usually, the response of the system to the an
+another signal (usually, the response of the system to an
 impulse). An example of such system can be a filter.
 
-For two signals $\mathbf{x}$ (the signal to be filtered) and
-$\mathbf{h}$ (the filter weights), the convolution is defined as
+For two signals $\bm{x}$ (the signal to be filtered) and
+$\bm{h}$ (the filter weights), the convolution is defined as
 \begin{equation}
-(\mathbf{x}\ast\mathbf{h})_{n}=\sum_{k=0}^{K-1}\mathbf{x}_{n-k}\mathbf{h}_{k},
+(\bm{x}\ast\bm{h})_{n}=\sum_{k=0}^{K-1}\mathbf{x}_{n-k}\mathbf{h}_{k},
 \label{eq:convolution}
 \end{equation}
 where $K$ is the number of weights, and $n$ is known as the \emph{lag}
-(where the filter is applied in $\mathbf{x}$).
+(where the filter is applied in $\bm{x}$).
 
-Notice that we could need to extend $\mathbf{x}$ to convolve it with
-$\mathbf{h}$.
+Notice that we could need to extend $\bm{x}$ to convolve it with
+$\bm{h}$.
 
 %}}}
 
@@ -297,7 +297,7 @@ $\circledast$, is a measurement of how much two or more variables are
 related to one another. The \gls{CC} can be used to find the
 similarity between two signals $\mathbf{x}$ and $\mathbf{h}$ (both
 usually with the same shape) of one relative to the other, as a
-function of a time lag $n\in\{n\}_{n=1}^{N}$. The \gls{CC} is
+function of a lag $n\in\{n\}_{n=1}^{N}$. The \gls{CC} is
 defined as
 \begin{equation}
   (\mathbf{x}\circledast\mathbf{h})_n=\sum_{k=1}^{N}{\mathbf{x}}_{n+k} \mathbf{h}_n.

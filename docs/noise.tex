@@ -255,21 +255,24 @@ is contaminated with a vector of noise $\bm{n}$ in this way:
     N\sim{\mathcal N}(\mu=0,\sigma^2).
   \end{equation}
 \item The spectrum of $\bm{n}$, $|{\cal F}(\bm{n})|$ has a constant
-  \gls{PSD} over all frequencies (in other words, it is flat).
+  \gls{PSD} over all frequencies (in other words, it is flat). This
+  implies that it is also expected that the auto-correlation (see
+  Section~\ref{sec:auto-correlation}) of the noise is zero for any lag
+  $k$ and in a $l$-long enought realization:
+  \begin{equation}
+    \Pr\left(\lim_{l\rightarrow\infty}\text{AC}(n)_k=0\right)=1\quad\forall k.
+  \end{equation}
+  This is equivalent to say that
+  \begin{equation}
+    \text{Cov}(\bm{n}) = \sigma^2\bm{I},
+  \end{equation}
+  where $\bm{I}$ is the identity matrix.
+\item The noise is indepent of (is not correlated with) the clean signal,
+\begin{equation}
+  \Pr(N{=}\bm{n}_i|\bm{s}_i) = \Pr(N{=}\bm{n}_i).
+\end{equation}
+  
 \end{enumerate}
-
-\noindent Notice that nothing can said about the noise, except that
-\begin{equation}
-  \Pr(N{=}\bm{n}_i|\bm{s}_i) = \Pr(N{=}\bm{n}_i),
-\end{equation}
-i.e., the noise is not correlated with the clean signal.
-
-Finally, it is also expected that the auto-correlation (see
-Section~\ref{sec:auto-correlation}) of the noise is zero for any
-``time'' lag $k$ and in a $l$-long enought realization:
-\begin{equation}
-  \Pr\left(\lim_{l\rightarrow\infty}\text{AC}(n)_k=0\right)=1\quad\forall k.
-\end{equation}
 
 \subsection{Expectation of the noisy signal}
 Considering expectations in Eq.~\ref{eq:AWG}, we get that
@@ -323,46 +326,46 @@ and
 \end{comment}
 
 \subsection{Estimation of the \gls{SNR}}
-The \gls{SNR} is defined as the ration between the power (see
-Eq.~\ref{eq:power_as_expectation} of the clean signal and the power of
+The \gls{SNR} is defined as the ratio between the power (see
+Eq.~\ref{eq:power_as_expectation}) of the clean signal and the power of
 the noise:
 \begin{equation}
   \text{SNR} = \frac{P(\bm{x})}{P(\bm{n})}.
 \end{equation}
 
-Unfortunately, commonly only the noisy signal is available and
-therefore, the \gls{SNR} only can be estimated. If the clean signal is
-concentrated in the frequency domain, a procedure to do this is:
+Unfortunately, when only the noisy signal is available, the \gls{SNR}
+only can be estimated. If the clean signal is concentrated in the
+frequency domain, a procedure to do this is:
 \begin{enumerate}
 \item Compute $\mathcal{F}(\hat{\bm{x}})$.
 \item Identify the ``noise floor'' -- the flat part of the spectrum
   where no signal peaks exist.
 \item Estimate $P(\bm{n})$ as the average level of that flat
   floor. Notice that in the case of Gaussian noise, you have estimated
-  $\sigma^2$
+  $\sigma^2$.
 \item Estimate $P(\bm{x})$ by subtracting the noise floor from the
   total power of the peaks.
 \end{enumerate}
 
-\subsection{\acrshort{SNR} of the \acrshort{AWG} noise model}
+%\subsection{\acrshort{SNR} of the \acrshort{AWG} noise model}
 
-The \gls{SNR} is commonly defined as the ratio between the power (see
-Eq.~\ref{eq:power_as_expectation} and Eq.~\ref{eq:variance}) of the
-clean signal and the power of the noise:
-\begin{equation}
-  \text{SNR} = \frac{P(\mathbf{s})}{P(\mathbf{n})} = \frac{\overline{\mathbb{E}}(\mathbf{s}^2)}{\overline{\mathbb{E}}(\mathbf{n}^2)} = \frac{\overline{\mathbb{E}}(\mathbf{s})^2+\overline{\mathbb{V}}(\mathbf{s})}{\overline{\mathbb{E}}(\mathbf{n})^2+\overline{\mathbb{V}}(\mathbf{n})},
-  \label{eq:SNR}
-\end{equation}
-where $\mathbf{s}$ is the clean signal and $\hat{\mathbf{s}}$ is its
-noisy version, and
-\begin{equation}
-  \mathbf{n} = \hat{\mathbf{s}} - \mathbf{s}.
-\end{equation}
+%The \gls{SNR} is commonly defined as the ratio between the power (see
+%Eq.~\ref{eq:power_as_expectation} and Eq.~\ref{eq:variance}) of the
+%clean signal and the power of the noise:
+%\begin{equation}
+%  \text{SNR} = \frac{P(\mathbf{s})}{P(\mathbf{n})} = \frac{\overline{\mathbb{E}}(\mathbf{s}^2)}{\overline{\mathbb{E}}(\mathbf{n}^2)} = \frac{\overline{\mathbb{E}}(\mathbf{s})^2+\overline{\mathbb{V}}(\mathbf{s})}{\overline{\mathbb{E}}(\mathbf{n})^2+\overline{\mathbb{V}}(\mathbf{n})},
+%  \label{eq:SNR}
+%\end{equation}
+%where $\mathbf{s}$ is the clean signal and $\hat{\mathbf{s}}$ is its
+%noisy version, and
+%\begin{equation}
+%  \mathbf{n} = \hat{\mathbf{s}} - \mathbf{s}.
+%\end{equation}
 
-Considering that $\overline{\mathbb{E}}(\mathbf{n}) = 0$,
-\begin{equation}
-  \text{SNR} = \frac{\overline{\mathbb{E}}(\mathbf{s})^2 + \overline{\mathbb{V}}(\mathbf{s})}{\sigma^2},
-\end{equation}
+%Considering that $\overline{\mathbb{E}}(\mathbf{n}) = 0$,
+%\begin{equation}
+%  \text{SNR} = \frac{\overline{\mathbb{E}}(\mathbf{s})^2 + \overline{\mathbb{V}}(\mathbf{s})}{\sigma^2},
+%\end{equation}
 
 \begin{comment}
 that

@@ -382,12 +382,12 @@ This is because
 \label{sec:covariance}
 %{{{
 
-The covariance $\mathbb{C}(\mathbf{x}, \mathbf{y})$ (also denoted by
-$R_{\mathbf{x}\mathbf{y}}$) is a measure of how two random variables
-$\mathbf{x}$ and $\mathbf{y}$ change together. In simpler terms, it
+The covariance $\text{Cov}(\bm{x}, \bm{y})$ (also denoted by
+$R_{\bm{x}\bm{y}}$) is a measure of how the realizations of two random
+variables $\bm{x}$ and $\bm{y}$ change together. In simpler terms, it
 tells us the direction of the linear relationship between two
-variables. The covariance between two discrete signals $\mathbf{x}$
-and $\mathbf{y}$ is calculated as
+variables. The covariance between two discrete signals $\bm{x}$
+and $\bm{y}$ is calculated as
 %\begin{equation}
 %  \text{Cov}(\textbf{x}, \textbf{y}) = \mathbb{E}[(\mathbf{x}-\overline{\mathbf{x}})(\mathbf{y}-\overline{\mathbf{y}})].
 %\end{equation}
@@ -395,13 +395,14 @@ and $\mathbf{y}$ is calculated as
 %  \mathbb{V}(\mathbf{x}) = \mathbb{E}\left((\mathbf{x} - \mathbb{E}(\mathbf{x}))^2 \right).
 %\end{equation}
 \begin{equation}
-  \mathbb{C}(\textbf{x}, \textbf{y}) = \mathbb{E}\big((\mathbf{x}-\mathbb{E}(\mathbf{x}))(\mathbf{y}-\mathbb{E}(\mathbf{y}))\big).
+  \text{Cov}(\bm{x}, \bm{y}) = \mathbb{E}\big((\bm{x}-\mathbb{E}(\bm{x}))(\bm{y}-\bm{E}(\bm{y}))\big).
 \end{equation}
 
 Notice that (see Eq.~\ref{eq:variance})
 \begin{equation}
-  \mathbb{C}(\mathbf{x}, \mathbf{x}) = \mathbb{V}(\mathbf{x}).
+  \text{Cov}(\bm{x}, \bm{x}) = \mathbb{E}[\bm{x}\bm{x}^{\text{T}}]= \text{Var}(\bm{x})\bm{I},
 \end{equation}
+where $\bm{I}$ is the identity matrix.
 
 %}}}
 

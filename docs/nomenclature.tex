@@ -2,53 +2,54 @@
   $x$, $\alpha$ & Scalar values \\
   $x(t)$ & A (continuous) signal as a function of time \\
   $x[n]$ & A discrete signal (only) defined at instants of time $tn, n\in\mathcal{Z}, t>0$ \\
-  $\mathbf{x}$ & A digital (discrete and finite) signal (e.g., an image) \\
-  $\mathbf{x}_{i}$ & The $i$-th element of $\mathbf{x}=\{\mathbf{x}_{i}\}_{i=0}^{N-1}=\{\mathbf{x}_{i}\}$ \\
+  $\bm{x}$ & A digital (discrete and finite) signal (e.g., an image) \\
+  $\bm{x}_{i}$ & The $i$-th element of $\bm{x}=\{\bm{x}_{i}\}_{i=0}^{N-1}=\{\bm{x}_{i}\}$ \\
   %$A[b]$ & The $b$-th element of the sampled version of $A(b)$ \\
   $\{i\}$ & The set $i$ \\
-  $\mathbf{x}_{\{i\}}$ & The elements of $\mathbf{x}$ with indices $\{i\}$ \\
-  $\mathbf{x}_{[i]}$ & A window of samples of $\mathbf{x}$ centered at the $i$-th sample \\
-  $\mathbf{x}_{\href{https://numpy.org/doc/stable/user/basics.indexing.html#slicing-and-striding}{y,:}}$ & The $y$-th row of the image $\mathbf{x}$ \\
-  $\mathbf{x}_{:,x}$ & The $x$-th column of the image $\mathbf{x}$ \\
-  $\mathbf{x}_{y,x}$ & The pixel $(y,x)$ of the image $\mathbf{x}$ \\
+  $\bm{x}_{\{i\}}$ & The elements of $\bm{x}$ with indices $\{i\}$ \\
+  $\bm{x}_{[i]}$ & A window of samples of $\bm{x}$ centered at the $i$-th sample \\
+  $\bm{x}_{\href{https://numpy.org/doc/stable/user/basics.indexing.html#slicing-and-striding}{y,:}}$ & The $y$-th row of the image $\bm{x}$ \\
+  $\bm{X}_{:,x}$ & The $x$-th column of the matrix/image $\bm{X}$ \\
+  $\bm{x}_{y,x}$ & The value/pixel $(y,x)$ of the matrix/image $\bm{X}$ \\
   %$\mathbf{x}^{(i)}$ & The $i$-th real-noisy instance of the signal $\mathbf{x}$ \\
   %$\mathbf{s}^{()}$ & An instance of $\mathbf{s}$, possibly noisy \\
-  $\mathbf{x}^{(i)}$ & The $i$-th instance of the signal $\mathbf{x}$ \\
-  $\tilde{\mathbf{x}}^{(I)}$ & Approximation to $\mathbf{x}$ using $I$ instances \\ 
-  $\overline{\mathbf{x}}$ & Mean of the samples of $\mathbf{x}$ \\ 
-  $\href{https://docs.python.org/3/library/functions.html#len}{\text{len}}(\mathbf{x})$ & $=\mathbf{x}.\href{https://numpy.org/doc/stable/reference/generated/numpy.ndarray.size.html}{\mathsf{size}}$ Number of elements in $\mathbf{x}$ \\
-  $\href{https://numpy.org/doc/stable/reference/generated/numpy.shape.html}{\text{shape}}(\mathbf{x})$ & ($=\mathbf{x}.{\mathsf{shape}}$) Shape of $\mathbf{x}$ \\
-  $\text{rank}(\mathbf{x})$ & ($=\mathbf{x}.\mathsf{rank}=\text{len}(\mathbf{x}.\mathsf{shape})$) Dimensionality of $\mathbf{x}$ \\
+  $\bm{x}^{(i)}$ & The $i$-th instance of the signal $\bm{x}$ \\
+  $\tilde{\bm{x}}^{(I)}$ & Approximation to $\bm{x}$ using $I$ instances \\ 
+  $\overline{\bm{x}}$ & Average of the samples of $\bm{x}$ \\ 
+  $\href{https://docs.python.org/3/library/functions.html#len}{\text{len}}(\bm{x})$ & $=\bm{x}.\href{https://numpy.org/doc/stable/reference/generated/numpy.ndarray.size.html}{\mathsf{size}}$ Number of elements in $\bm{x}$ \\
+  $\href{https://numpy.org/doc/stable/reference/generated/numpy.shape.html}{\text{shape}}(\bm{x})$ & ($=\bm{x}.{\mathsf{shape}}$) Shape of $\bm{x}$ \\
+  $\text{rank}(\bm{x})$ & ($=\bm{x}.\mathsf{rank}=\text{len}(\bm{x}.\mathsf{shape})$) Dimensionality of $\bm{x}$ \\
   $\mathsf{\href{https://docs.python.org/3/library/functions.html\#func-range}{range}}(x)$ & $=\{0, 1, \cdots, x-1\}$ \\
-  $\mathsf{\href{https://numpy.org/doc/stable/reference/generated/numpy.zeros_like.html}{zeros\_like}}(\mathbf{x})$ & $=\{0\}_{i=0}^{\mathbf{x}.\mathsf{size}-1}$ \\
+  $\mathsf{\href{https://numpy.org/doc/stable/reference/generated/numpy.zeros_like.html}{zeros\_like}}(\bm{x})$ & $=\{0\}_{i=0}^{\bm{x}.\mathsf{size}-1}$ \\
   % $|\mathbf{X}_i|$ & The absolute value of $\mathbf{X}_i$ \\
-  $\alpha\mathbf{x}$ & $=\{\alpha\mathbf{x}_i\}$ (scalar multiplication) \\
-  $\mathbf{x}+\mathbf{y}$ & $=\{\mathbf{x}_i + \mathbf{y}_i\}$ (Hadamard addition) \\ 
-  $\mathbf{x}\mathbf{y}$ & $=\{\mathbf{x}_i\mathbf{y}_i\}$ (Hadamard product) \\ 
+  $\alpha\bm{x}$ & $=\{\alpha\bm{x}_i\}$ (scalar multiplication) \\
+  $\bm{x}+\bm{y}$ & $=\{\bm{x}_i + \bm{y}_i\}$ (Hadamard addition) \\ 
+  $\bm{x}\bm{y}$ & $=\{\bm{x}_i\bm{y}_i\}$ (Hadamard product) \\ 
   $\mathcal{N}$ & The normal distribution \\ 
   $\mathcal{P}$ & The Poisson distribution \\
-  $\mathbf{x}\sim\mathcal{N}$ & The elements of $\mathbf{x}$ follows a normal distribution \\
-  $\mathbf{x}_{\mathcal{N}}$ & The same as $\mathbf{x}\sim\mathcal{N}$ \\
-  $\Pr(\mathbf{x}=a)$ & Probability that a $\mathbf{x}_i$ takes the value $a$ \\
-  $\Pr(\mathbf{x}=a, \mathbf{y}=b)$ & $\Pr(\mathbf{x}=a)$ and $\Pr(\mathbf{y}=b)$ (joint probability)  \\
-  $\text{Su}(\mathbf{x})$ & $=\{x\in\mathbb{R}|\Pr(\mathbf{x}=x)>0\}$ (support of $\mathbf{x}$)\\
+  $\bm{x}\sim\mathcal{N}$ & The elements of $\bm{x}$ follows a normal distribution \\
+  $\bm{x}_{\mathcal{N}}$ & The same as $\bm{x}\sim\mathcal{N}$ \\
+  $\Pr(\bm{x}=a)$ & Probability of the ocurrency of $a$ in that a $\bm{x}$  \\
+  $\Pr(\bm{x}=a, \bm{y}=b)$ & $\Pr(\bm{x}=a)$ and $\Pr(\bm{y}=b)$ (joint probability)  \\
+  $\text{Su}(\bm{x})$ & $=\{x\in\mathbb{R}|\Pr(\bm{x}=x)>0\}$ (support of $\bm{x}$)\\
   $\Pr(A|B)$ & Conditional probability of $A$ given $B$ \\
-  $\mathbb{E}(\mathbf{x})$ & Expectation of $\mathbf{x}$ \\
-  $\mathbb{V}(\mathbf{x})$ & Variance of $\mathbf{x}$ \\
-  $||\mathbf{x}||_2$ & $L_2$ norm of $\mathbf{x}$ \\
+  $\mathbb{E}[\bm{x}]$ & Expectation of $\bm{x}$ \\
+  $\text{Var}(\bm{x})$ & Variance of $\bm{x}$ \\
+  $||\bm{x}||_2$ & $L_2$ norm of $\bm{x}$ \\
   $f_s$ & Sampling frequency \\
-  $\mathcal{F}$ & The (forward) Fourier transform ($\mathcal{F}(\mathbf{x})=\mathbf{X}$) (see Section~\ref{sec:Fourier_transform})\\
-  $\mathcal{F}^{-1}$ & The inverse Fourier transform ($\mathcal{F}^{-1}(\mathbf{X})=\mathbf{x}$)  (see Section~\ref{sec:Fourier_transform})\\
+  $\mathcal{F}$ & The (forward) Fourier transform ($\mathcal{F}(\bm{x})=\mathbf{X}$) (see Section~\ref{sec:Fourier_transform})\\
+  $\mathcal{F}^{-1}$ & The inverse Fourier transform ($\mathcal{F}^{-1}(\mathbf{X})=\bm{x}$)  (see Section~\ref{sec:Fourier_transform})\\
   $\cdot^*$ & the complex conjugate of $\cdot$ \\
-  $\mathbf{x}*\mathbf{y}$ & $=\mathcal{F}^{-1}(\mathcal{F}(\mathbf{x})\mathcal{F}(\mathbf{y}))=\mathcal{F}^{-1}(\mathbf{X}\mathbf{Y})$ (convolution) \\
+  $\bm{x}*\bm{y}$ & $=\mathcal{F}^{-1}(\mathcal{F}(\bm{x})\mathcal{F}(\bm{y}))=\mathcal{F}^{-1}(\mathbf{X}\mathbf{Y})$ (convolution) \\
   $A(b)$ & $A$ depends on (parameter) $b$ \\
   $A.b$ & The $b$ component of the data structure $A$ \\
   $(A)b$ & First $A$, then $b$ \\
-  $E(\mathbf{x})$ & Energy of $\mathbf{x}$ (see Section~\ref{sec:energy_signal}) \\
-  $P(\mathbf{x})$ & Power of $\mathbf{x}$ (see Section~\ref{sec:power_signal}) \\
-  $\text{PS}(\mathbf{x})$ & Power spectrum of $\mathbf{x}$ (see Section~\ref{sec:power_spectrum}) \\
-  $\text{PSD}(\mathbf{x})$ & Power spectral density of $\mathbf{x}$ (see Section~\ref{sec:PSD}) \\
-  $\text{CC}(\mathbf{x},\mathbf{y})$ & Cross-correlation between $\mathbf{x}$ and $\mathbf{y}$ (see Section~\ref{sec:cross-correlation}) \\
-  $\text{NCC}(\mathbf{x},\mathbf{y})$ & Normalized cross-correlation between $\mathbf{x}$ and $\mathbf{y}$ (see Section~\ref{sec:cross-correlation}) \\
-  $\mathbf{a}\bot \mathbf{b}$ & $\mathbf{a}$ and $\mathbf{b}$ are orthogonal or independent                                
+  $E(\bm{x})$ & Energy of $\bm{x}$ (see Section~\ref{sec:energy_signal}) \\
+  $P(\bm{x})$ & Power of $\bm{x}$ (see Section~\ref{sec:power_signal}) \\
+  $\text{PS}(\bm{x})$ & Power spectrum of $\bm{x}$ (see Section~\ref{sec:power_spectrum}) \\
+  $\text{PSD}(\bm{x})$ & Power spectral density of $\bm{x}$ (see Section~\ref{sec:PSD}) \\
+  $\text{CC}(\bm{x},\bm{y})$ & Cross-correlation between $\bm{x}$ and $\bm{y}$ (see Section~\ref{sec:cross-correlation}) \\
+  $\text{NCC}(\bm{x},\bm{y})$ & Normalized cross-correlation between $\bm{x}$ and $\bm{y}$ (see Section~\ref{sec:cross-correlation}) \\
+  $\bm{a}\bot \bm{b}$ & $\bm{a}$ and $\bm{b}$ are orthogonal or independent \\
+  $\bm{I}$ & The identity matrix
 \end{tabular}
