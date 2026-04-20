@@ -281,23 +281,24 @@ This basically implies that if, for example, we take an infinite
 number of noisy instances of the same biological specimen, and these
 instances are affected only by AWG noise, then the expected value for each
 noisy $i$-th pixel is the clean $i$-th pixel. In other words,
-$\hat{\mathbf{s}}$ is an unbiased estimator or $\mathbf{s}$.
+$\hat{\bm{x}}$ is an unbiased estimator or $\bm{s}$.
 
 \subsection{Variance of the noisy signal}
-The variance of the signal described in Eq.~\ref{eq:AWG_i} is
+The variance of the signal described in Eq.~\ref{eq:AWG} is
 \begin{equation}
-  \mathbb{V}(\hat{\mathbf{s}}_i) = \mathbb{V}(\mathbf{s}_i + \mathbf{n}_i) = \mathbb{V}(\mathbf{s}_i) + \mathbb{V}(\mathbf{n}_i) = \mathbb{V}(\mathbf{s}_i) + \sigma^2,
-  \label{eq:V_AWG_i}
-\end{equation}
-i.e.,
-\begin{equation}
-  \mathbb{V}(\hat{\mathbf{s}}) = \mathbb{V}(\mathbf{s}) + \sigma^2.
+  \mathtt{Var}(\hat{\bm{x}}) = \mathtt{Var}(\bm{x}+\bm{n}) = \mathtt{Var}(\bm{x}) + \sigma^2
+  %\mathbb{V}(\hat{\mathbf{s}}_i) = \mathbb{V}(\mathbf{s}_i + \mathbf{n}_i) = \mathbb{V}(\mathbf{s}_i) + \mathbb{V}(\mathbf{n}_i) = \mathbb{V}(\mathbf{s}_i) + \sigma^2,
   \label{eq:V_AWG}
 \end{equation}
-Notice that the variance of the noisy signal depend on the variance of
-the clean signal and the variance of the noise, and there is not a
-dependency betweeen both variances. This is a
-charactaristic of signal-independent noisy models.
+%i.e.,
+%\begin{equation}
+%  \mathbb{V}(\hat{\mathbf{s}}) = \mathbb{V}(\mathbf{s}) + \sigma^2.
+%  \label{eq:V_AWG}
+%\end{equation}
+Notice that the variance of a \gls{AWG} noisy signal depend on the
+variance of the clean signal and the variance of the noise, and there
+is not a dependency betweeen both variances. This is a charactaristic
+of signal-independent noisy models.
 
 \begin{comment}
 If $\mathbf{s}=\mathbf{0}$ (a constant signal
