@@ -260,8 +260,9 @@ is contaminated with a vector of noise $\bm{n}$ in this way:
 
 \noindent Notice that nothing can said about the noise, except that
 \begin{equation}
-  \Pr(N{=}\bm{n}_i|\bm{s}_i) = \Pr(N{=}\bm{n}_i).
+  \Pr(N{=}\bm{n}_i|\bm{s}_i) = \Pr(N{=}\bm{n}_i),
 \end{equation}
+i.e., the noise is not correlated with the clean signal.
 
 Finally, it is also expected that the auto-correlation (see
 Section~\ref{sec:auto-correlation}) of the noise is zero for any
@@ -269,79 +270,11 @@ Section~\ref{sec:auto-correlation}) of the noise is zero for any
 \begin{equation}
   \Pr\left\right(\lim_{l\rightarrow\infty}\text{AC}(n)_k=0)=\quad\forall k.
 \end{equation}
-  
-  noise modifies the \emph{samples} of the (usually unknonw)
-  clean signal in any real-number magnitude
-
-Let's assume that we are working with a noisy digital signal 
-
-, and that
-$\bf{s}$ and $\bm{n}$ are the clean signal and the noise,
-respectively. The zero-mean \footnote{In most of references, this
-  particularity is ignored because if the mean is not zero, we can
-  subtract to the noisy signal the sample mean of the noisy signal.}
-\acrshort{AWG} noise model $X$ is characterized by:
-
-\begin{enumerate}
-
-\item $N$ is a \gls{DRV} that follows a Gaussian (normal) distribution
-  with sample mean 0 ($\overline{n}=0$) and variance $\sigma^2$ (see
-  Section~\ref{sec:gaussian_distribution}):
-  \begin{equation}
-    N\sim{\mathcal N}(\mu=0,\sigma^2).
-  \end{equation}
-  This also implies that the noise (the \gls{DRV} realizations) are
-  uncorrelated among them
-  \begin{equation}
-    \mathbb{C}(\mathbf{n}_i,\mathbf{n}_j) = 0 \quad \text{for} \quad i\neq j,
-  \end{equation}
-  and with the clean signal:
-  \begin{equation}
-    \Pr(N=\bm{n}_i|\bm{s}_i) = \Pr(N=\bm{n}_i).
-  \end{equation}
-
-\item \textbf{Additive}: The noise is added to the signal, i.e., 
-  \begin{equation}
-    \hat{\bf{s}} = \bf{s} + \bf{n}
-    \label{eq:AWG}
-  \end{equation}
-  where $\hat{\bm{s}}$ is the noisy signal, and ${\mathbf{n}}$ follows
-  a Gaussian (normal) distribution with sample mean 0
-  ($\overline{n}=0$) and variance $\sigma^2$ (denoted this by
-  $X\sim{\mathcal N}(\mu=0,\sigma^2)$, see
-  Section~\ref{sec:gaussian_distribution}).
-
-\item \textbf{Uncorrelated}: 
-
-\item \textbf{Uncorrelated with the clean signal}: %The noise is independent of the clean image:
-\begin{comment}
-\end{comment}
-  In other words, nothing can said about the noise, except that
-  \begin{equation}
-    \Pr(\mathbf{n}{=}\mathbf{n}_i|\mathbf{s}_i) = \Pr(\mathbf{n}{=}\mathbf{n}_i).
-  \end{equation}
-\begin{comment}
-  Moreover, because $\mathbf{s}$ is unknown, 
-  \begin{equation}
-    \Pr(\mathbf{n}{=}\mathbf{n}_i|\hat{\mathbf{s}}_i) = \Pr(\mathbf{n}{=}\mathbf{n}_i).
-  \end{equation}
-\end{comment}
-
-\item \textbf{Uncorrelated noise samples}:
-  \begin{equation}
-    \mathbb{C}(\mathbf{n}_i,\mathbf{n}_j) = 0 \quad \text{for} \quad i\neq j.
-  \end{equation}
-  
-\item \textbf{White spectrum}: $\mathbf{n}$ has a constant \gls{PSD} over all frequencies (in
-  other words, $|\mathbf{N}|$ is flat).
-  
-\end{enumerate}
-
-For these reasons, this type of noise is commonly refered as \gls{AWG} noise.
 
 \subsection{Expectation of the noisy signal}
 Considering expectations in Eq.~\ref{eq:AWG_i}, we get that
 \begin{equation}
+  \mathbb{E}[\hat{\bm{x}}] = 
   \mathbb{E}(\hat{\mathbf{s}}_i) = \mathbb{E}(\mathbf{s}_i + \mathbf{n}_i) = \mathbb{E}(\mathbf{s}_i) + \mathbb{E}(\mathbf{n}_i) = \mathbb{E}(\mathbf{s}_i) + 0 = \mathbf{s}_i.
   \label{eq:E_AWG_i}
 \end{equation}
