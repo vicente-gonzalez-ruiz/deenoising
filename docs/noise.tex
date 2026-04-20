@@ -18,9 +18,9 @@ However, because we are interested in denoising
 a several denoising techniques are based on the concept of
 \emph{signal averaging}, we will treat a digital signal as an single
 sample (instance) of a random variable. Thus, for example, if
-$\mathbf{s}$ is the clean signal, under certain conditions, the
+$\bm{s}$ is the clean signal, under certain conditions, the
 expected image of a sequence of noisy (images) instances, where each
-instance is denoted by $\hat{\mathbf{s}}$, could be
+instance is denoted by $\hat{\bm{s}}$, could be
 $\mathbb{E}(\hat{\mathbf{s}})=\mathbf{s}$ (the clean
 image). Alternatively, we could also suppose that a digital signal is
 a sequence of samples of a random variable. In this case, all we can
@@ -246,7 +246,7 @@ is contaminated with a vector of noise $\bm{n}$ in this way:
     \hat{\bm{x}} = \bm{x} + \bm{n},
     \label{eq:AWG}
   \end{equation}
-  where $\hat{\bf{x}$ is the noisy signal.
+  where $\hat{\bm{x}$ is the noisy signal.
 \item The noise, modeled as a \gls{DRV} $N$, is \gls{iid} and follows a
   Gaussian (normal) distribution with sample mean 0 ($\overline{\bm{n}}=0$)
   and variance $\sigma^2$ (see
@@ -254,7 +254,7 @@ is contaminated with a vector of noise $\bm{n}$ in this way:
   \begin{equation}
     N\sim{\mathcal N}(\mu=0,\sigma^2).
   \end{equation}
-\item The spectrum of $\bf{n}$, $|\cal{F}(\bf{n})|$ has a constant
+\item The spectrum of $\bm{n}$, $|\cal{F}(\bm{n})|$ has a constant
   \gls{PSD} over all frequencies (in other words, it is flat).
 \end{enumerate}
 
