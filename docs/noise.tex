@@ -272,32 +272,16 @@ Section~\ref{sec:auto-correlation}) of the noise is zero for any
 \end{equation}
 
 \subsection{Expectation of the noisy signal}
-Considering expectations in Eq.~\ref{eq:AWG_i}, we get that
+Considering expectations in Eq.~\ref{eq:AWG}, we get that
 \begin{equation}
-  \mathbb{E}[\hat{\bm{x}}] = 
-  \mathbb{E}(\hat{\mathbf{s}}_i) = \mathbb{E}(\mathbf{s}_i + \mathbf{n}_i) = \mathbb{E}(\mathbf{s}_i) + \mathbb{E}(\mathbf{n}_i) = \mathbb{E}(\mathbf{s}_i) + 0 = \mathbf{s}_i.
-  \label{eq:E_AWG_i}
+  \mathbb{E}[\hat{\bm{x}}] = \mathbb{E}[\bm{x}+\bm{n}] = \mathbb{E}[\bm{x}] + 0 = \mathbb{E}[\bm{x}]
+  \label{eq:E_AWG}
 \end{equation}
 This basically implies that if, for example, we take an infinite
 number of noisy instances of the same biological specimen, and these
 instances are affected only by AWG noise, then the expected value for each
 noisy $i$-th pixel is the clean $i$-th pixel. In other words,
 $\hat{\mathbf{s}}$ is an unbiased estimator or $\mathbf{s}$.
-
-Obviously, if Eq.~\ref{eq:E_AWG} holds, then
-\begin{equation}
-  \mathbb{E}(\hat{\mathbf{s}}) = \mathbf{s}.
-  \label{eq:E_AWG}
-\end{equation}
-
-\begin{comment}
-Considering that $\mathbf{s}$ is a constant (the
-clean image is fixed for each adquisition of the image $\hat{\mathbf{s}}$),
-\begin{equation}
-  \mathbb{E}(\hat{\mathbf{s}}) = \mathbb{E}(\mathbf{s} + \mathbf{n}) = \mathbb{E}(\mathbf{s}) + \mathbb{E}(\mathbf{n}) = \mathbf{s} + \mathbf{0} = \mathbf{s}.
-  \label{eq:E_AWG}
-\end{equation}
-\end{comment}
 
 \subsection{Variance of the noisy signal}
 The variance of the signal described in Eq.~\ref{eq:AWG_i} is
