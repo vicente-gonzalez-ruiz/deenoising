@@ -417,7 +417,7 @@ available.
 
 %}}}
 
-\section{Poisson noise}
+\section{Poisson noise model}
 %{{{
 
 % The Cause: Light travels in discrete packets of energy called photons. These photons do not arrive at the sensor in a perfectly steady stream; they arrive randomly. The Analogy: Imagine leaving a grid of buckets (your camera sensor) out in a steady rainstorm. Even if the rain is completely uniform, at any given second, one bucket might catch 10 raindrops while the bucket next to it catches 12. That random statistical variation is photon noise. Photon noise follows Poisson statistics. The noise is equal to the square root of the number of photons captured: Photon Noise=sqrt(Signal). Because the noise grows as the square root of the signal, the signal-to-noise ratio (SNR) actually improves as you collect more light. A brighter image has more total photon noise, but the noise becomes much less noticeable compared to the overwhelming amount of signal. How to fix it: You cannot eliminate it. The only way to reduce the relative impact of photon noise is to capture more light (use a wider aperture, longer exposure, or more lighting). (Gemini)
@@ -428,7 +428,8 @@ Poisson noise (see Section~\ref{sec:poisson_distribution}) is a type
 of signal-dependent noise that arises in systems where the measured
 data represent counts of discrete ``events'' (photons, electrons,
 etc.). Poisson noise becomes particularly relevant in low-radiation
-microscopy imaging. Shot noise is typically modeled as Poission noise.
+microscopy imaging, where this noise is typically named \emph{shot
+  noise}.
 
 Pixel-wise signal-dependent Poisson noise can be modeled as
 \begin{equation}

@@ -326,59 +326,7 @@ i.e., you get the die roll if the coin shows Heads, and 0 if Tails.
 \[
 \mathbb{E}_{(C,D)}[h(C,D)] 
 = \sum_{c=0}^{1} \sum_{d=1}^{6} h(c,d) \, p(c,d).
-\]
-
-Plugging in:
-\[
-\mathbb{E}_{(C,D)}[h(C,D)] 
-= \sum_{d=1}^{6} (1 \cdot d) \cdot \frac{1}{12} + \sum_{d=1}^{6} (0 \cdot d) \cdot \frac{1}{12}
-= \frac{1}{12} (1+2+3+4+5+6) = \frac{21}{12} = 1.75.
-\]
-
-\subsection*{Law of Total Expectation}
-We can also write
-\[
-\mathbb{E}_{(C,D)}[h(C,D)] = \mathbb{E}_C \Big[ \mathbb{E}_{D|C}[h(C,D)] \Big].
-\]
-
-Compute the inner conditional expectation:
-\[
-\mathbb{E}_{D|C=1}[h(1,D)] = \mathbb{E}_D[D] = 3.5, \quad 
-\mathbb{E}_{D|C=0}[h(0,D)] = \mathbb{E}_D[0] = 0.
-\]
-
-Then average over $C$:
-\[
-\mathbb{E}_C \Big[ \mathbb{E}_{D|C}[h(C,D)] \Big] 
-= 0.5 \cdot 3.5 + 0.5 \cdot 0 = 1.75.
-\]
-
-\subsection*{Conclusion}
-The subscripts in $\mathbb{E}_{(\cdot)}$ clarify which distribution is used for averaging:
-\begin{itemize}
-    \item $\mathbb{E}_{(C,D)}$: joint distribution,
-    \item $\mathbb{E}_{D|C}$: conditional distribution of $D$ given $C$,
-    \item $\mathbb{E}_C$: marginal distribution of $C$.
-\end{itemize}
-
-
-\section{Power of a signal as a function of its mean and variance}
-The average power of a random variable is equal to its variance plus its mean
-(expectation) squared
-\begin{equation}
-  P(\mathbf{x}) =  \mathbb{V}(\mathbf{x}) + \mathbb{E}(\mathbf{x})^2.
-  \label{eq:power_mean_variance}
-\end{equation}
-This is because
-\begin{align*}
-  \mathbb{E}(\mathbf{x}^2)
-  & = \mathbb{E}(\mathbf{x}^2 - \mathbb{E}(\mathbf{x}) + \mathbb{E}(\mathbf{x})) \\
-  & = \mathbb{E}((\mathbf{x} - \mathbb{E}(\mathbf{x}))^2 + 2\mathbb{E}(\mathbf{x})(\mathbf{x}-\mathbb{E}(\mathbf{x})) + \mathbb{E}(\mathbf{x})^2) \\
-  & = \mathbb{E}((\mathbf{x}-\mathbb{E}(\mathbf{x}))^2) + 2\mathbb{E}(\mathbf{x})(\mathbb{E}(\mathbf{x})-\mathbb{E}(\mathbf{x})) + \mathbb{E}(\mathbf{x})^2) \\
-  & = \mathbb{V}(\mathbf{x}) + 0 + \mathbb{E}(\mathbf{x})^2.
-\end{align*}
-
-\section{Covariance}
+\]}
 \label{sec:covariance}
 %{{{
 
