@@ -39,9 +39,19 @@ notice that there are statistical distributions, such as the Cauchy
 distribution that has infinite variance and an undefined mean. Thus,
 the addition of a infinite number of sequences of random number that
 follow (each of them) a Cauchy distribution is the Cauchy
-distribution.
+distribution. This is the Lindeberg-Levy \gls{CLT}.
+
+Fortunately, there exists a more relaxed ``version'' of th
+Lindeberg-Levy \gls{CLT} known as the Lindeberg-Feller \gls{CLT} which
+states that the \gls{CLT} works even if the random variables are not
+\gls{iid}, provided that no single variable in the sequence dominates
+the others. This is why the sum of many different types of noise (such
+as thermal noise + shot noise + interference) still ends up looking
+Gaussian.
 
 %}}}
+
+\section{The }
 
 \section{\glsentryfull{GAT}}
 The \acrshort{GAT} \cite{foi2008practical,makitalo2012optimal} is a
