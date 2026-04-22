@@ -451,20 +451,32 @@ where $\mathbf{x}_i$ is the $i$-th sample of $\mathbf{x}$.
 \label{sec:poisson_distribution}
 %{{{
 
-The Poisson distribution, denoted by $\mathcal{P}(\lambda)$ is a
-discrete probability distribution that models the number of times an
-event occurs in a fixed interval of event domain (usually time or
-space), under the following assumptions:
+If a \gls{DRV} $X$ follows a Poisson distribution,
+we denote it as
+\begin{equation}
+  X\sim\mathcal{P}(\lambda),
+\end{equation}
+where $\lambda$ is the \emph{shape parameter}, representing the mean
+of the realizations ($\mathbb{E}[X]=\lambda$) in a specified
+interval. $\lambda$ also is the variance ($\text{Var}(X)=\lambda$).
+
+The Poisson distribution is a discrete probability distribution that
+models the number of times an event occurs in a fixed
+interval in the events domain usually time or space),
+under the following assumptions:
 \begin{enumerate}
 \item Events occur independently.
 \item The average rate (events per interval) is constant.
 \item Two events cannot occur at the exact same instant.
 \end{enumerate}
+
 Its \gls{PMF} is:
 \begin{equation}
-  \Pr(X{=}\bm{x}_i) = \frac{e^{-\lambda}\lambda^{\bm{x}_i}}{\bm{x}_i!},
-  \label{eq:PN}
+  \Pr(X{=}k) = \frac{e^{-\lambda}\lambda^{k}}{k!},
+  \label{eq:PD}
 \end{equation}
-where $\lambda$ is the mean and the variance.
+where $\lambda$ is the mean and the variance. In the context of
+microscopy, it describes the probability of a specific number of
+photons or electrons hitting a pixel during an exposure.
 
 %}}}
