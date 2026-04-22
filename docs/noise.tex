@@ -325,7 +325,7 @@ and
 \end{equation}
 \end{comment}
 
-\subsection{Estimation of the \gls{SNR}}
+\subsection{\gls{SNR}}
 The \gls{SNR} is defined as the ratio between the power (see
 Eq.~\ref{eq:power_as_expectation}) of the clean signal and the power of
 the noise:
@@ -333,6 +333,11 @@ the noise:
   \text{SNR} = \frac{P(\bm{x})}{P(\bm{n})}.
 \end{equation}
 
+\begin{equation}
+  \text{SNR} = \frac{P(\mathbf{s})}{P(\mathbf{n})} = \frac{\overline{\mathbb{E}}(\mathbf{s}^2)}{\overline{\mathbb{E}}(\mathbf{n}^2)} = \frac{\overline{\mathbb{E}}(\mathbf{s})^2+\overline{\mathbb{V}}(\mathbf{s})}{\overline{\mathbb{E}}(\mathbf{n})^2+\overline{\mathbb{V}}(\mathbf{n})}
+\end{equation}
+
+\subsection{Estimation of the \gls{SNR}}
 Unfortunately, when only the noisy signal is available, the \gls{SNR}
 only can be estimated. If the clean signal is concentrated in the
 frequency domain, a procedure to do this is:
