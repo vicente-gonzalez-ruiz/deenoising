@@ -327,6 +327,24 @@ i.e., you get the die roll if the coin shows Heads, and 0 if Tails.
 \mathbb{E}_{(C,D)}[h(C,D)] 
 = \sum_{c=0}^{1} \sum_{d=1}^{6} h(c,d) \, p(c,d).
 \]
+
+\section{Power of a signal as a function of its mean and variance}
+The average power of a random variable is equal to its variance plus its mean
+(expectation) squared
+\begin{equation}
+  P(\mathbf{x}) =  \mathbb{V}(\mathbf{x}) + \mathbb{E}(\mathbf{x})^2.
+  \label{eq:power_mean_variance}
+\end{equation}
+This is because
+\begin{align*}
+  \mathbb{E}(\mathbf{x}^2)
+  & = \mathbb{E}(\mathbf{x}^2 - \mathbb{E}(\mathbf{x}) + \mathbb{E}(\mathbf{x})) \\
+  & = \mathbb{E}((\mathbf{x} - \mathbb{E}(\mathbf{x}))^2 + 2\mathbb{E}(\mathbf{x})(\mathbf{x}-\mathbb{E}(\mathbf{x})) + \mathbb{E}(\mathbf{x})^2) \\
+  & = \mathbb{E}((\mathbf{x}-\mathbb{E}(\mathbf{x}))^2) + 2\mathbb{E}(\mathbf{x})(\mathbb{E}(\mathbf{x})-\mathbb{E}(\mathbf{x})) + \mathbb{E}(\mathbf{x})^2) \\
+  & = \mathbb{V}(\mathbf{x}) + 0 + \mathbb{E}(\mathbf{x})^2.
+\end{align*}
+
+\section{Covariance}
 \label{sec:covariance}
 %{{{
 
