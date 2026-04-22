@@ -330,21 +330,11 @@ The \gls{SNR} is defined as the ratio between the power (see
 Eq.~\ref{eq:power_as_expectation}) of the clean signal and the power of
 the noise:
 \begin{equation}
-  \text{SNR} = \frac{P(\bm{x})}{P(\bm{n})} = \frac{\mathbb{E}[\bm{x}^2]}{\mathbb{E}[\bm{n}^2]} = \frac{\mathbb{E}[\bm{x}]^2+\text{Var}(\bm{x})}{\mathbb{E}[\bm{x}]^2+\text{Var}(\bm{x})}
+  \text{SNR} = \frac{P(\bm{x})}{P(\bm{n})} = \frac{\mathbb{E}[\bm{x}^2]}{\mathbb{E}[\bm{n}^2]} = \frac{\mathbb{E}[\bm{x}]^2+\text{Var}(\bm{x})}{\mathbb{E}[\bm{n}]^2+\text{Var}(\bm{n})}
 \end{equation}
 Considering now that for the \gls{AWG} model, $\mathbb{E}[\bm{n}] = 0$,
 \begin{equation}
   \text{SNR} = \frac{\mathbb{E}[\bm{x}]^2+\text{Var}(\bm{x})}{\sigma^2}
-\end{equation}
-
-
-\begin{equation}
-  \text{SNR} = \frac{P(\mathbf{s})}{P(\mathbf{n})} = \frac{\overline{\mathbb{E}}(\mathbf{s}^2)}{\overline{\mathbb{E}}(\mathbf{n}^2)} = \frac{\overline{\mathbb{E}}(\mathbf{s})^2+\overline{\mathbb{V}}(\mathbf{s})}{\overline{\mathbb{E}}(\mathbf{n})^2+\overline{\mathbb{V}}(\mathbf{n})}
-\end{equation}
-
-Considering that $\overline{\mathbb{E}}(\mathbf{n}) = 0$,
-\begin{equation}
-  \text{SNR} = \frac{\overline{\mathbb{E}}(\mathbf{s})^2 + \overline{\mathbb{V}}(\mathbf{s})}{\sigma^2},
 \end{equation}
 
 \subsection{Estimation of the \gls{SNR}}
