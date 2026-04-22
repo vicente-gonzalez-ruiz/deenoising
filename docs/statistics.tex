@@ -453,8 +453,8 @@ where $\mathbf{x}_i$ is the $i$-th sample of $\mathbf{x}$.
 
 The Poisson distribution, denoted by $\mathcal{P}(\lambda)$ is a
 discrete probability distribution that models the number of times an
-event occurs in a fixed interval of time or space, under the following
-assumptions:
+event occurs in a fixed interval of event domain (usually time or
+space), under the following assumptions:
 \begin{enumerate}
 \item Events occur independently.
 \item The average rate (events per interval) is constant.
@@ -462,7 +462,7 @@ assumptions:
 \end{enumerate}
 Its \gls{PMF} is:
 \begin{equation}
-  \Pr(\mathbf{x}{=}\mathbf{x}_i) = \frac{e^{-\mathbf{\lambda}}\lambda^{\mathbf{x}_i}}{\mathbf{x}_i!},
+  \Pr(X{=}\bm{x}_i) = \frac{e^{-\lambda}\lambda^{\bm{x}_i}}{\bm{x}_i!},
   \label{eq:PN}
 \end{equation}
 where $\lambda$ is the mean and the variance.
