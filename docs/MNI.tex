@@ -1,6 +1,12 @@
 \chapter{\glsentryfull{MNI}}
-%{{{
+This chapter analyze how noise can be removed pixel-wise averaging the
+noisy images. This technique is commonly known as \emph{image
+  stacking}. Doing that, in theory, it is spected to increase the SNR
+by a factor of $\sqrt{N}$, where $N$ is the number of stacked images.
+
 \section{Applicability of the \gls{CLT}}
+%{{{
+
 The \gls{CLT} is applicable only if:
 \begin{enumerate}
 \item The mean of the noise is finite: $\mu<\infty$.
@@ -21,7 +27,11 @@ the others. This is why the sum of many different types of noise (such
 as thermal noise + shot noise + interference) still ends up looking
 Gaussian.
 
+%}}}
+
 \section{\glsentryfull{GAT}}
+%{{{
+
 The \acrshort{GAT} \cite{foi2008practical,makitalo2012optimal} is a
 \gls{VST} that can be applied to \gls{MPG} noise (see
 Section~\ref{sec:MPG}) to make it approximately Gaussian with
@@ -48,7 +58,11 @@ can be used only if we deal with positive transformed values and $\mu=0$:
   \hat{\mathbf{s}}_i \approx \frac{1}{4}y^2-\frac{1}{4}\left(1+\frac{8\sigma^2}{y^2} + \frac{1}{32}\left(\frac{i+\frac{8\sigma^2}{y^2}}{y^2}\right)\right).
 \end{equation}
 
+%}}}
+
 \section{Simplification provided by the \acrshort{CLT}}
+%{{{
+
 Under a high enough number of noisy instancces, the \gls{CLT} allows
 us to take into consideration only the \gls{AWG} noise case (see
 Section~\ref{sec:AWG}) when we perform denoising throught computing
@@ -76,12 +90,14 @@ $N\rightarrow\infty$. In practice, where $N$ is finite, we only get an
 approximation $\tilde{\mathbf{s}}^{[N]}$, where $N$ is the number of
 averaged signals.
 
-\section{Expected impact of Gaussian noise}
+%}}}
+
+\section{Removing Gaussian noise}
 \subsection{Consequences of the \gls{CLT}}
 %\section{The mean is the clean signal}
 The signal is the information you actually want to capture (in the
 case of an image, the ``true'' brightness or density of your
-sample). Therefore, using the \gls{GLT}, if you were to take the same
+sample). Therefore, using stacking, if you were to take the same
 image 1000 times and average them together, the random fluctuations
 would cancel each other out. What remains is the mean. In other words,
 if we were able to expose (observe) the sample an infinite amount
@@ -183,7 +199,6 @@ higher the accuracy of this algorithm.
 \section{Expected impact of Poisson noise}
 
 \section{Experiments (MPG)}
-%{{{
 
 This section is basically an experimental verification of the
 efficiency of the \gls{CLT} (see
@@ -209,7 +224,6 @@ how \gls{MNI} increases the quality using images with \gls{MPG} noise.
 \end{figure}
 
 \begin{comment}
-%{{{
 
 Fig.~\ref{fig:0MAUN} shows an
 example of how zero-mean uniform noise is cancelled by averaging.
@@ -319,9 +333,5 @@ example of how zero-mean uniform noise is cancelled by averaging.
       process for different levels of noise.\label{fig:Poisson}}
   \end{figure}
 
-%}}}
 \end{comment}
 
-%}}}
-
-%}}}
