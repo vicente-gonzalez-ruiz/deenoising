@@ -1,6 +1,25 @@
 \chapter{\glsentryfull{MNI}}
 %{{{
-\section{The }
+\section{Applicability of the \gls{CLT}}
+The \gls{CLT} is applicable only if:
+\begin{enumerate}
+\item The mean of the noise is finite: $\mu<\infty$.
+\item The variance of the noise is finite: $\sigma^2\infty$.
+\end{enumerate}
+Most of the natural noise sources satisfie these conditions. However,
+notice that there are statistical distributions, such as the Cauchy
+distribution that has infinite variance and an undefined mean. Thus,
+the addition of a infinite number of sequences of random number that
+follow (each of them) a Cauchy distribution is the Cauchy
+distribution. This is the Lindeberg-Levy \gls{CLT}.
+
+Fortunately, there exists a more relaxed ``version'' of th
+Lindeberg-Levy \gls{CLT} known as the Lindeberg-Feller \gls{CLT} which
+states that the \gls{CLT} works even if the random variables are not
+\gls{iid}, provided that no single variable in the sequence dominates
+the others. This is why the sum of many different types of noise (such
+as thermal noise + shot noise + interference) still ends up looking
+Gaussian.
 
 \section{\glsentryfull{GAT}}
 The \acrshort{GAT} \cite{foi2008practical,makitalo2012optimal} is a
@@ -57,7 +76,113 @@ $N\rightarrow\infty$. In practice, where $N$ is finite, we only get an
 approximation $\tilde{\mathbf{s}}^{[N]}$, where $N$ is the number of
 averaged signals.
 
-\section{Experiments}
+\section{Expected impact of Gaussian noise}
+\subsection{Consequences of the \gls{CLT}}
+%\section{The mean is the clean signal}
+The signal is the information you actually want to capture (in the
+case of an image, the ``true'' brightness or density of your
+sample). Therefore, using the \gls{GLT}, if you were to take the same
+image 1000 times and average them together, the random fluctuations
+would cancel each other out. What remains is the mean. In other words,
+if we were able to expose (observe) the sample an infinite amount
+time, we would capture the mean of the signal (even in the presence of
+noise).
+
+%\section{The standard deviation is the noise}}
+"Noise" is defined as any unwanted variation that obscures the signal. In statistics, the standard deviation (σ) is the literal measurement of variation.
+
+    The Logic: If every pixel recorded the exact same value (μ) every time, there would be zero noise. But because of the random nature of particles, the values "wiggle" around the mean.
+
+
+\subsection{\gls{SNR}}
+The \gls{SNR} is defined as the ratio between the power (see
+Eq.~\ref{eq:power_as_expectation}) of the clean signal and the power of
+the noise:
+\begin{equation}
+  \text{SNR} = \frac{P(\bm{x})}{P(\bm{n})} = \frac{\mathbb{E}[\bm{x}^2]}{\mathbb{E}[\bm{n}^2]} = \frac{\mathbb{E}[\bm{x}]^2+\text{Var}(\bm{x})}{\mathbb{E}[\bm{n}]^2+\text{Var}(\bm{n})}
+\end{equation}
+Considering now that for the \gls{AWG} model, $\mathbb{E}[\bm{n}] = 0$,
+\begin{equation}
+  \text{SNR} = \frac{\mathbb{E}[\bm{x}]^2+\text{Var}(\bm{x})}{\sigma^2}
+\end{equation}
+
+\subsection{SNR estimation}
+Unfortunately, when only the noisy signal is available, the \gls{SNR}
+only can be estimated. If the clean signal is concentrated in the
+frequency domain, a procedure to do this is:
+\begin{enumerate}
+\item Compute $\mathcal{F}(\hat{\bm{x}})$.
+\item Identify the ``noise floor'' -- the flat part of the spectrum
+  where no signal peaks exist.
+\item Estimate $P(\bm{n})$ as the average level of that flat
+  floor. Notice that in the case of Gaussian noise, you have estimated
+  $\sigma^2$.
+\item Estimate $P(\bm{x})$ by subtracting the noise floor from the
+  total power of the peaks.
+\end{enumerate}
+
+%\subsection{\acrshort{SNR} of the \acrshort{AWG} noise model}
+
+%The \gls{SNR} is commonly defined as the ratio between the power (see
+%Eq.~\ref{eq:power_as_expectation} and Eq.~\ref{eq:variance}) of the
+%clean signal and the power of the noise:
+%\begin{equation}
+%  \text{SNR} = \frac{P(\mathbf{s})}{P(\mathbf{n})} = \frac{\overline{\mathbb{E}}(\mathbf{s}^2)}{\overline{\mathbb{E}}(\mathbf{n}^2)} = \frac{\overline{\mathbb{E}}(\mathbf{s})^2+\overline{\mathbb{V}}(\mathbf{s})}{\overline{\mathbb{E}}(\mathbf{n})^2+\overline{\mathbb{V}}(\mathbf{n})},
+%  \label{eq:SNR}
+%\end{equation}
+%where $\mathbf{s}$ is the clean signal and $\hat{\mathbf{s}}$ is its
+%noisy version, and
+%\begin{equation}
+%  \mathbf{n} = \hat{\mathbf{s}} - \mathbf{s}.
+%\end{equation}
+
+%Considering that $\overline{\mathbb{E}}(\mathbf{n}) = 0$,
+%\begin{equation}
+%  \text{SNR} = \frac{\overline{\mathbb{E}}(\mathbf{s})^2 + \overline{\mathbb{V}}(\mathbf{s})}{\sigma^2},
+%\end{equation}
+
+\begin{comment}
+that
+\begin{equation}
+  \mathbb{E}(\mathbf{s}) = \mathbf{s},
+  \label{eq:E_constant}
+\end{equation}
+that $\hat{\mathbf{s}}$ is an unbiased estimator of $\mathbf{s}$, i.e.,
+\begin{equation}
+  \lim_{N\rightarrow\infty}\frac{1}{N}\sum_{n=0}^{N-1}\hat{\mathbf{s}}^{(n)} = \mathbf{s},
+\end{equation}
+where $\hat{\mathbf{s}}^{(n)}$ is the $n$-th noisy instance of
+$\mathbf{s}$, and using Eq.~\ref{eq:SNR_distribution}, we come to
+\begin{equation}
+  \text{SNR} = \frac{\textbf{s}}{\sigma} = \frac{\hat{\textbf{s}}}{\sigma},
+  \label{eq:SNR_AWG}
+\end{equation}
+and therefore to
+\begin{equation}
+  \text{SNR}_i = \frac{\hat{\textbf{s}}_i}{\sigma}.
+  \label{eq:SNR_AWG_i}
+\end{equation}
+\end{comment}
+
+\subsection{Average convergence of random numbers}
+The \gls{AWG} noise model is used in most denoising algorithms because
+the component-wise arithmetic average\footnote{In general, the
+  addition.} of sequences of random numbers always converges to a
+normal distribution (see Section \ref{sec:CLT}). In fact, a common way
+of generating a sequence of close-normal random numbers is:
+\begin{enumerate}
+\item Generate 12 sequences of uniform random numbers between
+  $[0, 1[$. The $\mathcal{U}(0,1)$ has $\mu=0.5$ and $\sigma^2=1/12$.
+\item Add them, component-wise, obtaining a new sequence that has
+  $\mu=6$ and $\sigma^2=1$.
+\item Subtract $6$, to have $\mu=0$.
+\end{enumerate}
+Notice that the higher the number of noise realizations added, the
+higher the accuracy of this algorithm.
+
+\section{Expected impact of Poisson noise}
+
+\section{Experiments (MPG)}
 %{{{
 
 This section is basically an experimental verification of the

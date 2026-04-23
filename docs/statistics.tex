@@ -502,3 +502,34 @@ microscopy, it describes the probability of a specific number of
 photons or electrons hitting a pixel during an exposure.
 
 %}}}
+
+\section{The \glsentryfull{CLT}}
+\label{sec:CLT}
+%{{{
+
+The \acrshort{CLT} states that when a set of independent \glspl{SRV}
+(see Section~\ref{sec:DSRV}) are added together, the \gls{SRV}
+resulting of their normalized sum tends toward a normal (Gaussian)
+distribution, even if the original variables themselves are not
+normally distributed. Let
+$\mathbf{n}=\{\mathbf{n}^{(i)}\}_{i=0}^{N-1}$ such set of independent
+and identically distributed (i.i.d.) \glspl{SRV}, then the
+\acrshort{CLT} asserts that the mean signal
+\begin{equation}
+  \overline{n} = \frac{1}{N}\sum_{i=0}^{N-1}\mathbf{n}^{(i)}\sim\mathcal{N}(\mu,\frac{\sigma}{N}),
+\end{equation}
+where
+\begin{equation}
+  \mathbb{E}(\mathbf{n}^{(i)})=\mu\quad\forall i,
+\end{equation}
+and
+\begin{equation}
+  \mathbb{V}(\mathbf{n}^{(i)})=\sigma\quad\forall i.
+\end{equation}
+Notice that
+\begin{equation}
+  \lim_{N\rightarrow\infty}\mathbb{V}(\overline{\mathbf{n}}) = 0.
+\end{equation}
+
+%}}}
+
