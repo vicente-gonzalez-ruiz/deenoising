@@ -1,31 +1,59 @@
-\chapter{\glsentryfull{MNI}}
-This chapter analyze how noise can be removed pixel-wise averaging the
-noisy images. This technique is commonly known as \emph{image
-  stacking}. Doing that, in theory, it is spected to increase the SNR
-by a factor of $\sqrt{N}$, where $N$ is the number of stacked images.
+\chapter{Image stacking}
+This chapter analyze why (almost any type of) noise can be removed
+pixel-wise averaging the noisy images. This technique is commonly
+known as \emph{image stacking}. Doing that, in theory, it is spected
+to increase the \gls{SNR} by a factor of $\sqrt{N}$, where $N$ is the
+number of \emph{averaged}\footnote{Astronomers use the term
+  ``stacked''.} images.
 
-\section{Applicability of the \gls{CLT}}
+\section{Applicability}
 %{{{
 
-The \gls{CLT} is applicable only if:
+Stacking relies on the (Lindeberg-Levy version of the) \gls{CLT},
+which is applicable only if:
 \begin{enumerate}
 \item The mean of the noise is finite: $\mu<\infty$.
 \item The variance of the noise is finite: $\sigma^2\infty$.
 \end{enumerate}
-Most of the natural noise sources satisfie these conditions. However,
-notice that there are statistical distributions, such as the Cauchy
-distribution that has infinite variance and an undefined mean. Thus,
-the addition of a infinite number of sequences of random number that
-follow (each of them) a Cauchy distribution is the Cauchy
-distribution. This is the Lindeberg-Levy \gls{CLT}.
+Fortunatelly, most of the natural noise sources satisfy these
+conditions.\footnote{However, notice that there are statistical
+  distributions, such as the Cauchy distribution that has infinite
+  variance and an undefined mean. Thus, the addition of a infinite
+  number of sequences of random number that follow (each of them) a
+  Cauchy distribution is the Cauchy distribution.} Futhermore, there
+exists a more relaxed ``version'' of the \gls{CLT} known as the
+Lindeberg-Feller \gls{CLT} which states that the \gls{CLT} it is
+satisfied even if the random variables are not \gls{iid}, provided
+that no single variable in the sequence dominates the others. This is
+why the sum of many different types of noise (such as thermal noise +
+shot noise + interference) still ends up looking Gaussian.
 
-Fortunately, there exists a more relaxed ``version'' of th
-Lindeberg-Levy \gls{CLT} known as the Lindeberg-Feller \gls{CLT} which
-states that the \gls{CLT} works even if the random variables are not
-\gls{iid}, provided that no single variable in the sequence dominates
-the others. This is why the sum of many different types of noise (such
-as thermal noise + shot noise + interference) still ends up looking
-Gaussian.
+Therefore, under a high enough number of noisy instancces, the
+\gls{CLT} allows us to take into consideration only the \gls{AWG}
+noise case (see Section~\ref{sec:AWG}) when we perform denoising
+throught computing the mean of those noisy instances. Let's
+\begin{equation}
+  \hat{\bm{x}}^{(i)} = \bm{x} + \bm{n}^{(i)},
+  \label{eq:noisy_instances}
+\end{equation}
+represents the generation of the $i$-th noisy instance of the signal
+$\bm{x}$. Assuming that
+\begin{equation}
+  \mathbb{E}(\bm{n})=\bm{0},
+\end{equation}
+where $\bm{n}=\{\bm{n}^{(i)}\}_{i=0}^{N-1}$ is the set of
+random signals, and taking expectations in
+Eq.~\ref{eq:noisy_instances}, we get
+\begin{equation}
+  \mathbb{E}(\hat{\bm{x}}) = \mathbb{E}(\bm{x}) + \mathbb{E}(\bm{n}) = \bm{x},
+  \label{eq:MNI}
+\end{equation}
+where $\hat{\bm{x}}=\{\hat{\bm{s}}^{(i)}\}_{i=0}^{N-1}$.
+
+Notice, however, that Eq.~\ref{eq:MNI} is only true when
+$N\rightarrow\infty$. In practice $N$ is finite, and we only get an
+approximation $\tilde{\bm{s}}^{[N]}$, where $N$ is the number of
+averaged signals.
 
 %}}}
 
@@ -60,37 +88,7 @@ can be used only if we deal with positive transformed values and $\mu=0$:
 
 %}}}
 
-\section{Simplification provided by the \acrshort{CLT}}
-%{{{
-
-Under a high enough number of noisy instancces, the \gls{CLT} allows
-us to take into consideration only the \gls{AWG} noise case (see
-Section~\ref{sec:AWG}) when we perform denoising throught computing
-the mean of those noisy instances. Let
-\begin{equation}
-  \hat{\mathbf{s}}^{(i)} = \mathbf{s} + \mathbf{n}^{(i)},
-  \label{eq:noisy_instances}
-\end{equation}
-the generation of the $i$-th noisy instance of the
-signal $\mathbf{s}$. Assuming that
-\begin{equation}
-  \mathbb{E}(\mathbf{n})=\mathbf{0},
-\end{equation}
-where $\mathbf{n}=\{\mathbf{n}^{(i)}\}_{i=0}^{N-1}$ is the set of
-random signals, and taking expectations in
-Eq.~\ref{eq:noisy_instances}, we get
-\begin{equation}
-  \mathbb{E}(\hat{\mathbf{s}}) = \mathbb{E}(\mathbf{s}) + \mathbb{E}(\mathbf{n}) = \mathbf{s},
-  \label{eq:MNI}
-\end{equation}
-where
-$\hat{\mathbf{s}}=\{\hat{\mathbf{s}}^{(i)}\}_{i=0}^{N-1}$. Notice,
-however, that Eq.~\ref{eq:MNI} is only true when
-$N\rightarrow\infty$. In practice, where $N$ is finite, we only get an
-approximation $\tilde{\mathbf{s}}^{[N]}$, where $N$ is the number of
-averaged signals.
-
-%}}}
+\section{Convergence}
 
 \section{Removing Gaussian noise}
 \subsection{Consequences of the \gls{CLT}}
