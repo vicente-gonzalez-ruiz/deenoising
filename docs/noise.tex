@@ -428,6 +428,12 @@ and the \emph{variance}, which in this context are the
 \end{equation}
 where $x$ represents the realization of the noise for a givel pixel.
 
+Poisson noise is modeled as a Poisson distribution (see
+Section~\ref{sec:poisson_distribution}) with mean $\lambda=0$ and
+variance $\lambda$. If $X$ represents to the measurement of the pixels
+of an image affected by Poisson noise (the noisy signal), then the
+$\mathbb{E}[X]=\lambda$.
+
 %Even if you invented a "perfect" microscope with zero electronic noise and a 100\% efficient detector, you would still be trapped by $\text{SNR}=\sqrt{\lambda}$. The only way to beat this without increasing radiation is through computational denoising, where you use the known Poisson statistics to "guess" the most likely value of λ based on the noisy X values you recorded.
 
 %This formula reveals why imaging can be so frustratingly difficult when you are trying to be "gentle" with a biological sample:
@@ -438,27 +444,7 @@ where $x$ represents the realization of the noise for a givel pixel.
 
 %    The "Double the Quality" Rule: If you want to double your SNR (make the image twice as "clean"), you can't just double your exposure time. You have to quadruple it (22=4).
 
-Pixel-wise signal-dependent Poisson noise can be modeled as
-\begin{equation}
-  \hat{\mathbf{s}}_i = \frac{\mathbf{n}_i}{\gamma},~\mathbf{n}_i\sim\mathcal{P}(\lambda=\gamma\mathbf{s}_i),
-  \label{eq:PN_i}
-\end{equation}
-where $\gamma$ controls the variance (the higher $\gamma$, the smaller
-the deviation from the $\mathbf{s}_i$ values). As can be seen, this is
-a signal-dependent model because the brighter parts of
-$\hat{\mathbf s}$ will have a higher mean and variance, and therefore
-a higher noise power \cite{meiniel2018denoising} (and viceversa). This also implies
-that the standard deviation of the noise depends on the expectation of
-the noisy signal, which depends on the expectation of the clean signal
-\cite{foi2008practical}. Finally, notice that $|\mathbf{N}|$ and
-$|\mathbf{S}|$ should look alike.
-
-\subsubsection{Generation}
-A Poisson random number generator $X$ must satisfy Eq.~\ref{eq:PD},
-where both, the mean and the variance are $\lambda$. As it can be seen
-in this equation, $\Pr(X{=}\bm{x}_i)$ (the probability that $X$ will
-generate the number $\bm{x}_i$ depends on 
-
+\begin{comment}
 \subsection{Expectation of the noisy signal}
 %From Eq.~\ref{eq:PN} we have that
 %\begin{equation}
@@ -478,6 +464,7 @@ Therefore,
 and therefore, $\hat{\mathbf{s}}$ is an unbiased estimator of
 $\mathbf{s}$ (the expected value for each noisy $i$-th pixel is the
 clean $i$-th pixel).
+\end{comment}
 
 \subsection{Variance of the noisy signal}
 Using again Eq.~\ref{eq:PN_i}
@@ -527,6 +514,27 @@ Using Eq.~\ref{eq:E_Poisson} and Eq.~\ref{eq:V_Poisson}, we get that
 Notice that the SNR is signal dependent and grows with $\mathbf{s}_i$ and with
 $\gamma$. Therefore, considering the Eq.~\ref{eq:SNR_Poisson}, we should increase
 $\gamma$ to reduce the noise.
+
+\subsubsection{Generation}
+A Poisson random number generator $X$ must satisfy Eq.~\ref{eq:PD},
+where both, the mean and the variance are $\lambda$. As it can be seen
+in this equation, $\Pr(X{=}\bm{x}_i)$ (the probability that $X$ will
+generate the number $\bm{x}_i$ depends on 
+
+Pixel-wise signal-dependent Poisson noise can be modeled as
+\begin{equation}
+  \hat{\mathbf{s}}_i = \frac{\mathbf{n}_i}{\gamma},~\mathbf{n}_i\sim\mathcal{P}(\lambda=\gamma\mathbf{s}_i),
+  \label{eq:PN_i}
+\end{equation}
+where $\gamma$ controls the variance (the higher $\gamma$, the smaller
+the deviation from the $\mathbf{s}_i$ values). As can be seen, this is
+a signal-dependent model because the brighter parts of
+$\hat{\mathbf s}$ will have a higher mean and variance, and therefore
+a higher noise power \cite{meiniel2018denoising} (and viceversa). This also implies
+that the standard deviation of the noise depends on the expectation of
+the noisy signal, which depends on the expectation of the clean signal
+\cite{foi2008practical}. Finally, notice that $|\mathbf{N}|$ and
+$|\mathbf{S}|$ should look alike.
 
 \subsection{Simulation using Gaussian noise generators}
 Considering Eq.~\ref{eq:E_Poisson} and Eq.~\ref{eq:V_Poisson}, it should be clear that we can simulate the generation of a Poisson sequence using
