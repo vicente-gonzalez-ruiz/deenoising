@@ -423,24 +423,20 @@ and the \emph{variance}, which in this context are the
   noise} respectively, of the \gls{DRV} is $\lambda$, and the
 \gls{PMF} is defined (see Eq.~\ref{eq:PD}) by
 \begin{equation}
-  \Pr(\bm{x}{=}\bm{x}_i) = \frac{e^{-\lambda}\lambda^{\bm{x}_i}}{\bm{x}_i!},
+  \Pr(X{=}x) = \frac{e^{-\lambda}\lambda^{x}}{x!},
   \label{eq:PN}
 \end{equation}
-being $\bm{x}$ the realizations of the \gls{DRV} (the poison noise).
+where $x$ represents the realization of the noise for a givel pixel.
 
-Even if you invented a "perfect" microscope with zero electronic noise and a 100\% efficient detector, you would still be trapped by $\text{SNR}=\sqrt{\lambda}$. The only way to beat this without increasing radiation is through computational denoising, where you use the known Poisson statistics to "guess" the most likely value of λ based on the noisy X values you recorded.
+%Even if you invented a "perfect" microscope with zero electronic noise and a 100\% efficient detector, you would still be trapped by $\text{SNR}=\sqrt{\lambda}$. The only way to beat this without increasing radiation is through computational denoising, where you use the known Poisson statistics to "guess" the most likely value of λ based on the noisy X values you recorded.
 
-This formula reveals why imaging can be so frustratingly difficult when you are trying to be "gentle" with a biological sample:
+%This formula reveals why imaging can be so frustratingly difficult when you are trying to be "gentle" with a biological sample:
 
-    The "Dim" Problem: If you only have 100 photons per pixel, your SNR is 10.
+%    The "Dim" Problem: If you only have 100 photons per pixel, your SNR is 10.
 
-    The "Dimmer" Problem: If you drop to 25 photons (to save the sample from radiation damage), your SNR doesn't drop by half—it drops to 5.
+%    The "Dimmer" Problem: If you drop to 25 photons (to save the sample from radiation damage), your SNR doesn't drop by half—it drops to 5.
 
-    The "Double the Quality" Rule: If you want to double your SNR (make the image twice as "clean"), you can't just double your exposure time. You have to quadruple it (22=4).
-
-
-The random num
-
+%    The "Double the Quality" Rule: If you want to double your SNR (make the image twice as "clean"), you can't just double your exposure time. You have to quadruple it (22=4).
 
 Pixel-wise signal-dependent Poisson noise can be modeled as
 \begin{equation}
