@@ -8,11 +8,12 @@ In low-radiation microscopy the two main sources of noise are
 present except if the electronics of the microscopy is at a
 temperature of absolute zero, possible but in general unfeasible or
 too-expensive to achieve. The second one is related with the quantum
-nature of the ratiation that cross (usually electrons) or reflect
-(generally photons) on the biological sample, which only can be
-minimized increasing the radiation dose per unit of time, or extending
-the exposure time, a procedure in general also infeasible because the
-sample degrades.
+nature of the ratiation that cross (usually electrons) or
+bounces-off/emit-from (generally photons) the biological sample, which
+only can be minimized by increasing the radiation dose per unit of
+time, or extending the exposure time, a procedure in general also
+infeasible if we want to minimize the \emph{radiation damage} of the
+sample.
 
 %}}}
 
@@ -430,9 +431,9 @@ where $x$ represents the realization of the noise for a givel pixel.
 
 Poisson noise is modeled as a Poisson distribution (see
 Section~\ref{sec:poisson_distribution}) with mean $\lambda=0$ and
-variance $\lambda$. If $X$ represents to the measurement of the pixels
-of an image affected by Poisson noise (the noisy signal), then the
-$\mathbb{E}[X]=\lambda$.
+variance $\lambda$. Notice that, if $X$ represents to the measurement
+of the pixels of an image affected by Poisson noise (the noisy
+signal), then the $\mathbb{E}[X]=\lambda$.
 
 %Even if you invented a "perfect" microscope with zero electronic noise and a 100\% efficient detector, you would still be trapped by $\text{SNR}=\sqrt{\lambda}$. The only way to beat this without increasing radiation is through computational denoising, where you use the known Poisson statistics to "guess" the most likely value of λ based on the noisy X values you recorded.
 
@@ -443,6 +444,8 @@ $\mathbb{E}[X]=\lambda$.
 %    The "Dimmer" Problem: If you drop to 25 photons (to save the sample from radiation damage), your SNR doesn't drop by half—it drops to 5.
 
 %    The "Double the Quality" Rule: If you want to double your SNR (make the image twice as "clean"), you can't just double your exposure time. You have to quadruple it (22=4).
+
+%{{{
 
 \begin{comment}
 \subsection{Expectation of the noisy signal}
@@ -466,7 +469,24 @@ $\mathbf{s}$ (the expected value for each noisy $i$-th pixel is the
 clean $i$-th pixel).
 \end{comment}
 
+%}}}
+
 \subsection{Variance of the noisy signal}
+In microscopy, the number of measurement-events captured by the
+detector depends on the strength of the signal emited by the sample,
+and obviously, any fluctuation arround the true value of the pixel
+will be shifted by such value. In other words, the variance of the
+noisy signal is the sum of the variance of the clean signal and the
+variance of the noise:
+\begin{equation}
+  \text{Var}(\hat{x}) = \text{Var}(x) + \text{Var}(n),
+\end{equation}
+where $\hat{x}$ represents to a pixel (value) of the noisy signal, $x$
+to (a pixel value of) the clean signal, and $n$ to the Poisson noise
+that affect to such pixel.
+
+In sequence of realizations of a Poisson \gls{DRV} 
+
 Using again Eq.~\ref{eq:PN_i}
 \begin{equation}
   \mathbb{V}(\hat{\mathbf{s}}_i) = \mathbb{V}\left(\frac{\mathbf{n}_i}{\gamma}\right) = \frac{1}{\gamma^2}\mathbb{V}(\mathbf{n}_i) = \frac{1}{\gamma^2}\gamma\mathbf{s}_i = \mathbf{s}_i/\gamma,
