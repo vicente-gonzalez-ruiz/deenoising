@@ -401,7 +401,7 @@ available.
 
 %}}}
 
-\section{The Poisson noise model}
+\section{The Poisson noisy model}
 %{{{
 
 % The Cause: Light travels in discrete packets of energy called photons. These photons do not arrive at the sensor in a perfectly steady stream; they arrive randomly. The Analogy: Imagine leaving a grid of buckets (your camera sensor) out in a steady rainstorm. Even if the rain is completely uniform, at any given second, one bucket might catch 10 raindrops while the bucket next to it catches 12. That random statistical variation is photon noise. Photon noise follows Poisson statistics. The noise is equal to the square root of the number of photons captured: Photon Noise=sqrt(Signal). Because the noise grows as the square root of the signal, the signal-to-noise ratio (SNR) actually improves as you collect more light. A brighter image has more total photon noise, but the noise becomes much less noticeable compared to the overwhelming amount of signal. How to fix it: You cannot eliminate it. The only way to reduce the relative impact of photon noise is to capture more light (use a wider aperture, longer exposure, or more lighting). (Gemini)
@@ -417,23 +417,13 @@ or the power of the radiation is low\footnote{To preserve the
 relevant when the variance of the measurements can be significative
 compared with the signal.
 
-Poisson noise is statistically modeled as a Poisson distribution $X$
-(see Section~\ref{sec:poisson_distribution}). In it, the \emph{mean}
-and the \emph{variance}, which in this context are the
-\emph{expectation of the clean signal} and the \emph{power of the shot
-  noise} respectively, of the \gls{DRV} is $\lambda$, and the
-\gls{PMF} is defined (see Eq.~\ref{eq:PD}) by
-\begin{equation}
-  \Pr(X{=}x) = \frac{e^{-\lambda}\lambda^{x}}{x!},
-  \label{eq:PN}
-\end{equation}
-where $x$ represents the realization of the noise for a givel pixel.
+A clean pixel contaminated with Poisson noise can be modeled as a the
+realization of a \gls{DRV} $X$ that follows a Poisson distribution
+(see Section~\ref{sec:poisson_distribution}) with mean
+$\mathbb{E}[X]=\lambda$ and variance
+$\text{Var}(X)=\lambda$. Therefore, to contaminate an image $\bm{X}$
+with Poisson noise we must (revise the notebooks)
 
-Poisson noise is modeled as a Poisson distribution (see
-Section~\ref{sec:poisson_distribution}) with mean $\lambda=0$ and
-variance $\lambda$. Notice that, if $X$ represents to the measurement
-of the pixels of an image affected by Poisson noise (the noisy
-signal), then the $\mathbb{E}[X]=\lambda$.
 
 %Even if you invented a "perfect" microscope with zero electronic noise and a 100\% efficient detector, you would still be trapped by $\text{SNR}=\sqrt{\lambda}$. The only way to beat this without increasing radiation is through computational denoising, where you use the known Poisson statistics to "guess" the most likely value of λ based on the noisy X values you recorded.
 
@@ -471,22 +461,23 @@ clean $i$-th pixel).
 
 %}}}
 
+\begin{comment}
 \subsection{Variance of the noisy signal}
 In microscopy, the number of measurement-events captured by the
-detector depends on the strength of the signal emited by the sample,
-and obviously, any fluctuation arround the true value of the pixel
-will be shifted by such value. In other words, the variance of the
-noisy signal is the sum of the variance of the clean signal and the
-variance of the noise:
+detector depends on the strength of the signal emited/bounced by the
+sample (and the exposure time), and obviously, any fluctuation arround
+the true value of the pixel will be shifted by such value. In other
+words, the variance of the noisy signal is the sum of the variance of
+the clean signal and the variance of the noise:
 \begin{equation}
   \text{Var}(\hat{x}) = \text{Var}(x) + \text{Var}(n),
 \end{equation}
 where $\hat{x}$ represents to a pixel (value) of the noisy signal, $x$
 to (a pixel value of) the clean signal, and $n$ to the Poisson noise
 that affect to such pixel.
+\end{comment}
 
-In sequence of realizations of a Poisson \gls{DRV} 
-
+\begin{comment}
 Using again Eq.~\ref{eq:PN_i}
 \begin{equation}
   \mathbb{V}(\hat{\mathbf{s}}_i) = \mathbb{V}\left(\frac{\mathbf{n}_i}{\gamma}\right) = \frac{1}{\gamma^2}\mathbb{V}(\mathbf{n}_i) = \frac{1}{\gamma^2}\gamma\mathbf{s}_i = \mathbf{s}_i/\gamma,
@@ -496,6 +487,7 @@ which indicates that the variance of pixel of noisy image depends
 linearly on the expectation of the corresponding pixel of the clean
 image \cite{foi2008practical}. Obviously, this is a signal-dependent
 noisy model.
+\end{comment}
 
 \begin{comment}
 In the exteme case where $\mathbf{s}=\mathbf{0}$, we get that
@@ -516,6 +508,7 @@ and
 \end{equation}
 \end{comment}
 
+\begin{comment}
 \subsection{\acrshort{SNR} of the Poisson noise model}
 
 If we suppose that the mean of signal represents the power of the signal and its standard
@@ -534,7 +527,9 @@ Using Eq.~\ref{eq:E_Poisson} and Eq.~\ref{eq:V_Poisson}, we get that
 Notice that the SNR is signal dependent and grows with $\mathbf{s}_i$ and with
 $\gamma$. Therefore, considering the Eq.~\ref{eq:SNR_Poisson}, we should increase
 $\gamma$ to reduce the noise.
+\end{comment}
 
+\begin{comment}
 \subsubsection{Generation}
 A Poisson random number generator $X$ must satisfy Eq.~\ref{eq:PD},
 where both, the mean and the variance are $\lambda$. As it can be seen
@@ -555,6 +550,7 @@ that the standard deviation of the noise depends on the expectation of
 the noisy signal, which depends on the expectation of the clean signal
 \cite{foi2008practical}. Finally, notice that $|\mathbf{N}|$ and
 $|\mathbf{S}|$ should look alike.
+\end{comment}
 
 \subsection{Simulation using Gaussian noise generators}
 Considering Eq.~\ref{eq:E_Poisson} and Eq.~\ref{eq:V_Poisson}, it should be clear that we can simulate the generation of a Poisson sequence using
