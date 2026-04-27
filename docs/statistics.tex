@@ -582,6 +582,18 @@ where $\lambda$ is the mean and the variance. In the context of
 microscopy, it describes the probability of a specific number of
 photons or electrons hitting a pixel during an exposure.
 
+\subsection{Normal approximation to the Poisson distribution}
+As the mean $\lambda$ of a Poisson distribution increases, the
+distribution becomes more symmetric and begins to resemble the bell
+curve of a Gaussian (Normal) distribution. If you have a Poisson
+variable $X\sim\text{Poisson}(\lambda)$, then
+\begin{equation}
+  X\approx\mathcal{N}(\lambda,\lambda),
+  \label{eq:poisson_to_normal}
+\end{equation}
+and this approximation improves with $\lambda$ (in general,
+$\text{Possion}(\lambda)$ and $\mathcal{N}(\lambda,\lambda)$ are
+considered indistinguishable.
 %}}}
 
 \section{The \glsentryfull{CLT}}
