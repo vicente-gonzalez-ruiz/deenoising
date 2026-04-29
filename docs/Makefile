@@ -11,6 +11,7 @@ main.pdf:	*.tex
 		pdflatex main
 		(export BIBINPUTS=${BIBINPUTS}:${BIBS}; bibtex main)
 		pdflatex main
+		pdflatex main
 		makeglossaries main
 		pdflatex main
 
