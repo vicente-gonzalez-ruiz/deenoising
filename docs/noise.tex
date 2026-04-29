@@ -70,6 +70,7 @@ models.  % https://arxiv.org/pdf/2510.01666
 %}}}
 
 \section{Noise classifications}
+%{{{
 
 \subsection{Stochastic vs. coherent noise}
 %{{{
@@ -156,6 +157,8 @@ substract the (predictable) noise and restore the clean signal.
 orientations and patterns that are coherent (autocorrelated)
 spatially, temporally, or otherwise
 \cite{wang2025median2median}. % https://arxiv.org/pdf/2510.01666
+
+%}}}
 
 %}}}
 
@@ -295,9 +298,9 @@ statistical sample) and ``\emph{sample}'' (the signal digital sample).
 %{{{
 \label{sec:AWG}
 
-The \gls{AWG} noise model explains how a clean image $\bm{X}$ is
-contaminated with noise (the realizations $\bm{N}$ of a \gls{DRV}) $N$
-in the following way:
+The \gls{AWG} noise model explains how a clean image $\bm{X}$, where
+$X_i\le 0\forall i$, is contaminated with noise (the realizations
+$\bm{N}$ of a \gls{DRV}) $N$ in the following way:
 \begin{enumerate}
 \item Both are ``sample-wise'' added, clipping to zero the negative
   values:
@@ -335,9 +338,14 @@ in the following way:
 \subsection{Expectation of the noisy image}
 Considering expectations in Eq.~\ref{eq:AWG}, we get that
 \begin{equation}
-  \mathbb{E}[\hat{\bm{X}}] = \text{max}(0, \mathbb{E}[\bm{X}+\bm{N}]) = \text{max}(0, \mathbb{E}[\bm{X}] + 0) = \text{max}(0, \mathbb{E}[\bm{X}])
+  \mathbb{E}[\hat{\bm{X}}] = \mathbb{E}[\text{max}(0, \bm{X}+\bm{N})]
+  %\mathbb{E}[\hat{\bm{X}}] = \text{max}(0, \mathbb{E}[\bm{X}+\bm{N}]) = \text{max}(0, \mathbb{E}[\bm{X}] + 0) = \text{max}(0, \mathbb{E}[\bm{X}])
   \label{eq:E_AWG}
 \end{equation}
+Notice that $\mathbb{E}[\hat{\bm{X}}]>\mathbb{E}[\bm{X}]$, if
+$\mathbb{E}[\bm{X}]=0$. This explain the existence of noise in
+\emph{dark images}.
+
 This basically implies that $\hat{\bm{X}}$ is an unbiased estimator or
 $\bm{X}$.
 
