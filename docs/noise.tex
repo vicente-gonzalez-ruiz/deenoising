@@ -1,17 +1,16 @@
-\chapter{Noise}
+\chapter{Noise in \acrlong{LRM}}
 
-\section{Main sources of noise in microscopy}
+\section{Main sources of noise}
 %{{{
 
-In low-radiation microscopy the two main sources of noise are
-\emph{thermal noise} and \emph{shot noise}. The first is always
+In \gls{LRM} the two main sources of noise are
+\emph{electronic noise} and \emph{shot noise}. The first is always
 present except if the electronics of the microscopy is at a
-temperature of absolute zero, possible but in general unfeasible or
-too-expensive to achieve. The second one is related with the quantum
+temperature above of absolute zero. The second one is related with the quantum
 nature of the radiation that cross (usually electrons) or
 bounces-off/emit-from (generally photons) the biological sample, which
 only can be minimized by increasing the radiation dose per unit of
-time, or extending the exposure time, a procedure in general also
+time, or by extending the exposure time, a procedure in general also
 infeasible if we want to minimize the \emph{radiation damage} of the
 sample.
 
@@ -298,13 +297,14 @@ statistical sample) and ``\emph{sample}'' (the signal digital sample).
 %{{{
 \label{sec:AWG}
 
-The \gls{AWG} noise model explains how a clean image $\bm{X}$ is
-contaminated with noise (the realizations $\bm{N}$ of a \gls{DRV}) $N$
-in the following way:
+The \gls{AWG} noise model explains how a clean image $\bm{X}$, where
+$X_i\le 0\forall i$, is contaminated with noise (the realizations
+$\bm{N}$ of a \gls{DRV}) $N$ in the following way:
 \begin{enumerate}
-\item Both are ``sample-wise'' added:
+\item Both are ``sample-wise'' added, clipping to zero the negative
+  values:
   \begin{equation}
-    \hat{\bm{X}} = \bm{X} + \bm{N},
+    \hat{\bm{X}} = \text{max}(0, \bm{X} + \bm{N}),
     \label{eq:AWG}
   \end{equation}
   where $\hat{\bm{X}}$ is the noisy image.
@@ -334,22 +334,24 @@ in the following way:
   
 \end{enumerate}
 
-\subsection{Expectation of the noisy signal} (ojo, en ausencia de señal el ruido electrónico no tiene media cero)
+\subsection{Expectation of the noisy image}
 Considering expectations in Eq.~\ref{eq:AWG}, we get that
 \begin{equation}
-  \mathbb{E}[\hat{\bm{X}}] = \mathbb{E}[\bm{X}+\bm{N}] = \mathbb{E}[\bm{}] + 0 = \mathbb{E}[\bm{x}]
+  \mathbb{E}[\hat{\bm{X}}] = \mathbb{E}[\text{max}(0, \bm{X}+\bm{N})]
+  %\mathbb{E}[\hat{\bm{X}}] = \text{max}(0, \mathbb{E}[\bm{X}+\bm{N}]) = \text{max}(0, \mathbb{E}[\bm{X}] + 0) = \text{max}(0, \mathbb{E}[\bm{X}])
   \label{eq:E_AWG}
 \end{equation}
-This basically implies that if, for example, we take an infinite
-number of noisy instances of the same biological specimen, and these
-instances are affected only by \gls{AWG} noise, then the expected
-value for each noisy $i$-th pixel is the clean $i$-th pixel. In other
-words, $\hat{\bm{x}}$ is an unbiased estimator or $\bm{s}$.
+Notice that $\mathbb{E}[\hat{\bm{X}}]>\mathbb{E}[\bm{X}]$, if
+$\mathbb{E}[\bm{X}]=0$. This explain the existence of noise in
+\emph{dark images}.
 
-\subsection{Variance of the noisy signal}
+This basically implies that $\hat{\bm{X}}$ is an unbiased estimator or
+$\bm{X}$.
+
+\subsection{Variance of the noisy image}
 The variance of the signal described in Eq.~\ref{eq:AWG} is
 \begin{equation}
-  \mathtt{Var}(\hat{\bm{x}}) = \mathtt{Var}(\bm{x}+\bm{n}) = \mathtt{Var}(\bm{x}) + \sigma^2
+  \mathtt{Var}(\hat{\bm{X}}) = \mathtt{Var}(\bm{X}+\bm{N}) = \mathtt{Var}(\bm{X}) + \sigma^2
   %\mathbb{V}(\hat{\mathbf{s}}_i) = \mathbb{V}(\mathbf{s}_i + \mathbf{n}_i) = \mathbb{V}(\mathbf{s}_i) + \mathbb{V}(\mathbf{n}_i) = \mathbb{V}(\mathbf{s}_i) + \sigma^2,
   \label{eq:V_AWG}
 \end{equation}
