@@ -27,12 +27,12 @@ processed. In other words, noise is any interference that distorts a
 \emph{clean} (ground truth usually unknown) signal\footnote{The
   original signal free of noise that we would like to obtain.}. In the
 context of microscopy, we will talk about \emph{clean image} to refer
-to the image without noise, and \emph{noisy image} in the case of the
-clean image contaminated with noise.
+to the image $\bm{X}$ without noise, and \emph{noisy image} in the
+case of the clean image $\hat{\bm{X}}$ contaminated with noise.
 
 An important idea to keep in mind is that, in general, only one noisy
-version of the clean signal is available (neither the clean signal nor
-the noise are known).
+version of the clean image $\hat{\bm{X}}^{(0)}$ is available (neither
+the clean image nor the noise are known).
 
 %{{{ 
 \begin{comment}
@@ -297,13 +297,13 @@ statistical sample) and ``\emph{sample}'' (the signal digital sample).
 %{{{
 \label{sec:AWG}
 
-The \gls{AWG} noise model explains how a clean image $\bm{X}$, where
-$X_i\ge 0~\forall i$, is contaminated with noise $\bm{N}$ (the
-realizations of a \gls{DRV} $N$), generating a $\hat{\bm{X}}$ noisy
-image, in the following way:
+The \gls{AWG} noise model explains how a clean image
+$\bm{X}=\{\bm{X}_i\}$, where $X_i\ge 0~\forall i$, is
+contaminated with noise $\bm{N}$ (the realizations of a \gls{DRV}
+$N$), generating a $\hat{\bm{X}}$ noisy image, in the following way:
 \begin{enumerate}
-\item Both are ``sample-wise'' added, clipping to zero the negative
-  values:
+\item Both ``signals'' are sample-wise added, clipping to zero the
+  negative values by physical reasons:
   \begin{equation}
     \hat{\bm{X}} = \text{max}(0, \bm{X} + \bm{N}).
     \label{eq:AWG}
@@ -314,7 +314,7 @@ image, in the following way:
   \begin{equation}
     N\sim{\mathcal N}(\mu=0,\sigma^2).
   \end{equation}
-\item The spectrum of the realizations $\bm{N}$,
+\item The spectrum of the realizations (noise) $\bm{N}$,
   $|{\cal F}(\bm{N})|$ has a constant \gls{PSD} over all frequencies
   (the spectrum is flat). This implies that it is also expected that
   the auto-correlation (see Section~\ref{sec:auto-correlation}) of the
@@ -334,7 +334,7 @@ image, in the following way:
   
 \end{enumerate}
 
-\subsection{Expectation of the noisy image}
+\subsection{The ``expected'' noisy image}
 Considering expectations in Eq.~\ref{eq:AWG}, we get that
 \begin{equation}
   \mathbb{E}[\hat{\bm{X}}] = \mathbb{E}[\text{max}(0, \bm{X}+\bm{N})]

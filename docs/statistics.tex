@@ -132,7 +132,7 @@ statistically using a \gls{DRVec}.\footnote{By physical requirements,
 
 %}}}
 
-\section{\glsentryfullpl{SRV}}
+\section{\acrlongpl{SRV}}
 %{{{
 
 A \gls{SRV} is the result of a stochastic process whose statistical
@@ -183,7 +183,7 @@ The \emph{sample mean} or \emph{arithmetic average} of the sequence of
 realizations $\{x^{(i)}\}_{i=1}^{N}=\bm{x}=\{\bm{x}_i\}_{i=1}^{N}$
 generated after $N$ observations of a random variable is defined by
 \begin{equation}
-  \overline{\bm{x}} = \frac{1}{N}\sum_{i=1}^{N}x_i}.
+  \overline{\bm{x}} = \frac{1}{N}\sum_{i=1}^{N}\bm{x}_i.
   \label{eq:average}
 \end{equation}
 
@@ -204,7 +204,7 @@ with $N$.
 
 %}}}
 
-\section{\acrlong{LLN}} % Law Large Numbers
+\section{The \acrlong{LLN}} % Law Large Numbers
 %{{{
 \label{sec:LLN}
 In general terms, the \gls{LLN} expresses the fact that our empirical
@@ -238,21 +238,15 @@ deviation from the mean,
   \text{Var}(X) = \mathbb{E}[(X - \mathbb{E}[X])^2] = \mathbb{E}[X^2]-\mathbb{E}[X]^2.
   \label{eq:variance}
 \end{equation}
-Notice that considering directly sequences of realizations, Equation~\ref{eq:variance} is equivalent to
-\begin{equation}
-  \text{Var}(\bm{x}) = \mathbb{E}[(\bm{x} - \mathbb{E}[\bm{x}])^2] = \mathbb{E}[\bm{x}^2]-\mathbb{E}[\bm{x}]^2.
-  \label{eq:variance_x}
-\end{equation}
 
 %}}}
 
 \section{The sample variance}
 %{{{
 
-When we only have the realizations $\{x^{(i)}\}_{i=1}^{N}$, the sample variance
-can be computed using
+The sample variance can be computed over the realizations $\bm{x}=\{x^{(i)}\}_{i=1}^{N}$ using
 \begin{equation}
-  \sigma(x) = \frac{1}{N-1}\sum_{i=0}^{N}(x^{(i)}-\overline{x})^2.
+  \text{Var}(\bm{x}) = \frac{1}{N-1}\sum_{i=0}^{N}(x^{(i)}-\overline{\bm{x}})^2.
 \end{equation}
 
 %}}}
