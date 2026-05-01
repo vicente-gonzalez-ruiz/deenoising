@@ -305,7 +305,7 @@ $N$), generating a $\hat{\bm{X}}$ noisy image, in the following way:
 \item Both ``signals'' are sample-wise added, clipping to zero the
   negative values by physical reasons:
   \begin{equation}
-    \hat{\bm{X}} = \text{max}(0, \bm{X} + \bm{N}).
+    \hat{\bm{X}_i} = \text{max}(0, \bm{X}_i + \bm{N}_i).
     \label{eq:AWG}
   \end{equation}
 \item $N$ produce \gls{iid} realizations that follow a Gaussian
@@ -335,14 +335,18 @@ $N$), generating a $\hat{\bm{X}}$ noisy image, in the following way:
 \end{enumerate}
 
 \subsection{The ``expected'' noisy image}
-Considering expectations in Eq.~\ref{eq:AWG}, we get that
+Under the assumption that we have a high-enought number $M$ of noisy
+instances $\{\hat{\bm{X}}^{(m)}\}_{i=0}^{M}$ and therefore the pixel-wise arithmetic average (see Section~\ref{sec:average}) of them can be considered as a good estimation for the expected noisy image, i.e.,
 \begin{equation}
-  \mathbb{E}[\hat{\bm{X}}] = \mathbb{E}[\text{max}(0, \bm{X}+\bm{N})]
-  %\mathbb{E}[\hat{\bm{X}}] = \text{max}(0, \mathbb{E}[\bm{X}+\bm{N}]) = \text{max}(0, \mathbb{E}[\bm{X}] + 0) = \text{max}(0, \mathbb{E}[\bm{X}])
+  \overline{\{\hat{\bm{X}}^{(m)}\}} \approx \mathbb{E}[\{\hat{\bm{X}}^{(m)}\}],
+\end{equation}
+the expectation for the $i$-th pixel of the noisy image is
+\begin{equation}
+  \mathbb{E}[\{\hat{\bm{X}_i}\}^{()}] = \mathbb{E}[\text{max}(0, \{\bm{X}_i+\bm{N}_i)\}^{()}].
   \label{eq:E_AWG}
 \end{equation}
-Notice that $\mathbb{E}[\hat{\bm{X}}]>\mathbb{E}[\bm{X}]$, if
-$\mathbb{E}[\bm{X}]=0$. This explain the existence of noise in
+Notice that $\mathbb{E}[\{\hat{\bm{X}}\}^{()}]>\mathbb{E}[\{\bm{X}\}^{()}]$ when
+$\mathbb{E}[\{\bm{X}\}^{()}]=\bm{0}$. This explain the existence of noise in
 \emph{dark images}\footnote{A dark image is those obtained in absence
   of radiation}.
 
