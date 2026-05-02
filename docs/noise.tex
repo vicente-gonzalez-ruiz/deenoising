@@ -298,14 +298,15 @@ statistical sample) and ``\emph{sample}'' (the signal digital sample).
 \label{sec:AWG}
 
 The \gls{AWG} noise model explains how a clean image
-$\bm{X}=\{\bm{X}_i\}$, where $X_i\ge 0~\forall i$, is
-contaminated with noise $\bm{N}$ (the realizations of a \gls{DRV}
-$N$), generating a $\hat{\bm{X}}$ noisy image, in the following way:
+$\bm{X}=\{\bm{X}_p\}$, where
+$X_p\ge 0~\forall \text{(pixel~index)} p$, is contaminated with noise
+$\bm{N}$ (the realizations of a \gls{DRV} $N$), generating a
+$\hat{\bm{X}}$ noisy image, in the following way:
 \begin{enumerate}
 \item Both ``signals'' are sample-wise added, clipping to zero the
-  negative values by physical reasons:
+  negative values:
   \begin{equation}
-    \hat{\bm{X}_i} = \text{max}(0, \bm{X}_i + \bm{N}_i).
+    \hat{\bm{X}_p} = \text{max}(0, \bm{X}_p + \bm{N}_p).
     \label{eq:AWG}
   \end{equation}
 \item $N$ produce \gls{iid} realizations that follow a Gaussian
@@ -317,10 +318,11 @@ $N$), generating a $\hat{\bm{X}}$ noisy image, in the following way:
 \item The spectrum of the realizations (noise) $\bm{N}$,
   $|{\cal F}(\bm{N})|$ has a constant \gls{PSD} over all frequencies
   (the spectrum is flat). This implies that it is also expected that
-  the auto-correlation (see Section~\ref{sec:auto-correlation}) of the
+  the \gls{AC} (see Section~\ref{sec:auto-correlation}) of the
   noise is zero for any lag $k$ and $l$-long enought realization:
   \begin{equation}
-    \Pr\left(\lim_{l\rightarrow\infty}\text{AC}(\bm{N})_k=0\right)=1\quad\forall k,
+    \text{AC}(\bm{N})=\bm{N}\circledast\bm{N}=\bm{0}
+    %\Pr\left(\lim_{l\rightarrow\infty}\text{AC}(\bm{N})_k=0\right)=1\quad\forall k,
   \end{equation}
   This is equivalent to say that
   \begin{equation}
@@ -336,7 +338,7 @@ $N$), generating a $\hat{\bm{X}}$ noisy image, in the following way:
 
 \subsection{The ``expected'' noisy image}
 Under the assumption that we have a high-enought number $M$ of noisy
-instances $\{\hat{\bm{X}}^{(m)}\}_{i=0}^{M}$ and therefore the pixel-wise arithmetic average (see Section~\ref{sec:average}) of them can be considered as a good estimation for the expected noisy image, i.e.,
+instances $\{\hat{\bm{X}}^{(m)}\}_{m=0}^{M}$ and therefore the pixel-wise arithmetic average (see Section~\ref{sec:average}) of them can be considered as a good estimation for the expected noisy image, i.e.,
 \begin{equation}
   \overline{\{\hat{\bm{X}}^{(m)}\}} \approx \mathbb{E}[\{\hat{\bm{X}}^{(m)}\}],
 \end{equation}
@@ -345,13 +347,12 @@ the expectation for the $i$-th pixel of the noisy image is
   \mathbb{E}[\{\hat{\bm{X}_i}\}^{()}] = \mathbb{E}[\text{max}(0, \{\bm{X}_i+\bm{N}_i)\}^{()}].
   \label{eq:E_AWG}
 \end{equation}
-Notice that $\mathbb{E}[\{\hat{\bm{X}}\}^{()}]>\mathbb{E}[\{\bm{X}\}^{()}]$ when
-$\mathbb{E}[\{\bm{X}\}^{()}]=\bm{0}$. This explain the existence of noise in
-\emph{dark images}\footnote{A dark image is those obtained in absence
-  of radiation}.
-
-This basically implies that $\hat{\bm{X}}$ is an unbiased estimator or
-$\bm{X}$ when $\mathbb{E}[\bm{X}]>0$.
+Notice that
+$\mathbb{E}[\{\hat{\bm{X}}\}^{()}]>\mathbb{E}[\{\bm{X}\}^{()}]$ when
+$\mathbb{E}[\{\bm{X}\}^{()}]=\bm{0}$. This explain the existence of
+noise in \emph{dark images}\footnote{A dark image is those obtained in
+  absence of radiation}. This basically implies that $\hat{\bm{X}}$ is
+an unbiased estimator or $\bm{X}$ when $\mathbb{E}[\bm{X}]>0$.
 
 \subsection{Variance of the noisy image}
 The variance of the signal described in Eq.~\ref{eq:AWG} is
