@@ -332,20 +332,22 @@ $\hat{\bm{X}}$ noisy image, in the following way:
   where $\bm{I}$ is the identity matrix.
 \item The noise is indepent of (is not correlated with) the clean signal,
 \begin{equation}
-  \Pr(N{=}\bm{N}_i|\bm{X}_i) = \Pr(N{=}\bm{N}_i).
+  \Pr(N{=}\bm{N}_p|\bm{X}_p) = \Pr(N{=}\bm{N}_p).
 \end{equation}
   
 \end{enumerate}
 
 \subsection{The ``expected'' noisy image}
-Under the assumption that we have a high-enought number $M$ of noisy
-instances $\{\hat{\bm{X}}^{(m)}\}_{m=0}^{M}$ and therefore the pixel-wise arithmetic average (see Section~\ref{sec:average}) of them can be considered as a good estimation for the expected noisy image, i.e.,
+Under the assumption that we have a high-enought number of noisy
+instances $\{\hat{\bm{X}}^{(i)}\}$ and therefore the pixel-wise
+arithmetic average (see Section~\ref{sec:average}) of them can be
+considered as a good estimation for the expected noisy image, i.e.,
 \begin{equation}
-  \overline{\{\hat{\bm{X}}^{(m)}\}} \approx \mathbb{E}[\{\hat{\bm{X}}^{(m)}\}],
+  \overline{\{\hat{\bm{X}}^{()}\}} \approx \mathbb{E}[\{\hat{\bm{X}}^{()}\}],
 \end{equation}
-the expectation for the $i$-th pixel of the noisy image is
+the expectation for the $p$-th pixel of the noisy image is
 \begin{equation}
-  \mathbb{E}[\{\hat{\bm{X}_i}\}^{()}] = \mathbb{E}[\text{max}(0, \{\bm{X}_i+\bm{N}_i)\}^{()}].
+  \mathbb{E}[\{\hat{\bm{X}_p}\}^{()}] = \mathbb{E}[\text{max}(0, \{\bm{X}_p+\bm{N}_p)\}^{()}].
   \label{eq:E_AWG}
 \end{equation}
 Notice that
