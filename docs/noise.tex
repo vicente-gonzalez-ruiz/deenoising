@@ -322,7 +322,7 @@ $\hat{\bm{X}}$ noisy image, in the following way:
   is zero for any lag $k$ and $l$-long enought noise realization,
   i.e.,
   \begin{equation}
-    \text{AC}(\bm{N})=\bm{N}\circledast\bm{N}=\bm{0}.
+    \bm{N}\circledast\bm{N}=\bm{0}.
     %\Pr\left(\lim_{l\rightarrow\infty}\text{AC}(\bm{N})_k=0\right)=1\quad\forall k,
   \end{equation}
   This is equivalent to say that
@@ -330,7 +330,7 @@ $\hat{\bm{X}}$ noisy image, in the following way:
     \text{Cov}(\bm{N}) = \sigma^2\bm{I},
   \end{equation}
   where $\bm{I}$ is the identity matrix.
-\item The noise is indepent of (is not correlated with) the clean signal,
+\item The noise is independent of (it is not correlated with) the clean signal,
 \begin{equation}
   \Pr(N{=}\bm{N}_p|\bm{X}_p) = \Pr(N{=}\bm{N}_p).
 \end{equation}
@@ -341,7 +341,7 @@ $\hat{\bm{X}}$ noisy image, in the following way:
 Under the assumption that we have a high-enought number of noisy
 instances $\{\hat{\bm{X}}^{(i)}\}$ and therefore the pixel-wise
 arithmetic average (see Section~\ref{sec:average}) of them can be
-considered as a good estimation for the expected noisy image, i.e.,
+considered as a good estimation for the expected noisy image,
 \begin{equation}
   \overline{\{\hat{\bm{X}}^{()}\}} \approx \mathbb{E}[\{\hat{\bm{X}}^{()}\}],
 \end{equation}
