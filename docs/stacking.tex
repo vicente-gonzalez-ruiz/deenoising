@@ -1,12 +1,32 @@
 \chapter{Image stacking}
 This chapter analyze why (almost any type of) noise can be removed
-pixel-wise averaging the noisy images. This technique is commonly
-known as \emph{image stacking}. Doing that, in theory, it is spected
-to increase the \gls{SNR} by a factor of $\sqrt{N}$, where $N$ is the
-number of \emph{averaged}\footnote{Astronomers use the term
+pixel-wise averaging the noisy images. This denoising technique is
+commonly known as \emph{image stacking}. Doing that, in theory, it is
+spected to increase the \gls{SNR} by a factor of $\sqrt{N}$, where $N$
+is the number of \emph{averaged}\footnote{Astronomers use the term
   ``stacked''.} images.
 
-\section{Applicability}
+%Therefore, using stacking, if you were to take the same image, for
+%example, 1000 times and average them together, the random fluctuations
+%should cancel each other out. What remains is the mean. In other words,
+%if we were able to expose (observe) the sample an infinite amount
+%time, we would capture the mean of the signal (even in the presence of
+%noise).
+
+
+
+\section{Convergence}
+
+\section{Removing Gaussian noise}
+\subsection{Consequences of the \gls{CLT}}
+%\section{The mean is the clean signal}
+
+%\section{The standard deviation is the noise}}
+%"Noise" is defined as any unwanted variation that obscures the signal. In statistics, the standard deviation (σ) is the literal measurement of variation.
+
+%    The Logic: If every pixel recorded the exact same value (μ) every time, there would be zero noise. But because of the random nature of particles, the values "wiggle" around the mean.
+
+\subsection{Applicability}
 %{{{
 
 Stacking relies on the (Lindeberg-Levy version of the) \gls{CLT},
@@ -26,7 +46,8 @@ Lindeberg-Feller \gls{CLT} which states that the \gls{CLT} it is
 satisfied even if the random variables are not \gls{iid}, provided
 that no single variable in the sequence dominates the others. This is
 why the sum of many different types of noise (such as thermal noise +
-shot noise + interference) still ends up looking Gaussian.
+shot noise + interference) still ends up looking Gaussian (see
+Section~\ref{sec:CLT}).
 
 Therefore, under a high enough number of noisy instancces, the
 \gls{CLT} allows us to take into consideration only the \gls{AWG}
@@ -56,56 +77,6 @@ approximation $\tilde{\bm{s}}^{[N]}$, where $N$ is the number of
 averaged signals.
 
 %}}}
-
-\section{\glsentryfull{GAT}}
-%{{{
-
-The \acrshort{GAT} \cite{foi2008practical,makitalo2012optimal} is a
-\gls{VST} that can be applied to \gls{MPG} noise (see
-Section~\ref{sec:MPG}) to make it approximately Gaussian with
-(approximately) constant variance of $1$, so we can apply standard
-Gaussian denoisers (e.g., \gls{BM3D}, \gls{DnCNN}, wavelet shrinkage,
-etc.). It consists of converting the noisy samples using the
-expression
-\begin{equation}
-  y = \text{GAT}(\hat{\mathbf{s}}_i)=\frac{2}{\gamma}\sqrt{\gamma\hat{\mathbf{s}}_i+\frac{3}{8}\gamma^2+\sigma^2},
-\end{equation}
-where now
-\begin{equation}
-  y\sim\mathcal{N}(\mu',\approx 1).
-\end{equation}
-$\gamma$ is an empirical value that controls the gain of the transform.
-
-Notice that the \gls{GAT} is not a linear transform and that the mean is
-not preserved, in neither of the directions of the transform. This
-basically implies that to recover the original mean by simply
-inversing the forward expression. For this reason, in
-\cite{makitalo2012optimal} (among others) the following approximation
-can be used only if we deal with positive transformed values and $\mu=0$:
-\begin{equation}
-  \hat{\mathbf{s}}_i \approx \frac{1}{4}y^2-\frac{1}{4}\left(1+\frac{8\sigma^2}{y^2} + \frac{1}{32}\left(\frac{i+\frac{8\sigma^2}{y^2}}{y^2}\right)\right).
-\end{equation}
-
-%}}}
-
-\section{Convergence}
-
-\section{Removing Gaussian noise}
-\subsection{Consequences of the \gls{CLT}}
-%\section{The mean is the clean signal}
-The signal is the information you actually want to capture (in the
-case of an image, the ``true'' brightness or density of your
-sample). Therefore, using stacking, if you were to take the same
-image 1000 times and average them together, the random fluctuations
-would cancel each other out. What remains is the mean. In other words,
-if we were able to expose (observe) the sample an infinite amount
-time, we would capture the mean of the signal (even in the presence of
-noise).
-
-%\section{The standard deviation is the noise}}
-%"Noise" is defined as any unwanted variation that obscures the signal. In statistics, the standard deviation (σ) is the literal measurement of variation.
-
-%    The Logic: If every pixel recorded the exact same value (μ) every time, there would be zero noise. But because of the random nature of particles, the values "wiggle" around the mean.
 
 
 \subsection{\gls{SNR}}

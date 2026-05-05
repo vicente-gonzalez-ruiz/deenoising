@@ -13,7 +13,8 @@
   $\bm{x}_{y,x}$ & The value/pixel $(y,x)$ of the matrix/image $\bm{X}$ \\
   %$\mathbf{x}^{(i)}$ & The $i$-th real-noisy instance of the signal $\mathbf{x}$ \\
   %$\mathbf{s}^{()}$ & An instance of $\mathbf{s}$, possibly noisy \\
-  $\bm{x}^{(i)}$ & The $i$-th instance of the signal $\bm{x}$ \\
+  $\bm{x}^{(i)}$ & The $i$-th instance of $\bm{x}$ \\
+  $\{\bm{x}^{(i)}\}_i$ & All the instances of $\bm{x}$ \\
   $\tilde{\bm{x}}^{(I)}$ & Approximation to $\bm{x}$ using $I$ instances \\ 
   $\overline{\bm{x}}$ & Average of the samples of $\bm{x}$ \\ 
   $\href{https://docs.python.org/3/library/functions.html#len}{\text{len}}(\bm{x})$ & $=\bm{x}.\href{https://numpy.org/doc/stable/reference/generated/numpy.ndarray.size.html}{\mathsf{size}}$ Number of elements in $\bm{x}$ \\
@@ -24,7 +25,8 @@
   % $|\mathbf{X}_i|$ & The absolute value of $\mathbf{X}_i$ \\
   $\alpha\bm{x}$ & $=\{\alpha\bm{x}_i\}$ (scalar multiplication) \\
   $\bm{x}+\bm{y}$ & $=\{\bm{x}_i + \bm{y}_i\}$ (Hadamard addition) \\ 
-  $\bm{x}\bm{y}$ & $=\{\bm{x}_i\bm{y}_i\}$ (Hadamard product) \\ 
+  $\bm{x}\bm{y}$ & $=\{\bm{x}_i\bm{y}_i\}$ (Hadamard product) \\
+  $X$ & The discrete random variable $X$ \\
   $\mathcal{N}$ & The normal distribution \\ 
   $\mathcal{P}$ & The Poisson distribution \\
   $\bm{x}\sim\mathcal{N}$ & The elements of $\bm{x}$ follows a normal distribution \\
@@ -38,6 +40,7 @@
   $||\bm{x}||_2$ & $L_2$ norm of $\bm{x}$ \\
   $f_s$ & Sampling frequency \\
   $\mathcal{F}$ & The (forward) Fourier transform ($\mathcal{F}(\bm{x})=\mathbf{X}$) (see Section~\ref{sec:Fourier_transform})\\
+  $\mathbf{X}$ & The discrete Fourier transform of the signal $\bm{x}$ \\
   $\mathcal{F}^{-1}$ & The inverse Fourier transform ($\mathcal{F}^{-1}(\mathbf{X})=\bm{x}$)  (see Section~\ref{sec:Fourier_transform})\\
   $\cdot^*$ & the complex conjugate of $\cdot$ \\
   $\bm{x}*\bm{y}$ & $=\mathcal{F}^{-1}(\mathcal{F}(\bm{x})\mathcal{F}(\bm{y}))=\mathcal{F}^{-1}(\mathbf{X}\mathbf{Y})$ (convolution) \\
