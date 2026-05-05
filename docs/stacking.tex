@@ -13,9 +13,17 @@ is the number of \emph{averaged}\footnote{Astronomers use the term
 %time, we would capture the mean of the signal (even in the presence of
 %noise).
 
-
-
 \section{Convergence}
+The variance of the stacked image is the sum of the variances of each image:
+\begin{equation}
+  \text{Var}(\overline{\{\bm{X}^{(i)}\}_{i=0}^{N-1}}) = sum_{i=0}^{N-1}\text{Var}(\bm{X}^{(i)}).
+\end{equation}
+Now, if all the noisy images has the same variance
+$\text{Var}(\bm{X})$, we finally obtain that
+\begin{equation}
+  \text{Var}(\overline{\{\bm{X}^{(i)}\}_{i=0}^{N-1}}) = N\text{Var}(\bm{X}).
+\end{equation}
+
 
 \section{Removing Gaussian noise}
 \subsection{Consequences of the \gls{CLT}}
