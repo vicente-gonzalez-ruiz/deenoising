@@ -621,15 +621,15 @@ distributed:
 
 %}}}
 
-\section{\glsentryfull{GAT}}
+\section{\glsentryfull{GAT}} % Generalized Anscombe Transform
 %{{{
 
 The \acrshort{GAT} \cite{foi2008practical,makitalo2012optimal} is a
 \gls{VST} that can be applied to realizations of a \gls{DRV} of
 unknown distribution to make it approximately Gaussian with variance
-$1$. It consists of converting the realizations using 
+$1$. It consists of converting the realizations $x$ using 
 \begin{equation}
-  y = \text{GAT}(\hat{x)=\frac{2}{\gamma}\sqrt{\gamma\hat{x+\frac{3}{8}\gamma^2+\sigma^2},
+  y = \text{GAT}(x)=\frac{2}{\gamma}\sqrt{\gammax+\frac{3}{8}\gamma^2+\sigma^2},
 \end{equation}
 where now
 \begin{equation}
@@ -638,13 +638,13 @@ where now
 $\gamma$ is an empirical value that controls the gain of the transform.
 
 Notice that the \gls{GAT} is not a linear transform and that the mean is
-not preserved, in neither of the directions of the transform. This
+not preserved (the result is biased), in neither of the directions of the transform. This
 basically implies that you cannot recover the original mean by simply
 inversing the forward expression. For this reason, in
 \cite{makitalo2012optimal} (among others) the following approximation
 can be used only if we deal with positive transformed values and $\mu=0$:
 \begin{equation}
-  \hat{\mathbf{s}}_ \approx \frac{1}{4}y^2-\frac{1}{4}\left(1+\frac{8\sigma^2}{y^2} + \frac{1}{32}\left(\frac{i+\frac{8\sigma^2}{y^2}}{y^2}\right)\right).
+  x \approx \frac{1}{4}y^2-\frac{1}{4}\left(1+\frac{8\sigma^2}{y^2} + \frac{1}{32}\left(\frac{y+\frac{8\sigma^2}{y^2}}{y^2}\right)\right).
 \end{equation}
 
 %}}}
