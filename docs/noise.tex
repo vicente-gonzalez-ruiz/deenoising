@@ -428,26 +428,22 @@ and
 %}}}
 
 \subsection{Expectation of the \gls{SNR}}
-The expected $\text{SNR}$ for a
-pixel in the case of an image corrupted with Gaussien noise is (cambiar el resto de esta seccion)
+The expected power $\text{SNR}$ for a
+pixel in the case of an image corrupted with Gaussien noise is
 \begin{equation}
-  \text{SNR} = \frac{\mathbb{E}[\bm{X}^2]}{\text{Var}(N)} = \frac{\lambda^2}{\lambda} = \lambda.
-  \label{eq:power_SNR_Poisson}
-\end{equation}
-If instead of power we work with amplitudes,
-\begin{equation}
-  \text{A-SNR} = \frac{\mathbb{E}[\bm{X}]}{\sqrt{\text{Var}(N)}} = \frac{\lambda}{\\sqrt{lambda}} = \srqt{\lambda},
-  \label{eq:power_SNR_Poisson}
+  \text{P-SNR} = \frac{\mathbb{E}[\bm{X}^2]}{\text{Var}(\bm{N}),.
+  \label{eq:power_SNR_Gaussian}
 \end{equation}
 which express that it is expected that the quality of the image
-improves with the square root of the ``events'' counters\footnote{One
-  per pixel.}. Therefore, even if you are using a perfect microscopy
-without electronic noise, and a 100\% efficient detector, you would
-still be trapped by the \ref{eq:power_SNR_Poisson}
-rationale\footnote{As we will see, the only way to beat this without
-  increasing radiation is through computational denoising, where you
-  use the known Poisson statistics to ``guess'' the most likely value of
-  $\lambda$ based on the noisy $\hat{\bm{X}}$ values you recorded.}. In other words, if you want to double your (amplitude) \gls{SNR}, that is, make the image twice as ``clean'', you cannot just double the radiation, but you have to quadruple it ($\sqrt{4}=2$).
+improves linearly with the power of the signal. The amplitude
+$\text{SNR}$ is
+\begin{equation}
+  \text{A-SNR} = \frac{\mathbb{E}[\bm{X}]}{\sqrt{\text{Var}(N)}},
+  \label{eq:power_SNR_Gaussian}
+\end{equation}
+and therefore, the perceived quality of the image should be
+proportional to the exposure time, and inversely proportional to the
+amplitude of the noise.
 
 \subsection*{Examples}
 
@@ -532,7 +528,7 @@ distributions are almost identical.
 The expected $\text{SNR}$ for a
 pixel in the case of an image corrupted with Poisson noise is
 \begin{equation}
-  \text{SNR} = \frac{\mathbb{E}[\bm{X}^2]}{\text{Var}(N)} = \frac{\lambda^2}{\lambda} = \lambda.
+  \text{SNR} = \frac{\mathbb{E}[\bm{X}^2]}{\text{Var}(\bm{N})} = \frac{\lambda^2}{\lambda} = \lambda.
   \label{eq:power_SNR_Poisson}
 \end{equation}
 If instead of power we work with amplitudes,
