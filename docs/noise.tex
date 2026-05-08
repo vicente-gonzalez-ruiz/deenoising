@@ -319,6 +319,7 @@ amplitude-\gls{SNR}, defined as
   \text{SNR} = \frac{\mathbb{E}[\bm{X}]}{\sqrt{\text{Var}(\bm{N})}}.
   \label{eq:amplitude_SNR_statistics}
 \end{equation}
+Notice that this is an amplitude-to-standard-deviation ratio.
 
 \section{The \acrlong{AWG} noise model} % Additive White Gaussian
 %{{{
@@ -336,18 +337,17 @@ $\hat{\bm{X}}$ noisy image, in the following way:
     \hat{\bm{X}_p} = \text{max}(0, \bm{X}_p + \bm{N}_p).
     \label{eq:AWG}
   \end{equation}
-\item $N$ produce \gls{iid} realizations that follow a Gaussian
+\item $N$ produce \gls{iid} realizations $\bm{N}$ that follow a Gaussian
   (normal) distribution (see Section~\ref{sec:gaussian_distribution})
   with sample mean $\mu=0$ and variance $\sigma^2$:
   \begin{equation}
-    N\sim{\mathcal N}(\mu=0,\sigma^2).
+    \bm{N}\sim{\mathcal N}(\mu=0,\sigma^2).
   \end{equation}
-\item The spectrum of the realizations (noise) $\bm{N}$,
-  $|{\cal F}(\bm{N})|$ has a constant \gls{PSD} over all frequencies
-  (the spectrum is flat). This implies that it is also expected that
-  the \gls{AC} (see Section~\ref{sec:auto-correlation}) of the noise
-  is zero for any lag $k$ and $l$-long enought noise realization,
-  i.e.,
+\item $|{\cal F}(\bm{N})|$ (the spectrum of the noise) has a constant
+  \gls{PSD} over all frequencies (the spectrum is flat). This implies
+  that it is also expected that the \gls{AC} (see
+  Section~\ref{sec:auto-correlation}) of the noise is zero for any lag
+  $k$ and $l$-long enought noise realization, i.e.,
   \begin{equation}
     \bm{N}\circledast\bm{N}=\bm{0}.
     %\Pr\left(\lim_{l\rightarrow\infty}\text{AC}(\bm{N})_k=0\right)=1\quad\forall k,
@@ -427,6 +427,28 @@ and
 
 %}}}
 
+\subsection{Expectation of the \gls{SNR}}
+The expected $\text{SNR}$ for a
+pixel in the case of an image corrupted with Gaussien noise is (cambiar el resto de esta seccion)
+\begin{equation}
+  \text{SNR} = \frac{\mathbb{E}[\bm{X}^2]}{\text{Var}(N)} = \frac{\lambda^2}{\lambda} = \lambda.
+  \label{eq:power_SNR_Poisson}
+\end{equation}
+If instead of power we work with amplitudes,
+\begin{equation}
+  \text{A-SNR} = \frac{\mathbb{E}[\bm{X}]}{\sqrt{\text{Var}(N)}} = \frac{\lambda}{\\sqrt{lambda}} = \srqt{\lambda},
+  \label{eq:power_SNR_Poisson}
+\end{equation}
+which express that it is expected that the quality of the image
+improves with the square root of the ``events'' counters\footnote{One
+  per pixel.}. Therefore, even if you are using a perfect microscopy
+without electronic noise, and a 100\% efficient detector, you would
+still be trapped by the \ref{eq:power_SNR_Poisson}
+rationale\footnote{As we will see, the only way to beat this without
+  increasing radiation is through computational denoising, where you
+  use the known Poisson statistics to ``guess'' the most likely value of
+  $\lambda$ based on the noisy $\hat{\bm{X}}$ values you recorded.}. In other words, if you want to double your (amplitude) \gls{SNR}, that is, make the image twice as ``clean'', you cannot just double the radiation, but you have to quadruple it ($\sqrt{4}=2$).
+
 \subsection*{Examples}
 
 The Figure~\ref{fig:AWG_examples} shows an image corrupted with
@@ -474,10 +496,27 @@ $\text{Var}(\hat{X})=\lambda$, where (as happens with Eq.~\ref{eq:AWG}
 and considering that, by definition, $\lambda>0$))
 \begin{equation}
   \hat{\bm{X}} = \bm{X} + \bm{N}.
+  \label{eq:additive_Poisson}
 \end{equation}
 Notice that, in the case of Poisson noise (and differently to Gaussian
 noise), $\text{Var}(\bm{N})$ is signal-dependent.
 
+This additive model (Eq.~\ref{eq:additive_Poisson}) is also supported
+by statistics when the counts are large enough (in general, when
+$\lambda>10$. In this case, we can say that
+\begin{equation}
+  \mathcal{P}(\bm{X})\approx\mathcal{N}(\bm{X},\bm{X}).
+  \label{eq:poisson_normal}
+\end{equation}
+Therefore, Eq.~\ref{eq:additive_Poisson} becomes
+\begin{equation}
+  \hat{\bm{X}} = \bm{X} + \sqrt{\bm{X}}\teta,
+  \label{eq:additive_Poisson}
+\end{equation}
+with
+\begin{equation}
+  \teta\sim\mathcal{N}(0,1)
+\end{equation}
 
 \subsection{Noise simulation}
 A clean pixel with value $x$ can be contaminated with Poisson noise taking
