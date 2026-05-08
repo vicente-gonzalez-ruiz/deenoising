@@ -45,6 +45,15 @@ noise in \emph{dark images}\footnote{A dark image is the obtained in
   absence of radiation}. This basically implies that $\tilde{\bm{X}}$ is
 an unbiased estimator for $\bm{X}$ when $\mathbb{E}[\bm{X}]>0$.
 
+If you average $K$ independent noisy captures $\overline{\{\tilde{\bm{X}}\}^{()}}}$ then
+\begin{equation}
+  \mathbb{E}[\overline{\{\tilde{\bm{X}}\}^{()}}}]=\bm{X},
+\end{equation}
+but the variance
+\begin{equation}
+  \text{Var}(\overline{\{\tilde{\bm{X}}\}^{()}}}) = \frac{\sigma^2}{K},
+\end{equation}
+so the noise standard deviation decreases like $\sigma/\sqrt{K}$.
 
 \section{Removing Gaussian noise}
 \subsection{Consequences of the \gls{CLT}}
@@ -194,7 +203,21 @@ of generating a sequence of close-normal random numbers is:
 Notice that the higher the number of noise realizations added, the
 higher the accuracy of this algorithm.
 
-\section{Expected impact of Poisson noise}
+\section{Averaging multiple acquisitions}
+If you take $K$ independent Poisson measurements
+$\{\tilde{\bm{X}}^{(k)}\}$, where
+\begin{equation}
+  \tilde{\bm{X}}_p^{(k)}\sim\mathcal{P}(\bm{X}_p)\forall p
+\end{equation}
+and average them pixelwise, the expectation for $p$ is
+\begin{equation}
+  \mathbb{E}[\{\tilde{\bm{X}}_p^{(k)}\}] = \bm{X}_p
+\end{equation}
+with variance
+\begin{equation}
+  \text{Var}(\{\tilde{\bm{X}}_p^{(k)}\}) = \frac{\bm{X}_p}{K}
+\end{equation}
+and the A-\gls{SNR} improves as $\sqrt{K\bm{X}_p}$.
 
 \section{Experiments (MPG)}
 

@@ -377,7 +377,7 @@ $\tilde{\bm{X}}$ noisy image, in the following way:
   
 \end{enumerate}
 
-\subsection{The ``expected'' noisy image}
+\subsection{The ``expected'' (clean) image}
 \label{sec:expected_noisy_AWG}
 In \gls{AWG} noise, 
 \begin{equation}
@@ -541,6 +541,23 @@ Notice that Poisson noise can also be generated using a Gaussian noise
 generator if $\lambda$ is high enough (see
 Eq.~\ref{eq:poisson_to_normal}). In general, for $\lambda>10$ both
 distributions are almost identical.
+
+\subsubsection{The ``expected'' (clean) image}
+In the case of Poisson noise, the clean image $\bm{X}$ is interpreted
+as the mean photon count, and the observed image is
+\begin{equation}
+  \tilde{\bm{X}_p}\sim\mathcal{P}(\bm{X}_p),
+\end{equation}
+so, at each pixel
+\begin{equation}
+  \mathbb{E}[\tilde{\bm{X}_p}]=\bm{X}_p,
+\end{equation}
+and therefore, the expected image is
+\begin{equation}
+  \mathbb{E}[\tilde{\bm{X}}]=\bm{X},
+\end{equation}
+So if you could repeat the acquisition many times and average the
+results pixelwise, you would recover the clean image.
 
 \subsection{Expectation of the \gls{SNR}}
 The expected $\text{SNR}$ for a
@@ -858,6 +875,25 @@ and
 %   usually modeled as Rician/Rayleigh noise.
 
 %}}}
+
+\section{The Anscombe transform}
+When the variance of the noise depends on the image intensity (as
+happens with Poisson noise), the different pixels of the image have
+different noise levels, forzing some denoisers to estimate such level.
+
+A solution to avoid this is to use a variance-stabilizing transform to
+remap the pixels into a new image whose variance is approximately
+constant for each pixel. For Poisson noise, the famous choice is the
+Anscombe transform:
+\begin{equation}
+  \bm{Z}_p=2\sqrt{\tilde{\bm{X}}_p+\frac{3}{8}}
+\end{equation}
+where now, approximately,
+\begin{equation}
+  \bm{Z}_p\sim\mathcal{N}(2\sqrt{\bm{X}_p+\frac{3}{8}},1)
+\end{equation}
+These results are only valid if the counts are large enough (in
+general, larger than 10).
 
 %\section{The Anscombe transform and generalized Anscombe transformation (GAT)}
 %{{{
