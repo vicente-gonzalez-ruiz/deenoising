@@ -30,10 +30,10 @@ definition depends on what is meant by signal or noise. In other
 words, whether something is considered noise actually depends on
 whether or not it provides some kind of information.
 
-We will use $\bm{N}$, $\bm{X}$, and $\hat{\bm{X}}$ to denote the
+We will use $\bm{N}$, $\bm{X}$, and $\tilde{\bm{X}}$ to denote the
 noise, the clean image, and the noisy image, respectively. An
 important idea to keep in mind is that, in general, only one noisy
-version of the clean image $\hat{\bm{X}}^{(0)}$ is available (neither
+version of the clean image $\tilde{\bm{X}}^{(0)}$ is available (neither
 the clean image nor the noise are known).
 
 %{{{ 
@@ -44,11 +44,11 @@ a several denoising techniques are based on the concept of
 sample (instance) of a random variable. Thus, for example, if
 $\bm{s}$ is the clean signal, under certain conditions, the
 expected image of a sequence of noisy (images) instances, where each
-instance is denoted by $\hat{\bm{s}}$, could be
-$\mathbb{E}(\hat{\mathbf{s}})=\mathbf{s}$ (the clean
+instance is denoted by $\tilde{\bm{s}}$, could be
+$\mathbb{E}(\tilde{\mathbf{s}})=\mathbf{s}$ (the clean
 image). Alternatively, we could also suppose that a digital signal is
 a sequence of samples of a random variable. In this case, all we can
-say is that $\mathbb{E}(\hat{\mathbf{s}})=\mathbb{E}(\mathbf{s})$ that
+say is that $\mathbb{E}(\tilde{\mathbf{s}})=\mathbb{E}(\mathbf{s})$ that
 is a single value, $\mu$, for example. To distinguish between both
 expectations we will use the notation $\overline{\mathbb{E}}$ for the
 scalar case, when there exist some doubt.
@@ -168,11 +168,11 @@ patterns that are coherent (autocorrelated) spatially and temporally
 % \label{sec:noise_models}
 
 % Let $\mathbf{X}$ be a \emph{clean signal} (without noise, ground truth
-% usually unknown) tensor, and $\hat{\mathbf X}^{(i)}$ the $i$-th
+% usually unknown) tensor, and $\tilde{\mathbf X}^{(i)}$ the $i$-th
 % noisy-version tensor random instance of $\mathbf{X}$ generated, in
 % general, through
 % \begin{equation}
-%   \hat{\mathbf X}^{(i)} = f(\mathbf{X}, \mathbf{N}^{(i)}),
+%   \tilde{\mathbf X}^{(i)} = f(\mathbf{X}, \mathbf{N}^{(i)}),
 %   \label{eq:general_model}
 % \end{equation}
 % where ${\mathbf N}^{(i)}$ an $i$-th (unknown) noise tensor instance
@@ -180,9 +180,9 @@ patterns that are coherent (autocorrelated) spatially and temporally
 
 % We assume that ${\mathbf X}$ and $\mathbf{N}$ are statistically
 % independent, and therefore, nothing can be said about
-% ${\mathbf N}^{(i)}$ if we know $\hat{\mathbf X}^{(i)}$, and
+% ${\mathbf N}^{(i)}$ if we know $\tilde{\mathbf X}^{(i)}$, and
 % viceversa, and therefore, it is impossible to obtain ${\mathbf X}$
-% from a single $\hat{\mathbf X}^{(i)}$.
+% from a single $\tilde{\mathbf X}^{(i)}$.
 
 % \subsection{Signal-independent noise model}
 % In SIN (signal-independent noise) models, the noise is statistically i.i.d. (independent and
@@ -200,7 +200,7 @@ patterns that are coherent (autocorrelated) spatially and temporally
 
 % SIN models are also called additive noise models defined by
 % \begin{equation}
-%   \hat{\mathbf X}^{(i)} = {\mathbf X} + {\mathbf N}^{(i)}.
+%   \tilde{\mathbf X}^{(i)} = {\mathbf X} + {\mathbf N}^{(i)}.
 %   \label{eq:additive_noisy_model}
 % \end{equation}
 
@@ -209,7 +209,7 @@ patterns that are coherent (autocorrelated) spatially and temporally
 % the clean signal (see Eq.~\ref{eq:general_model}).
 
 % %\begin{equation}
-% %  \hat{\mathbf X}^{(i)} = \mathbf{X} + {\mathbf N}^{(i)}(\mathbf{X}),
+% %  \tilde{\mathbf X}^{(i)} = \mathbf{X} + {\mathbf N}^{(i)}(\mathbf{X}),
 % %  \label{eq:SDN_model}
 % %\end{equation}
 
@@ -225,10 +225,10 @@ patterns that are coherent (autocorrelated) spatially and temporally
 %-COM-  \text{SNR} = \frac{P(\mathbf{s})}{P(\mathbf{n})} = \frac{\mathbb{E}(\mathbf{s}^2)}{\mathbb{E}(\mathbf{n}^2)} = \frac{\mathbb{E}(\mathbf{s})^2+\mathbb{V}(\mathbf{s})}{\mathbb{E}(\mathbf{n})^2+\mathbb{V}(\mathbf{n})},
 %-COM-  \label{eq:SNR}
 %-COM-\end{equation}
-%-COM-where $\mathbf{s}$ is the clean signal and $\hat{\mathbf{s}}$ is its
+%-COM-where $\mathbf{s}$ is the clean signal and $\tilde{\mathbf{s}}$ is its
 %-COM-noisy version, and
 %-COM-\begin{equation}
-%-COM-  \mathbf{n} = \hat{\mathbf{s}} - \mathbf{s}.
+%-COM-  \mathbf{n} = \tilde{\mathbf{s}} - \mathbf{s}.
 %-COM-\end{equation}
 %-COM-
 %-COM-\begin{comment}
@@ -251,20 +251,20 @@ patterns that are coherent (autocorrelated) spatially and temporally
 %-COM-Unfortunately, in general we don't know either $\mathbf{s}$ or
 %-COM-$\mathbf{n}$. However, using that
 %-COM-\begin{equation}
-%-COM-  \mathbb{E}(\mathbf{s}^2) = \mathbb{E}(\hat{\mathbf{s}}^2),
+%-COM-  \mathbb{E}(\mathbf{s}^2) = \mathbb{E}(\tilde{\mathbf{s}}^2),
 %-COM-\end{equation}
 %-COM-(see Appendix~\ref{sec:power_signal},
 %-COM- that 
 %-COM-\begin{equation}
-%-COM-  \mathbb{E}(\mathbf{s}^2)^2 = \mathbb{E}(\hat{\mathbf{s}}^2)^2,
+%-COM-  \mathbb{E}(\mathbf{s}^2)^2 = \mathbb{E}(\tilde{\mathbf{s}}^2)^2,
 %-COM-\end{equation}
 %-COM-(see Appendix~\ref{sec:power_noise}) and that
 %-COM-\begin{equation}
-%-COM-  \mathbb{V}(\mathbf{n}) = \mathbb{V}(\hat{\mathbf{s}}-\mathbf{s}) = \mathbb{V}(\hat{\mathbf{s}}) + \mathbb{V}(\mathbf{s}) = \mathbb{V}(\hat{\mathbf{s}}),
+%-COM-  \mathbb{V}(\mathbf{n}) = \mathbb{V}(\tilde{\mathbf{s}}-\mathbf{s}) = \mathbb{V}(\tilde{\mathbf{s}}) + \mathbb{V}(\mathbf{s}) = \mathbb{V}(\tilde{\mathbf{s}}),
 %-COM-\end{equation}
 %-COM-because $\mathbb{V}(\mathbf{s})=0$, we finally get that
 %-COM-\begin{equation}
-%-COM-  \text{SNR} \approx \frac{\mathbb{E}(\hat{\mathbf{s}})^2}{\mathbb{V}(\hat{\mathbf{s}})}.
+%-COM-  \text{SNR} \approx \frac{\mathbb{E}(\tilde{\mathbf{s}})^2}{\mathbb{V}(\tilde{\mathbf{s}})}.
 %-COM-  \label{eq:SNR-distribution}
 %-COM-\end{equation}
 %-COM-(again, we are interested in the power of the signal, not in its
@@ -329,12 +329,12 @@ The \gls{AWG} noise model explains how a clean image
 $\bm{X}=\{\bm{X}_p\}$, where
 $X_p\ge 0~\forall \text{(pixel~index)} p$, is contaminated with noise
 $\bm{N}$ (the realizations of a \gls{DRV} $N$), generating a
-$\hat{\bm{X}}$ noisy image, in the following way:
+$\tilde{\bm{X}}$ noisy image, in the following way:
 \begin{enumerate}
 \item Both ``signals'' are sample-wise added, clipping to zero the
   negative values:
   \begin{equation}
-    \hat{\bm{X}_p} = \text{max}(0, \bm{X}_p + \bm{N}_p).
+    \tilde{\bm{X}_p} = \text{max}(0, \bm{X}_p + \bm{N}_p).
     \label{eq:AWG}
   \end{equation}
 \item $N$ produce \gls{iid} realizations $\bm{N}$ that follow a Gaussian
@@ -366,34 +366,34 @@ $\hat{\bm{X}}$ noisy image, in the following way:
 
 \subsection{The ``expected'' noisy image}
 Under the assumption that we have a high-enought number of noisy
-instances $\{\hat{\bm{X}}^{(i)}\}$ and therefore the pixel-wise
+instances $\{\tilde{\bm{X}}^{(i)}\}$ and therefore the pixel-wise
 arithmetic average (see Section~\ref{sec:average}) of them can be
 considered as a good estimation for the expected noisy image,
 \begin{equation}
-  \overline{\{\hat{\bm{X}}^{()}\}} \approx \mathbb{E}[\{\hat{\bm{X}}^{()}\}],
+  \overline{\{\tilde{\bm{X}}^{()}\}} \approx \mathbb{E}[\{\tilde{\bm{X}}^{()}\}],
 \end{equation}
 the expectation for the $p$-th pixel of the noisy image is
 \begin{equation}
-  \mathbb{E}[\{\hat{\bm{X}_p}\}^{()}] = \mathbb{E}[\text{max}(0, \{\bm{X}_p+\bm{N}_p)\}^{()}].
+  \mathbb{E}[\{\tilde{\bm{X}_p}\}^{()}] = \mathbb{E}[\text{max}(0, \{\bm{X}_p+\bm{N}_p)\}^{()}].
   \label{eq:E_AWG}
 \end{equation}
 Notice that
-$\mathbb{E}[\{\hat{\bm{X}}\}^{()}]>\mathbb{E}[\{\bm{X}\}^{()}]$ when
+$\mathbb{E}[\{\tilde{\bm{X}}\}^{()}]>\mathbb{E}[\{\bm{X}\}^{()}]$ when
 $\mathbb{E}[\{\bm{X}\}^{()}]=\bm{0}$. This explain the existence of
 noise in \emph{dark images}\footnote{A dark image is those obtained in
-  absence of radiation}. This basically implies that $\hat{\bm{X}}$ is
+  absence of radiation}. This basically implies that $\tilde{\bm{X}}$ is
 an unbiased estimator or $\bm{X}$ when $\mathbb{E}[\bm{X}]>0$.
 
 \subsection{Variance of the noisy image}
 The variance of the signal described in Eq.~\ref{eq:AWG} is
 \begin{equation}
-  \mathtt{Var}(\hat{\bm{X}}) = \mathtt{Var}(\bm{X}+\bm{N}) = \mathtt{Var}(\bm{X}) + \sigma^2
-  %\mathbb{V}(\hat{\mathbf{s}}_i) = \mathbb{V}(\mathbf{s}_i + \mathbf{n}_i) = \mathbb{V}(\mathbf{s}_i) + \mathbb{V}(\mathbf{n}_i) = \mathbb{V}(\mathbf{s}_i) + \sigma^2,
+  \mathtt{Var}(\tilde{\bm{X}}) = \mathtt{Var}(\bm{X}+\bm{N}) = \mathtt{Var}(\bm{X}) + \sigma^2
+  %\mathbb{V}(\tilde{\mathbf{s}}_i) = \mathbb{V}(\mathbf{s}_i + \mathbf{n}_i) = \mathbb{V}(\mathbf{s}_i) + \mathbb{V}(\mathbf{n}_i) = \mathbb{V}(\mathbf{s}_i) + \sigma^2,
   \label{eq:V_AWG}
 \end{equation}
 %i.e.,
 %\begin{equation}
-%  \mathbb{V}(\hat{\mathbf{s}}) = \mathbb{V}(\mathbf{s}) + \sigma^2.
+%  \mathbb{V}(\tilde{\mathbf{s}}) = \mathbb{V}(\mathbf{s}) + \sigma^2.
 %  \label{eq:V_AWG}
 %\end{equation}
 Therefore, the variance of a \gls{AWG} noisy signal depend on the
@@ -408,20 +408,20 @@ If $\mathbf{s}=\mathbf{0}$ (a constant signal
 with zeros), Equations \ref{eq:E_AWG} and \ref{eq:V_AWG}
 reduce to
 \begin{equation}
-  \mathbb{E}(\mathbf{\hat{\mathbf{s}}}) = 0,
+  \mathbb{E}(\mathbf{\tilde{\mathbf{s}}}) = 0,
 \end{equation}
 and
 \begin{equation}
-  \mathbb{V}(\hat{\mathbf{s}}) = \sigma^2,
+  \mathbb{V}(\tilde{\mathbf{s}}) = \sigma^2,
 \end{equation}
 respectively, and if $\mathbf{s}=\mathbf{1}$ (a constant signal with
 ones)
 \begin{equation}
-  \mathbb{E}(\hat{\mathbf{s}}) = \mathbb{E}(\mathbf{1}) = 1,
+  \mathbb{E}(\tilde{\mathbf{s}}) = \mathbb{E}(\mathbf{1}) = 1,
 \end{equation}
 and
 \begin{equation}
-  \mathbb{V}(\hat{\mathbf{s}}) = \sigma^2.
+  \mathbb{V}(\tilde{\mathbf{s}}) = \sigma^2.
 \end{equation}
 \end{comment}
 
@@ -485,13 +485,13 @@ the values of the clean signal (pixels), something that usually
 happens when the total energy of the radiation is low.
 
 Mathematically, a noisy (Poisson-contaminated) pixel can be modeled as
-a \gls{DRV} $\hat{X}$ that follows a Poisson distribution (see
+a \gls{DRV} $\tilde{X}$ that follows a Poisson distribution (see
 Section~\ref{sec:poisson_distribution}) with mean
-$\mathbb{E}[\hat{X}]=\lambda$ and variance
-$\text{Var}(\hat{X})=\lambda$, where (as happens with Eq.~\ref{eq:AWG}
+$\mathbb{E}[\tilde{X}]=\lambda$ and variance
+$\text{Var}(\tilde{X})=\lambda$, where (as happens with Eq.~\ref{eq:AWG}
 and considering that, by definition, $\lambda>0$))
 \begin{equation}
-  \hat{\bm{X}} = \bm{X} + \bm{N}.
+  \tilde{\bm{X}} = \bm{X} + \bm{N}.
   \label{eq:additive_Poisson}
 \end{equation}
 Notice that, in the case of Poisson noise (and differently to Gaussian
@@ -506,7 +506,7 @@ $\lambda>10$. In this case, we can say that
 \end{equation}
 Therefore, Eq.~\ref{eq:additive_Poisson} becomes
 \begin{equation}
-  \hat{\bm{X}} = \bm{X} + \sqrt{\bm{X}}\teta,
+  \tilde{\bm{X}} = \bm{X} + \sqrt{\bm{X}}\teta,
   \label{eq:additive_Poisson}
 \end{equation}
 with
@@ -544,7 +544,7 @@ still be trapped by the \ref{eq:power_SNR_Poisson}
 rationale\footnote{As we will see, the only way to beat this without
   increasing radiation is through computational denoising, where you
   use the known Poisson statistics to ``guess'' the most likely value of
-  $\lambda$ based on the noisy $\hat{\bm{X}}$ values you recorded.}. In other words, if you want to double your (amplitude) \gls{SNR}, that is, make the image twice as ``clean'', you cannot just double the radiation, but you have to quadruple it ($\sqrt{4}=2$).
+  $\lambda$ based on the noisy $\tilde{\bm{X}}$ values you recorded.}. In other words, if you want to double your (amplitude) \gls{SNR}, that is, make the image twice as ``clean'', you cannot just double the radiation, but you have to quadruple it ($\sqrt{4}=2$).
 
 %{{{
 
@@ -552,20 +552,20 @@ rationale\footnote{As we will see, the only way to beat this without
 \subsection{Expectation of the noisy signal}
 %From Eq.~\ref{eq:PN} we have that
 %\begin{equation}
-%  \hat{\mathbf{s}}_i = \frac{\mathbf{n}_i}{\gamma},~\mathbf{n}_i\sim\mathcal{P}(\gamma\mathbf{s}_i).
+%  \tilde{\mathbf{s}}_i = \frac{\mathbf{n}_i}{\gamma},~\mathbf{n}_i\sim\mathcal{P}(\gamma\mathbf{s}_i).
 %  \label{eq:PNi}
 %\end{equation}
 Considering expectations in Eq.~\ref{eq:PN_i}, we get that
 \begin{equation}
-  \mathbb{E}(\hat{\mathbf{s}}_i) = \mathbb{E}\left(\frac{\mathbf{n}_i}{\gamma}\right) = \frac{1}{\gamma}\mathbb{E}(\mathbf{n}_i) = \frac{1}{\gamma}\gamma\mathbf{s}_i = \mathbf{s}_i.
+  \mathbb{E}(\tilde{\mathbf{s}}_i) = \mathbb{E}\left(\frac{\mathbf{n}_i}{\gamma}\right) = \frac{1}{\gamma}\mathbb{E}(\mathbf{n}_i) = \frac{1}{\gamma}\gamma\mathbf{s}_i = \mathbf{s}_i.
   \label{eq:EPNi}
 \end{equation}
 Therefore,
 \begin{equation}
-  \mathbb{E}(\hat{\mathbf{s}}) = \mathbf{s},
+  \mathbb{E}(\tilde{\mathbf{s}}) = \mathbf{s},
   \label{eq:E_Poisson}
 \end{equation}
-and therefore, $\hat{\mathbf{s}}$ is an unbiased estimator of
+and therefore, $\tilde{\mathbf{s}}$ is an unbiased estimator of
 $\mathbf{s}$ (the expected value for each noisy $i$-th pixel is the
 clean $i$-th pixel).
 \end{comment}
@@ -581,9 +581,9 @@ the true value of the pixel will be shifted by such value. In other
 words, the variance of the noisy signal is the sum of the variance of
 the clean signal and the variance of the noise:
 \begin{equation}
-  \text{Var}(\hat{x}) = \text{Var}(x) + \text{Var}(n),
+  \text{Var}(\tilde{x}) = \text{Var}(x) + \text{Var}(n),
 \end{equation}
-where $\hat{x}$ represents to a pixel (value) of the noisy signal, $x$
+where $\tilde{x}$ represents to a pixel (value) of the noisy signal, $x$
 to (a pixel value of) the clean signal, and $n$ to the Poisson noise
 that affect to such pixel.
 \end{comment}
@@ -591,7 +591,7 @@ that affect to such pixel.
 \begin{comment}
 Using again Eq.~\ref{eq:PN_i}
 \begin{equation}
-  \mathbb{V}(\hat{\mathbf{s}}_i) = \mathbb{V}\left(\frac{\mathbf{n}_i}{\gamma}\right) = \frac{1}{\gamma^2}\mathbb{V}(\mathbf{n}_i) = \frac{1}{\gamma^2}\gamma\mathbf{s}_i = \mathbf{s}_i/\gamma,
+  \mathbb{V}(\tilde{\mathbf{s}}_i) = \mathbb{V}\left(\frac{\mathbf{n}_i}{\gamma}\right) = \frac{1}{\gamma^2}\mathbb{V}(\mathbf{n}_i) = \frac{1}{\gamma^2}\gamma\mathbf{s}_i = \mathbf{s}_i/\gamma,
   \label{eq:V_Poisson}
 \end{equation}
 which indicates that the variance of pixel of noisy image depends
@@ -603,19 +603,19 @@ noisy model.
 \begin{comment}
 In the exteme case where $\mathbf{s}=\mathbf{0}$, we get that
 \begin{equation}
-  \mathbb{E}(\hat{\mathbf{s}}) = 0,
+  \mathbb{E}(\tilde{\mathbf{s}}) = 0,
 \end{equation}
 and
 \begin{equation}
-  \mathbb{V}(\hat{\mathbf{s}}) = 0.
+  \mathbb{V}(\tilde{\mathbf{s}}) = 0.
 \end{equation}
 If $\mathbf{s}=\mathbf{1}$, then
 \begin{equation}
-  \mathbb{E}(\hat{\mathbf{s}}) = 1,
+  \mathbb{E}(\tilde{\mathbf{s}}) = 1,
 \end{equation}
 and
 \begin{equation}
-  \mathbb{V}(\hat{\mathbf{s}}) = 1/\gamma.
+  \mathbb{V}(\tilde{\mathbf{s}}) = 1/\gamma.
 \end{equation}
 \end{comment}
 
@@ -625,7 +625,7 @@ and
 If we suppose that the mean of signal represents the power of the signal and its standard
 deviation represents the noise component, we can define
 \begin{equation}
-  \text{SNR}_i = \frac{\mathbb{E}(\hat{\mathbf{s}}_i)}{\sqrt{\mathbb{V}(\hat{\mathbf{s}}_i)}}.
+  \text{SNR}_i = \frac{\mathbb{E}(\tilde{\mathbf{s}}_i)}{\sqrt{\mathbb{V}(\tilde{\mathbf{s}}_i)}}.
   \label{eq:SNR_mean_deviation}
 \end{equation}
 
@@ -649,13 +649,13 @@ generate the number $\bm{x}_i$ depends on
 
 Pixel-wise signal-dependent Poisson noise can be modeled as
 \begin{equation}
-  \hat{\mathbf{s}}_i = \frac{\mathbf{n}_i}{\gamma},~\mathbf{n}_i\sim\mathcal{P}(\lambda=\gamma\mathbf{s}_i),
+  \tilde{\mathbf{s}}_i = \frac{\mathbf{n}_i}{\gamma},~\mathbf{n}_i\sim\mathcal{P}(\lambda=\gamma\mathbf{s}_i),
   \label{eq:PN_i}
 \end{equation}
 where $\gamma$ controls the variance (the higher $\gamma$, the smaller
 the deviation from the $\mathbf{s}_i$ values). As can be seen, this is
 a signal-dependent model because the brighter parts of
-$\hat{\mathbf s}$ will have a higher mean and variance, and therefore
+$\tilde{\mathbf s}$ will have a higher mean and variance, and therefore
 a higher noise power \cite{meiniel2018denoising} (and viceversa). This also implies
 that the standard deviation of the noise depends on the expectation of
 the noisy signal, which depends on the expectation of the clean signal
@@ -666,7 +666,7 @@ $|\mathbf{S}|$ should look alike.
 \subsection{Simulation using Gaussian noise generators}
 Considering Eq.~\ref{eq:E_Poisson} and Eq.~\ref{eq:V_Poisson}, it should be clear that we can simulate the generation of a Poisson sequence using
 \begin{equation}
-  \hat{\mathbf{s}}_i \approx \mathbf{s}_i + \mathbf{n}_i^{\mathcal{N}(\mu=\mathbf{s}_i, \sigma=\mathbf{s}_i/\gamma)}.
+  \tilde{\mathbf{s}}_i \approx \mathbf{s}_i + \mathbf{n}_i^{\mathcal{N}(\mu=\mathbf{s}_i, \sigma=\mathbf{s}_i/\gamma)}.
   \label{eq:Poisson_simulation}
 \end{equation}
 
@@ -700,14 +700,14 @@ of both Poisson and \gls{AWG} noise, which is commonly known as
 \acrshort{MPG} noise \cite{meiniel2018denoising}. The generation of
 \gls{MPG} noise can be modeled as
 \begin{equation}
-  \hat{\mathbf{s}}_i = (1-\alpha)(\mathbf{s}_i + \mathbf{n}^{\mathcal{N}(\sigma)}_i) + \alpha\mathbf{n}^{\mathcal{P}(\gamma\mathbf{s})}_i/\gamma),
-  %\hat{\mathbf s} = (1-\alpha)(\mathbf{s} + {\mathbf n}_{\mathcal{N}(\sigma)}) + \alpha{\mathbf n}_{\mathcal{P}(\lambda=\gamma\mathbf{s})}/\gamma,
+  \tilde{\mathbf{s}}_i = (1-\alpha)(\mathbf{s}_i + \mathbf{n}^{\mathcal{N}(\sigma)}_i) + \alpha\mathbf{n}^{\mathcal{P}(\gamma\mathbf{s})}_i/\gamma),
+  %\tilde{\mathbf s} = (1-\alpha)(\mathbf{s} + {\mathbf n}_{\mathcal{N}(\sigma)}) + \alpha{\mathbf n}_{\mathcal{P}(\lambda=\gamma\mathbf{s})}/\gamma,
   \label{eq:MPG_noise_model} 
 \end{equation}
 where the real number $\alpha\in[0,~1]$ controls the ratio between
 both types of noise (Poissonian and Gaussian). Therefore, for
 $\alpha > 0$,\footnote{Notice that if $\sigma=0$ and $\alpha=0$, both
-  types of noise vanish and $\hat{\mathbf{s}}=\mathbf{s}$. By default,
+  types of noise vanish and $\tilde{\mathbf{s}}=\mathbf{s}$. By default,
   in our experiments, $\alpha=0.5$, i.e. both types of noise are
   present in the same proportion.} the noise is signal-dependent and
 it's spectrum resembles in some degree the spectrum of
@@ -721,7 +721,7 @@ Considering that $\mathbb{E}(\mathbf{n}^{\mathcal{N}(\sigma^2)}_i)=0$
 and that
 $\mathbf{E}(\mathbf{n}^{\mathcal{P}(\gamma\mathbf{s})}_i)=\gamma\mathbf{s}_i$, and Eq.~\ref{eq:MPG_noise_model} boilds down to
 \begin{equation}
-  \mathbb{E}(\hat{\mathbf{s}}_i) = (1-\alpha)(\mathbb{E}(\mathbf{s}_i)) + \alpha\gamma\mathbf{s}_i/\gamma = (1-\alpha)\mathbf{s}_i + \alpha\mathbf{s}_i = \mathbf{s}_i.
+  \mathbb{E}(\tilde{\mathbf{s}}_i) = (1-\alpha)(\mathbb{E}(\mathbf{s}_i)) + \alpha\gamma\mathbf{s}_i/\gamma = (1-\alpha)\mathbf{s}_i + \alpha\mathbf{s}_i = \mathbf{s}_i.
   \label{eq:E_MPG}
 \end{equation}
 Therefore, the \gls{MPG} noise model is unbiased.
@@ -729,14 +729,14 @@ Therefore, the \gls{MPG} noise model is unbiased.
 \subsection{Variance of the noisy signal}
 Taking variances in Eq.~\ref{eq:MPG_noise_model} we obtain
 \begin{equation}
-  \mathbb{V}(\hat{\mathbf{s}}_i) = (1-\alpha)^2\sigma^2 + \alpha^2\mathbf{s}_i/\gamma
+  \mathbb{V}(\tilde{\mathbf{s}}_i) = (1-\alpha)^2\sigma^2 + \alpha^2\mathbf{s}_i/\gamma
   \label{eq:V_MPG}
 \end{equation}
 
 \subsection{\acrshort{SNR} of the \acrshort{MPG} noise model}
 Considering that (see Eq.~\ref{eq:SNR_mean_deviation})
 \begin{equation}
-  \text{SNR}_i = \frac{\mathbb{E}(\hat{\mathbf{s}}_i)^2}{\mathbb{V}(\hat{\mathbf{s}}_i)},
+  \text{SNR}_i = \frac{\mathbb{E}(\tilde{\mathbf{s}}_i)^2}{\mathbb{V}(\tilde{\mathbf{s}}_i)},
 \end{equation}
 and using Eq.~\ref{eq:E_MPG} and Eq.~\ref{eq:V_MPG}, we obtain that
 \begin{equation}
@@ -760,19 +760,19 @@ In particular, for $\mathbf{s}=\mathbf{0}$ (a constant signal
 with zeros), Equations \ref{eq:E_MPG} and \ref{eq:V_MPG}
 become
 \begin{equation}
-  \mathbb{E}(\mathbf{\hat{\mathbf{s}}}) = 0,
+  \mathbb{E}(\mathbf{\tilde{\mathbf{s}}}) = 0,
 \end{equation}
 and
 \begin{equation}
-  \mathbb{V}(\hat{\mathbf{s}}) = (1-\alpha)\sigma^2,
+  \mathbb{V}(\tilde{\mathbf{s}}) = (1-\alpha)\sigma^2,
 \end{equation}
 and for $\mathbf{s}=\mathbf{1}$ (a constant signal with ones)
 \begin{equation}
-  \mathbb{E}(\hat{\mathbf{s}}) = \mathbb{E}(\mathbf{1}) = 1,
+  \mathbb{E}(\tilde{\mathbf{s}}) = \mathbb{E}(\mathbf{1}) = 1,
 \end{equation}
 and
 \begin{equation}
-  \mathbb{V}(\hat{\mathbf{s}}) = (1-\alpha)\sigma^2 + \alpha/\gamma.
+  \mathbb{V}(\tilde{\mathbf{s}}) = (1-\alpha)\sigma^2 + \alpha/\gamma.
 \end{equation}
 \end{comment}
 
@@ -784,13 +784,13 @@ and
 %\end{equation}
 %and that
 %\begin{equation}
-%  \hat{\mathbf s} = (1-\alpha)(\mathbf{s} + {\mathbf s}_{\mathcal{N}(\sigma)}) + \alpha{\mathbf n}_{\mathcal{P}(\lambda=\gamma\mathbf{s})}/\gamma,
+%  \tilde{\mathbf s} = (1-\alpha)(\mathbf{s} + {\mathbf s}_{\mathcal{N}(\sigma)}) + \alpha{\mathbf n}_{\mathcal{P}(\lambda=\gamma\mathbf{s})}/\gamma,
 %  \label{eq:MPG_noise_model} 
 %\end{equation}
 %where $\alpha\in[0,~1]$ controls the ratio of both types of
 %noise. Therefore, for $\alpha > 0$,\footnote{If $\sigma=0$ and
 %$\alpha=0$, both types of noise vanish and
-%$\hat{\mathbf{s}}=\mathbf{s}$.} the noise is signal-dependent and it's
+%$\tilde{\mathbf{s}}=\mathbf{s}$.} the noise is signal-dependent and it's
 %spectrum resembles the spectrum of $\mathbf{x}$. By default, in our
 %experiments, $\alpha=0.5$.
 
@@ -808,7 +808,7 @@ and
 
 % Multiplicative zero-mean Gaussian noise, modeled as
 %   \begin{equation}
-%     \hat{\mathbf X}^{(i)} = {\mathbf X} (1 + {\mathbf N}^{(i)}),
+%     \tilde{\mathbf X}^{(i)} = {\mathbf X} (1 + {\mathbf N}^{(i)}),
 %     \label{eq:MGN}
 %   \end{equation}
 %   where ${\mathbf N}\sim{\mathcal N}(\mu,\sigma)$. This is a signal-dependent noise present
@@ -824,7 +824,7 @@ and
 %   of the first kind with order zero. Rician noisy tensor instances can
 %   be generated with
 %   \begin{equation}
-%     \hat{\mathbf X}^{(i)} = \sqrt{ ({\mathbf X} + {\mathbf N}_{\text{real}}^{(i)})^2 + ({\mathbf N}_{\text{imag}}^{(i)})^2}.
+%     \tilde{\mathbf X}^{(i)} = \sqrt{ ({\mathbf X} + {\mathbf N}_{\text{real}}^{(i)})^2 + ({\mathbf N}_{\text{imag}}^{(i)})^2}.
 %   \end{equation}
 %   %Notice that the Rayleigh distribution ($\mathbf{N}\sim\mathrm{Rayleigh}(\sigma)$),
 %   %which is defined by the PDF
@@ -897,7 +897,7 @@ and
 \subsection{Noise simulation}
 \gls{MPG} noise can be generated with
 \begin{equation}
-  \hat{\mathbf{s}}_i \approx \mathbf{s}_i + \mathbf{n}_i^{\mathcal{N}(\mu=\mathbf{s}_i, \sigma= (1-\alpha)^2\sigma^2 + \alpha^2\mathbf{s}_i/\gamma)}.
+  \tilde{\mathbf{s}}_i \approx \mathbf{s}_i + \mathbf{n}_i^{\mathcal{N}(\mu=\mathbf{s}_i, \sigma= (1-\alpha)^2\sigma^2 + \alpha^2\mathbf{s}_i/\gamma)}.
   \label{eq:Poisson_simulation}
 \end{equation}
 
@@ -914,7 +914,7 @@ standard deviation of the noise. In Gaussian filtering, the length of
 the kernel should be selected depending on the standard deviation of
 the noise.
 
-Noise in $\hat{\mathbf{s}}$ (remember that both $\mathbf{s}$ and
+Noise in $\tilde{\mathbf{s}}$ (remember that both $\mathbf{s}$ and
 $\mathbf{n}$ are unknown) can be characterized attending to different
 aspects (some of them overlaped):
 \begin{enumerate}
@@ -990,7 +990,7 @@ thus to directly measure $\mathbb{V}(\mathbf{n})$.
 A evolution of the previous technique was proposed in
 \cite{immerkaer1996fast} in which using a $3\times 3$ convolution mask
 presented a method for estimating the variance of \gls{AWG} noise in
-$\hat{\mathbf{s}}$. In \cite{rank1999estimation}, $\hat{\mathbf{s}}$
+$\tilde{\mathbf{s}}$. In \cite{rank1999estimation}, $\tilde{\mathbf{s}}$
 is low-pass filtered to ``to suppress the influence of the (unknown)
 original image'' and then the type and parameters of the noise in the
 filtered image are estimated.
@@ -1010,8 +1010,8 @@ to estimate the standard deviation of the noise.\footnote{If one is
 %{{{
 \label{sec:fourier_correlation}
 
-If we have at least two noisy instances $\hat{\mathbf{s}}^{(1)}$ and
-$\hat{\mathbf{s}}^{(2)}$ of the same clean signal, we can characterize
+If we have at least two noisy instances $\tilde{\mathbf{s}}^{(1)}$ and
+$\tilde{\mathbf{s}}^{(2)}$ of the same clean signal, we can characterize
 the noise from a frequency perspective. Concretely, we can determine
 maximum resolution $d$ (frequency) of $\mathbf{s}$, considering, for
 example, the maximum spatial resolution that a microscope can
@@ -1057,14 +1057,14 @@ fields such as single particle electron cryo-microscopy (cryo-EM),
 A point of the FSC curve is determined\footnote{An similar
   definition there exists for the FRC.} by~\cite{verbeke2024self}
 \begin{equation}
-  \text{FSC}(\hat{\mathbf{s}}^{(1)}, \hat{\mathbf{s}}^{(2)}; r) =
-  \frac{\sum_{i \in S_r} \hat{\mathbf{S}}^{(1)}_i \hat{\mathbf{S}}^{(2)*}_i}
-  {\sqrt{\sum_{i \in S_r} |{\hat{\mathbf{S}}^{(1)}}_i|^2 \sum_{i \in S_r} |{\hat{\mathbf{S}}^{(2)}_i}|^2}}
+  \text{FSC}(\tilde{\mathbf{s}}^{(1)}, \tilde{\mathbf{s}}^{(2)}; r) =
+  \frac{\sum_{i \in S_r} \tilde{\mathbf{S}}^{(1)}_i \tilde{\mathbf{S}}^{(2)*}_i}
+  {\sqrt{\sum_{i \in S_r} |{\tilde{\mathbf{S}}^{(1)}}_i|^2 \sum_{i \in S_r} |{\tilde{\mathbf{S}}^{(2)}_i}|^2}}
   \label{eq:FSC}
 \end{equation}
 where $i=(x, y, z)$ is a point (a coordinate of a Fourier coefficient)
 of the surface of the sphere $S_r$ defined by $x^2+y^2+z^2=r^2$, and
-$\hat{\mathbf{S}}$ is the Fourier transform of $\hat{\mathbf{s}}$. We
+$\tilde{\mathbf{S}}$ is the Fourier transform of $\tilde{\mathbf{s}}$. We
 will use the term \gls{FC} to refeer to these metrics when the number
 of dimensions is not relevant.
 
@@ -1073,13 +1073,13 @@ of dimensions is not relevant.
 \section{\glsentryfull{SFC} curve}
 %{{{
 
-Unfortunately, the two noisy instances $\hat{\mathbf{s}}^{(1)}$ and
-$\hat{\mathbf{s}}^{(2)}$ do not always exist (see
+Unfortunately, the two noisy instances $\tilde{\mathbf{s}}^{(1)}$ and
+$\tilde{\mathbf{s}}^{(2)}$ do not always exist (see
 Section~\ref{sec:why_denoising}).  In this case, a workaround is to
 simulate its existence, by distributing the information of the only
-image we have $\hat{\mathbf{s}}$ between two noisy
-(sub-)instances $\hat{\mathbf{s}}^{(a)}$ and
-$\hat{\mathbf{s}}^{(b)}$. For example, in \cite{verbeke2024self} a
+image we have $\tilde{\mathbf{s}}$ between two noisy
+(sub-)instances $\tilde{\mathbf{s}}^{(a)}$ and
+$\tilde{\mathbf{s}}^{(b)}$. For example, in \cite{verbeke2024self} a
 even/odd signal splitting (see Appendix~\ref{sec:EOS}) in 2D slices is
 proposed to compute the so called \gls{SFC}. In \cite{koho2019fourier}
 a subsampled-chessboard splitting pattern (see
@@ -1112,7 +1112,7 @@ least\footnote{When it is possible to use more instances, the
   (or more) captures of the same view, the only that should
   distinguish the instances is the noise. Notice that, if the views
   were different, the uncorrelated noise is also present.} instances,
-$\hat{\mathbf{X}}^{(1)}$ and $\hat{\mathbf{X}}^{(2)}$. For example, in
+$\tilde{\mathbf{X}}^{(1)}$ and $\tilde{\mathbf{X}}^{(2)}$. For example, in
 \cite{verbeke2024self} a even/odd signal splitting (see
 Appendix~\ref{sec:EOS}) in 2D slices is proposed to compute the SFC
 that resembles the true FC in some specific cases. In
@@ -1302,11 +1302,11 @@ where $f$ denotes frequency.
 
 The SSNR can be estimated using the correlation in the Fourier domain
 between two (or more, in this case, using the mean SSNR) instances
-$\hat{\mathbf{X}}^{(1)}$ and $\hat{\mathbf{X}}^{(2)}$. For example, in
+$\tilde{\mathbf{X}}^{(1)}$ and $\tilde{\mathbf{X}}^{(2)}$. For example, in
 the 3D case (and we only have two instances)
 \cite{unser1987new,verbeke2024self}, we have that
 \begin{equation}
-\text{SSNR}(\hat{\mathbf{X}}^{(1)}, \hat{\mathbf{X}}^{(2)}; f) = \frac{\text{FSC}(\hat{\mathbf{X}}^{(1)}, \hat{\mathbf{X}}^{(2)}; f)}{1-\text{FSC}(\hat{\mathbf{X}}^{(1)}, \hat{\mathbf{X}}^{(2)}; f)}.
+\text{SSNR}(\tilde{\mathbf{X}}^{(1)}, \tilde{\mathbf{X}}^{(2)}; f) = \frac{\text{FSC}(\tilde{\mathbf{X}}^{(1)}, \tilde{\mathbf{X}}^{(2)}; f)}{1-\text{FSC}(\tilde{\mathbf{X}}^{(1)}, \tilde{\mathbf{X}}^{(2)}; f)}.
 \end{equation}
 
 %}}}
@@ -1507,22 +1507,22 @@ the following algorithm:
   \end{equation}
   When these swappings are performed for all the pixels of
   $\mathbf{X}$, this step generates a randomly locally-shuffled image
-  $\hat{\mathbf{X}}$. Notice that no pixels are lost, only displaced.
+  $\tilde{\mathbf{X}}$. Notice that no pixels are lost, only displaced.
 
-\item \textbf{Projection of $\mathbf{X}$ on $\hat{\mathbf{X}}$}:
+\item \textbf{Projection of $\mathbf{X}$ on $\tilde{\mathbf{X}}$}:
   \begin{enumerate}
   \item \textbf{Computation of a \gls{DOF} field
       $\overrightarrow{\mathbf{V}}$}: We use the \gls{DOF} Farneb\"ack
     algorithm \cite{farneback2003two} to find a correspondence between
-    the pixels of $\mathbf{X}$ and $\hat{\mathbf{X}}$ in terms of a
+    the pixels of $\mathbf{X}$ and $\tilde{\mathbf{X}}$ in terms of a
     spatial displacement (a vector) for each pixel of
     $\mathbf{X}$. Specifically, $\overrightarrow{\mathbf{V}}$ maps each
-    pixel of $\mathbf{X}$ into a coordinate of $\hat{\mathbf{X}}$,
+    pixel of $\mathbf{X}$ into a coordinate of $\tilde{\mathbf{X}}$,
     where the coordinate components can be floating point numbers.
   \item \textbf{Project $\mathbf{X}$ using
       $\overrightarrow{\mathbf{V}}$}: Each pixel $\mathbf{X}_i$
     with coordinates $(i_x, i_y)$ is replaced by the bilinear
-    interpolation of the four pixels of $\hat{\mathbf{X}}$ closer to
+    interpolation of the four pixels of $\tilde{\mathbf{X}}$ closer to
     the coordinate $(i_x+V_i.x,i_y+V_i.y)$, resulting
     $\tilde{\mathbf{X}}$.
   \end{enumerate}
@@ -1536,7 +1536,7 @@ input image.
 %}}}
 
 \begin{comment}
-\section{If $\mathbb{E}(\mathbf{n})=0$, then $\mathbb{E}(\mathbf{s}^2)=\mathbb{E}(\hat{\mathbf{s}}^2)$}
+\section{If $\mathbb{E}(\mathbf{n})=0$, then $\mathbb{E}(\mathbf{s}^2)=\mathbb{E}(\tilde{\mathbf{s}}^2)$}
 %{{{
 
 \label{sec:power_signal}
@@ -1545,31 +1545,31 @@ same than the power of the noisy signal:
 
 \begin{alignat*}{2}
   P(\mathbf{s}) & = \mathbb{E}(\mathbf{s}^2) \\
-                & = \mathbb{E}\left((\mathbf{n}+\hat{\mathbf{s}})^2\right) \\
-                & = \mathbb{E}(\mathbf{n}^2+2\mathbf{n}\mathbf{s}+\hat{\mathbf{s}}^2) \\
-                & = \mathbb{E}(\mathbf{n}^2) + 2\mathbb{E}(\mathbf{n})\mathbb{E}(\hat{\mathbf{s}}) + \mathbb{E}(\hat{\mathbf{s}}^2) \\
-                & = \mathbb{E}(\hat{\mathbf{s}}^2) = P(\hat{\mathbf{s}}).
+                & = \mathbb{E}\left((\mathbf{n}+\tilde{\mathbf{s}})^2\right) \\
+                & = \mathbb{E}(\mathbf{n}^2+2\mathbf{n}\mathbf{s}+\tilde{\mathbf{s}}^2) \\
+                & = \mathbb{E}(\mathbf{n}^2) + 2\mathbb{E}(\mathbf{n})\mathbb{E}(\tilde{\mathbf{s}}) + \mathbb{E}(\tilde{\mathbf{s}}^2) \\
+                & = \mathbb{E}(\tilde{\mathbf{s}}^2) = P(\tilde{\mathbf{s}}).
 \end{alignat*}
 
 %}}}
 
-\section{If $\mathbb{E}(\mathbf{n})=0$, then $\mathbb{E}(\hat{\mathbf{s}}^2)=\mathbb{E}(\mathbf{s}^2)$}
+\section{If $\mathbb{E}(\mathbf{n})=0$, then $\mathbb{E}(\tilde{\mathbf{s}}^2)=\mathbb{E}(\mathbf{s}^2)$}
 %{{{
 
 \label{sec:power_noise}
-If $\mathbb{E}(\hat{\mathbf{s}})=\mathbb{E}(\mathbf{s})$, i.e.,
+If $\mathbb{E}(\tilde{\mathbf{s}})=\mathbb{E}(\mathbf{s})$, i.e.,
 the noise is the random fluctuation arround that mean, then:
 
 \begin{align*}
   P(\mathbf{n})
   & = \mathbb{E}(\mathbf{n}^2) \\
-  & = \mathbb{E}\left((\hat{\mathbf{s}}-\mathbf{s})^2\right)\\
-  & = \mathbb{E}(\hat{\mathbf{s}}^2 - 2\hat{\mathbf{s}}\mathbf{s} + \mathbf{s}^2) \\
-  & = \mathbb{E}(\hat{\mathbf{s}}^2) -2\mathbb{E}(\hat{\mathbf{s}})\mathbb{E}(\mathbf{s}) + \mathbb{E}(\mathbf{s}^2) \\
-  & = \mathbb{E}(\hat{\mathbf{s}}^2) -2\mathbb{E}(\hat{\mathbf{s}})\mathbb{E}(\hat{\mathbf{s}}) + \mathbb{E}(\hat{\mathbf{s}}^2) \\
-  & = \mathbb{E}(\hat{\mathbf{s}}^2) -2\mathbb{E}(\hat{\mathbf{s}})^2 + \mathbb{E}(\hat{\mathbf{s}}^2) \\
-  & = \mathbb{E}(\hat{\mathbf{s}}^2)-\mathbb{E}(\hat{\mathbf{s}})^2 \\
-  & = \mathbb{V}(\hat{\mathbf{s}}).
+  & = \mathbb{E}\left((\tilde{\mathbf{s}}-\mathbf{s})^2\right)\\
+  & = \mathbb{E}(\tilde{\mathbf{s}}^2 - 2\tilde{\mathbf{s}}\mathbf{s} + \mathbf{s}^2) \\
+  & = \mathbb{E}(\tilde{\mathbf{s}}^2) -2\mathbb{E}(\tilde{\mathbf{s}})\mathbb{E}(\mathbf{s}) + \mathbb{E}(\mathbf{s}^2) \\
+  & = \mathbb{E}(\tilde{\mathbf{s}}^2) -2\mathbb{E}(\tilde{\mathbf{s}})\mathbb{E}(\tilde{\mathbf{s}}) + \mathbb{E}(\tilde{\mathbf{s}}^2) \\
+  & = \mathbb{E}(\tilde{\mathbf{s}}^2) -2\mathbb{E}(\tilde{\mathbf{s}})^2 + \mathbb{E}(\tilde{\mathbf{s}}^2) \\
+  & = \mathbb{E}(\tilde{\mathbf{s}}^2)-\mathbb{E}(\tilde{\mathbf{s}})^2 \\
+  & = \mathbb{V}(\tilde{\mathbf{s}}).
 \end{align*}
 
 %}}}

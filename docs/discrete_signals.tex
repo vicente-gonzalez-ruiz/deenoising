@@ -53,7 +53,7 @@ provided that $x(t)$ is continuous at $t=0$ \cite{gonzalez1992digital}.
 The energy of a discrete signal $\bm{x}$ is the sum of the square
 of all its samples:
 \begin{equation}
-  E(\mathbf{x}) = \sum_{s=0}^{S-1}|\bm{x}_s|^2.
+  E(\bm{x}) = \sum_{s=0}^{S-1}|\bm{x}_s|^2.
 \end{equation}
 
 Notice that, by definition, the energy of a finite-length discrete
@@ -71,7 +71,7 @@ The power of a discrete signal $\bm{x}$ is
   P(\bm{x}) = \frac{1}{S}E(\bm{x}),
   \label{eq:power_discrete_signal}
 \end{equation}
-i.e., its average energy (average of the squared magnitude of the
+i.e., it is average energy (average of the squared magnitude of the
 signal values).
 
 Compared to the energy of a signal, the use of the power of a signal
@@ -79,6 +79,15 @@ can be more convenient to avoid arithmetic overflow in computations
 with long signals.
 
 %}}}
+
+\section{\gls{RMS} of a discrete signal}
+\label{sec:RMS_amplitude}
+The \gls{RMS} amplitude of a signal $\bm{x}$ is defined as
+\begin{equation}
+  \text{RMS}(\bm{x}) = \sqrt{\frac{1}{S}E(\bm{x})},
+  \label{eq:power_discrete_signal}
+\end{equation}
+i.e., it is the square root of the average energy.
 
 \section{Fourier transform of a continuous signal}
 \label{sec:Fourier_transform}

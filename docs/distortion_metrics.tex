@@ -31,20 +31,16 @@ input samples.
 
 %}}}
 
-\section{\glsentryfull{SNR}}
+\section{Power \glsentryfull{SNR} (P-\gls{SNR})}
 %{{{
 
-The \acrshort{SNR} compares the energy of a desired signal (\gls{GT})
-$\mathbf{s}$ to the energy of \emph{background} noise
-$\mathbf{s}-\tilde{\mathbf{s}}$. It is defined as the ratio of average signal
-power
-(\href{https://en.wikipedia.org/wiki/Expected_value}{expectation} of
-the signal) to average noise power (expectation of the
-noise). Therefore,
-
+The \acrshort{SNR} compares the energy of a clean signal (\gls{GT})
+$\bm{X}$ to the energy of \emph{background} noise
+$\bm{N}=\bm{X}-\tilde{\bm{s}}$. The ``power'' version of the \gls{SNR} is defined as the ratio of average signal
+power to average noise power,
 \begin{equation}
-  \text{SNR}(\mathbf{x},\mathbf{y}) = \frac{\mathbb{E}(\mathbf{x})}{\mathbb{E}(\mathbf{x} - \mathbf{y})}.
-  \label{eq:formal_SNR}
+  \text{P-SNR}(\bm{X},\tilde{\bm{X}}) = \frac{P(\bm{X})}{P(\bm{X} - \tilde{\bm{X}})}.
+  \label{eq:power_SNR}
 \end{equation}
 %where, in general, 
 %\begin{equation}
@@ -52,7 +48,15 @@ noise). Therefore,
 %  \label{eq:expectation}
 %\end{equation}
 Notice that if the noise has zero mean, the expectation
-of the noise is also the variance of the noise.
+of the power of the noise is also the variance of the noise.
+
+In decibels, Eq.~\ref{eq:power_SNR} becomes
+\begin{equation}
+  \text{P-SNR}_{\text{dB}}(\bm{X},\tilde{\bm{X}}) = 10\log_{10}\text{P-SNR}(\bm{X},\tilde{\bm{X}}).
+  \label{eq:power_SNR_dB}
+\end{equation}
+
+\begin{comment}
 
 This is the formal definition. However, because commonly in
 practice the probabilities of the samples are unknown, we estimate the
@@ -71,6 +75,31 @@ Finally, it is common to express the power (energy) in decibels (dB).
 
 A ratio higher than 1:1 (greater than 0 dB) indicates more signal than
 noise. Therefore, a high SNR implies better quality (less noise).
+
+\end{comment}
+
+%}}}
+
+\section{Amplitude \glsentryfull{SNR} (A-\gls{SNR})}
+%{{{
+
+In the case of considering amplitudes (see
+Section~\ref{sec:RMS_amplitude}) instead of power,
+\begin{equation}
+  \text{A-SNR}(\bm{X},\tilde{\bm{X}}) = \frac{\text{RMS}(\bm{X})}{\text{RMS}(\bm{X} - \tilde{\bm{X}})}.
+  \label{eq:amplitude_SNR}
+\end{equation}
+
+In decibels,
+\begin{equation}
+  \text{A-SNR}_{\text{dB}}(\bm{X},\tilde{\bm{X}}) = 20\log_{10}\text{A-SNR}(\bm{X},\tilde{\bm{X}}).
+  \label{eq:power_SNR}
+\end{equation}
+
+Notice if you double the power of a signal, your \gls{SNR} increases by
+about 3dB. However, if you double the amplitude (voltage) of a signal,
+you have actually quadrupled the power, so the \gls{SNR} increases by about
+6dB.
 
 %}}}
 
