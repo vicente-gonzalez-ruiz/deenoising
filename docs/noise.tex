@@ -294,7 +294,16 @@ statistical sample) and ``\emph{sample}'' (the signal digital sample).
 %}}}
 \end{comment}
 
-\section{Expectation of the (``power'') \gls{SNR}}
+\section{Expectation of the noisy instances: the clean image}
+Under the assumption that we have a high-enought number of noisy
+instances $\{\tilde{\bm{X}}^{(i)}\}$ and therefore the pixel-wise
+arithmetic average (see Section~\ref{sec:average}) of them can be
+considered as a good estimation for the expected noisy image,
+\begin{equation}
+  \overline{\{\tilde{\bm{X}}^{()}\}} \approx \mathbb{E}[\{\tilde{\bm{X}}^{()}\}],
+\end{equation}
+
+\section{Expectation of the ``power'' \gls{SNR}}
 In statistical terms (considering that $\bm{X}$ is the realization of
 a \gls{DRVec}), the \gls{SNR} is defined as the ratio between the
 expectation of the square of the signal (which is equivalent to the
@@ -304,12 +313,12 @@ power of the signal) and the expectation of the square of the noise
   \text{SNR} = \frac{P(\bm{X}^2)}{P(\bm{N}^2)}=\frac{\mathbb{E}[\bm{X}^2]}{\mathbb{E}[\bm{N}^2]}.
   \label{eq:power_SNR_statistics}
 \end{equation}
-If the expectation of the noise is zero, then (see
-Section~\ref{sec:power_mean_variance})
+If the expectation of the noise is zero, then 
 \begin{equation}
-  \mathbb{E}[\bm{N}^2] = \text{Var}(\bm{N}).
+  \mathbb{E}[\bm{N}^2] = \text{Var}(\bm{N})
   \label{eq:expectation_variance}
 \end{equation}
+(see Section~\ref{sec:power_mean_variance}).
 
 \section{Expectation of the ``amplitude'' \gls{SNR}}
 Humans perceive fluctuations (noise) in amplitude, not in power. For
@@ -356,7 +365,11 @@ $\tilde{\bm{X}}$ noisy image, in the following way:
   \begin{equation}
     \text{Cov}(\bm{N}) = \sigma^2\bm{I},
   \end{equation}
-  where $\bm{I}$ is the identity matrix.
+  where $\bm{I}$ is the identity matrix, or that
+  \begin{equation}
+    \text{Cov}(\bm{N}_i,\bm{N}_j) = 0\quad\text{for} $i\neq j$,
+  \end{equation}
+  so nighboring pixels's noises are uncorrelated.
 \item The noise is independent of (it is not correlated with) the clean signal,
 \begin{equation}
   \Pr(N{=}\bm{N}_p|\bm{X}_p) = \Pr(N{=}\bm{N}_p).
@@ -365,26 +378,27 @@ $\tilde{\bm{X}}$ noisy image, in the following way:
 \end{enumerate}
 
 \subsection{The ``expected'' noisy image}
-Under the assumption that we have a high-enought number of noisy
-instances $\{\tilde{\bm{X}}^{(i)}\}$ and therefore the pixel-wise
-arithmetic average (see Section~\ref{sec:average}) of them can be
-considered as a good estimation for the expected noisy image,
+\label{sec:expected_noisy_AWG}
+In \gls{AWG} noise, 
 \begin{equation}
-  \overline{\{\tilde{\bm{X}}^{()}\}} \approx \mathbb{E}[\{\tilde{\bm{X}}^{()}\}],
+  \mathbb{E}[\tilde{\bm{N}}] = \bm{0}.
 \end{equation}
-the expectation for the $p$-th pixel of the noisy image is
+Therefore, the expectation for the $p$-th pixel of the noisy image is
 \begin{equation}
-  \mathbb{E}[\{\tilde{\bm{X}_p}\}^{()}] = \mathbb{E}[\text{max}(0, \{\bm{X}_p+\bm{N}_p)\}^{()}].
+  \mathbb{E}[\tilde{\bm{X}_p}] = \mathbb{E}[\text{max}(\bm{0}_p, \bm{X}_p+\bm{N}_p)] = 0 + \mathbb{E}[\bm{X}_p+\bm{N}_p] = \bm{X}_p + \mathbb{E}[\bm{N}_p] = \bm{X}_p,
   \label{eq:E_AWG}
 \end{equation}
-Notice that
-$\mathbb{E}[\{\tilde{\bm{X}}\}^{()}]>\mathbb{E}[\{\bm{X}\}^{()}]$ when
-$\mathbb{E}[\{\bm{X}\}^{()}]=\bm{0}$. This explain the existence of
-noise in \emph{dark images}\footnote{A dark image is those obtained in
-  absence of radiation}. This basically implies that $\tilde{\bm{X}}$ is
-an unbiased estimator or $\bm{X}$ when $\mathbb{E}[\bm{X}]>0$.
+so the observed noisy image is an unbiased estimator of the clean
+image when $\mathbb{E}[\bm{X}]>0$. Equivalently,
+\begin{equation}
+  \mathbb{E}[\tilde{\bm{X}}] = \bm{X}.
+\end{equation}
+Physically, zero-mean Gaussian noise produces random positive and
+negative fluctuations around the true intensity, with no systematic
+bias.
 
 \subsection{Variance of the noisy image}
+\label{sec:variance_noisy_AWG}
 The variance of the signal described in Eq.~\ref{eq:AWG} is
 \begin{equation}
   \mathtt{Var}(\tilde{\bm{X}}) = \mathtt{Var}(\bm{X}+\bm{N}) = \mathtt{Var}(\bm{X}) + \sigma^2
@@ -398,7 +412,11 @@ The variance of the signal described in Eq.~\ref{eq:AWG} is
 %\end{equation}
 Therefore, the variance of a \gls{AWG} noisy signal depend on the
 variance of the clean signal and the variance of the noise, and there
-is not a dependency betweeen both variances.
+is not a dependency betweeen both variances. Considering also the
+result obtained in Section~\ref{sec:expected_noisy_AWG}, we can say that
+\begin{equation}
+  \tilde{\bm{X}_p}\sim\mathcal{N}(\bm{X}_p,\mathtt{Var}(\bm{X}) + \sigma^2).
+\end{equation}
 % This is a charactaristic of signal-independent noisy models.
 
 %{{{

@@ -25,6 +25,27 @@ $\text{Var}(\bm{X})$, we finally obtain that
 \end{equation}
 
 
+\subsection{The ``expected'' noisy image (Gaussian noise)}
+Under the assumption that we have a high-enought number of noisy
+instances $\{\tilde{\bm{X}}^{(i)}\}$ and therefore the pixel-wise
+arithmetic average (see Section~\ref{sec:average}) of them can be
+considered as a good estimation for the expected noisy image,
+\begin{equation}
+  \overline{\{\tilde{\bm{X}}^{()}\}} \approx \mathbb{E}[\{\tilde{\bm{X}}^{()}\}],
+\end{equation}
+the expectation for the $p$-th pixel of the noisy image is
+\begin{equation}
+  \mathbb{E}[\{\tilde{\bm{X}_p}\}^{()}] = \mathbb{E}[\text{max}(0, \{\bm{X}_p+\bm{N}_p)\}^{()}].
+  \label{eq:E_AWG}
+\end{equation}
+Notice that
+$\mathbb{E}[\{\tilde{\bm{X}}\}^{()}]>\mathbb{E}[\{\bm{X}\}^{()}]$ when
+$\mathbb{E}[\{\bm{X}\}^{()}]=\bm{0}$. This explain the existence of
+noise in \emph{dark images}\footnote{A dark image is the obtained in
+  absence of radiation}. This basically implies that $\tilde{\bm{X}}$ is
+an unbiased estimator for $\bm{X}$ when $\mathbb{E}[\bm{X}]>0$.
+
+
 \section{Removing Gaussian noise}
 \subsection{Consequences of the \gls{CLT}}
 %\section{The mean is the clean signal}
