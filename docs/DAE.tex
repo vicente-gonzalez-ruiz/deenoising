@@ -7,46 +7,6 @@ network tries to reproduce such behaviour. In image denoising, the
 network is trained to remove the noise, i.e., to generate a clean
 version of the input.
 
-\section{Data-driven VS zero-shot methods}
-Data-driven approaches rely on large datasets with high-quality
-labels. Zero-shot methods avoid this limitation but remain effective
-only for independent and identically distributed (i.i.d.) noise. % Median2Median: Zero-shot Suppression of Structured Noise in Images, J Wang, G Wang - arXiv preprint arXiv:2510.01666, 2025
-
-In contrast to supervised methods, zero-shot denoising offers a
-compelling alternative by training a network directly on a single
-noisy input, without requiring any external dataset. % https://arxiv.org/pdf/2510.01666
-
-Zero-shot denoising methods learn to denoise directly from a single
-noisy image without requiring any external dataset, making them
-particularly advantageous in data-limited settings. Unlike supervised (DnCNN and FFDNet)
-and self-supervised methods (N2V and Ne2Ne), zero-shot methods are not sensitive to
-any distribution shift of test data, allowing superior
-generalizability across noise types and image domains, since training
-and inference occur on the same image.
-
-\section{Supervised VS unsupervised methods}
-Unsupervised are also called blind methods. % https://arxiv.org/pdf/2510.01666
-
-Supervised denoising methods use paired datasets to train neural
-networks to recover clean images from noisy inputs (N2C).  Early methods
-such as DnCNN [4] and FFDNet [11] use clean–noisy image pairs to
-learn a denoising mapping. % https://arxiv.org/pdf/2510.01666
-
-[4] Kai Zhang, Wangmeng Zuo, Yunjin Chen, Deyu Meng, and Lei Zhang. Beyond a gaussian denoiser: Residual
-learning of deep cnn for image denoising. IEEE transactions on image processing, 26(7):3142–3155, 2017.
-
-[11] Kai Zhang, Wangmeng Zuo, and Lei Zhang. Ffdnet: Toward a fast and flexible solution for cnn-based image
-denoising. IEEE Transactions on Image Processing, 27(9):4608–4622, 2018.
-
-N2C training offers a strong performance benchmark and makes no
-assumption about the underlying noise characteristics, whether the
-noise is structured or unstructured, following any statistical
-distribution. In the supervised learning mode, the network is guided
-by training data to suppress whatever noise in the dataset. However,
-acquiring clean–noisy image pairs is often labor-intensive, expensive,
-and even infeasible in practice, particularly in medical imaging
-tasks.  % https://arxiv.org/pdf/2510.01666
-
 \section{Compressing AEs VS denoising AEs (U-nets)}
 
 Pure AEs, also called compressing AE, consists of two main parts:
@@ -74,6 +34,51 @@ information that the encoder has learned. However, in U-nets the skip
 connections that provide access to the decoder to the feature maps
 used by the encoder, allows the decoder to keep the details of the
 image that in a compressing AE are lost.
+
+\section{Supervised (N2C) VS unsupervised denoising methods}
+
+Unsupervised are also called blind methods. % https://arxiv.org/pdf/2510.01666
+
+Supervised denoising methods use paired datasets to train neural
+networks to recover clean images from noisy inputs (N2C).  Early methods
+such as DnCNN [4] and FFDNet [11] use clean–noisy image pairs to
+learn a denoising mapping. % https://arxiv.org/pdf/2510.01666
+
+[4] Kai Zhang, Wangmeng Zuo, Yunjin Chen, Deyu Meng, and Lei Zhang. Beyond a gaussian denoiser: Residual
+learning of deep cnn for image denoising. IEEE transactions on image processing, 26(7):3142–3155, 2017.
+
+[11] Kai Zhang, Wangmeng Zuo, and Lei Zhang. Ffdnet: Toward a fast and flexible solution for cnn-based image
+denoising. IEEE Transactions on Image Processing, 27(9):4608–4622, 2018.
+
+N2C training offers a strong performance benchmark and makes no
+assumption about the underlying noise characteristics, whether the
+noise is structured or unstructured, following any statistical
+distribution. In the supervised learning mode, the network is guided
+by training data to suppress whatever noise in the dataset. However,
+acquiring clean–noisy image pairs is often labor-intensive, expensive,
+and even infeasible in practice, particularly in medical imaging
+tasks.  % https://arxiv.org/pdf/2510.01666
+
+\section{Supervised VS zero-shot methods}
+Historically, supervised approaches rely on large datasets with high-quality
+labels. Zero-shot methods avoid this limitation but remain effective
+only for \gls{iid} noise. % Median2Median: Zero-shot Suppression of Structured Noise in Images, J Wang, G Wang - arXiv preprint arXiv:2510.01666, 2025
+
+This can be also done even in only one image is in the training dataset, using patching.
+
+In contrast to supervised methods, zero-shot denoising offers a
+compelling alternative by training a network directly on a single
+noisy input, without requiring any external dataset. % https://arxiv.org/pdf/2510.01666
+
+Zero-shot denoising methods learn to denoise directly from a single
+noisy image without requiring any external dataset, making them
+particularly advantageous in data-limited settings. Unlike supervised (DnCNN and FFDNet)
+and self-supervised methods (N2V and Ne2Ne), zero-shot methods are not sensitive to
+any distribution shift of test data, allowing superior
+generalizability across noise types and image domains, since training
+and inference occur on the same image.
+
+
 
 \section{Noise2Clean (N2C) training}
 N2C methods train neural networks to learn end-to-end mappings
