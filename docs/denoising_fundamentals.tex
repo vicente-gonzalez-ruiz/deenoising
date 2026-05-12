@@ -55,12 +55,17 @@ Denoisers can be losely classified into:
 \item \textbf{Algorithm-driven methods}: when their applicability
   depends fundamentaly on a list of computational steps
   ``hand-crafted'' optimized to improve the performance. Examples are
-  signal-domain/frequency filtering methods such as Gaussian and
-  Wiener denoisers, Variational / Optimization Methods, and
-  signal-averaing methods such as \gls{NLM} and \gls{BM3D}.
-\item \textbf{Data-driven methods}: if the denoiser, although there is
-  a list of computational steps, they must learn from the data to
-  improve the performance.
+  signal-domain (such as Gaussian filters-based) denoisers,
+  frequency-domain filtering (such as Wiener and wavelet-thresholding)
+  denoisers, Variational (optimization-based) methods (such as Total
+  Variation (TV), MAP estimation, and Sparse coding -- confirmar
+  esto), and signal-averaing methods (such as \gls{NLM} and
+  \gls{BM3D}).
+\item \textbf{Data-driven methods}: when the denoiser, although there
+  is a list of computational steps, must \emph{learn} from the noisy
+  data to improve the performance. Examples are all \gls{DL}
+  techniques, that basically can be divided in \gls{AE} and
+  transformers.
 \end{enumerate}
 
 \begin{enumerate}

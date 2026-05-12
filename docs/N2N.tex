@@ -1,5 +1,11 @@
 \chapter{Noise2Noise (N2N)} % https://arxiv.org/pdf/2510.01666
 
+Preparation: You split your data (often via even/odd frames or half-sets) to ensure the noise in $\tilde{\mathbf{X}}_1$ is independent of $\tilde{\mathbf{X}}_2$.
+
+Training (Self-Supervised): The network learns to map $\tilde{\mathbf{X}}_1 \rightarrow \tilde{\mathbf{X}}_2$, supposing that $\tilde{\mathbf{X}}_1 = \mathbf{X} + n_1$ and $\tilde{\mathbf{X}}_2 = \mathbf{X} + n_2$.
+
+Inference: You pass the data through the trained weights. Averaging the two instances at the end is a final "ensemble" step to further boost the Signal-to-Noise Ratio (SNR) by $\sqrt{2}$.
+
 self-supervised deep learning (SSDL) method
 
 Noise2Noise is famous for its originality in SSDL-based image denoising [16]. In the theory of Noise2Noise, when the same image is contaminated by two independent but identically distributed zero-mean noise instances, this pair of noisy images can be used to construct a training objective function that is equivalent to a supervised learning one associated with the noise-free image. % https://ieeexplore.ieee.org/abstract/document/11077678
