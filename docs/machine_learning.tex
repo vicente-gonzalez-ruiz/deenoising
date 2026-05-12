@@ -1,22 +1,28 @@
-\chapter{Machine learning denoisers}
+\chapter{Learning-based denoisers}
 
-Also refered as data-driven denoisers, can be classified as:
+Also refered as data-driven denoisers and trainable denoisers, can be
+classified as:
 \begin{enumerate}
-\item Supervised (paired): supervised denoisers require one o more
-  clean images and their respective noisy instances to learn, by
-  comparison, what is noise and what is the clean signal (a ground
-  thruth must exist). In other words, we must have one or more pairs
-  $\{(\tilde{\bm{X}}_i,\bm{X}_i)\}$. Supervised denoisers are also
-  classified as \gls{N2C} methods and distribution-based methods,
-  because the model learns the statistical ``look'' of clean images.
-\item Unsupervised (unpaired): Unsupervised denoising does not require
-  labels, i.e., we don't need $(\tilde{\bm{X}},\bm{X})$ pairs,
-  although we need a collection of noisy images (with the type of
-  noise we want to remove) and a a collection of clean images (the
-  content of the images could be any and different to the content of
-  the noisy ones). So, we need a $\{\tilde{\bm{X}}_i\}_{i=0}^{N}$ and
-  a $\{\bm{Y}_i\}_{i=0}^{M}$. GAN-based denoiser can be classified as
-  unsupervised.
+\item Supervised (or paired) denoisers require one o more clean images
+  and their respective noisy instances to learn, by comparison, what
+  is noise and what is the clean signal (a ground truth must
+  exist). In other words, we must have one or more pairs
+  $\{(\tilde{\bm{X}}_i,\bm{X}_i)\}_{i=0}^{N\in\mathbb{N}}$. Supervised
+  denoisers are also classified as \gls{N2C} methods and
+  distribution-based methods, because the model learns the statistical
+  ``look'' of clean images. A supervised model $\Theta$ learns
+  \begin{equation}
+    \Theta(\tilde{\bm{X}}) \approx \bm{X}.
+  \end{equation}
+  Examples are DnCNN, FFDNet, and RIDNet.
+\item Unsupervised (unpaired) denoising does not require labels, i.e.,
+  we don't need $(\tilde{\bm{X}},\bm{X})$ pairs, although we need a
+  collection of noisy images (with the type of noise we want to
+  remove) and a collection of clean images (the content of the images
+  could be any and different to the content of the noisy ones). So, we
+  need a $\{\tilde{\bm{X}}_i\}_{i=0}^{N\in\mathbb{N}}$ and a
+  $\{\bm{Y}_i\}_{i=0}^{M\in\mathbb{N}}$. GAN-based denoiser can be
+  classified as unsupervised.
 \item Self-supervised (blind / noise-only): Unsing patching of blind-spotting techniques, we simulate the existence of the pairs $\{(\tilde{\bm{X}}_i,\bm{X}_i)\}$ Learn from noisy images
   themselves. Can be:
   \begin{enumerate}
@@ -39,22 +45,6 @@ Also refered as data-driven denoisers, can be classified as:
   $\hat{\bm{X}\approx\bm{X}$.
 \end{enumerate}
 
-
-\section{Multivariate data}
-%{{{
-
-Multivariate data refers to datasets that contain more than two
-variables for each observation. These variables represent different
-characteristics or measurements related to the observed phenomenon. In
-simpler terms, if you are collecting information about something and
-recording three or more different aspects for each item, you are
-dealing with multivariate data. Example: A study on students: You
-might collect data on their age, test scores in math, test scores in
-science, attendance rate, and extracurricular activities. Each student
-is an observation, and the five pieces of information are the multiple
-variables.
-
-%}}}
 
 \section{Training of a regression model for denoising} % Noise2Noise: Learning Image Restoration without Clean Data https://arxiv.org/pdf/1803.04189
 A regression model, e.g., a \gls{CNN} can be trained using a number of pairs $(\hat{{\mathbf x}}_i, {\mathbf y}_i)$ of corrupted inputs $\hat{{\mathbf x}}_i$ and clean targets ${\mathbf y}_i$, and minimizing the empirical risk
