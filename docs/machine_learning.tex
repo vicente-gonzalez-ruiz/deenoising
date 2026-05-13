@@ -14,7 +14,8 @@ classified as:
   \begin{equation}
     \Theta(\tilde{\bm{X}}) \approx \bm{X}.
   \end{equation}
-  Examples are DnCNN, FFDNet, and RIDNet.
+  Examples of image denoisers trained in a supervised way are DnCNN,
+  FFDNet, and Restormer.
 \item Unsupervised (unpaired) denoising does not require labels, i.e.,
   we don't need $(\tilde{\bm{X}},\bm{X})$ pairs, although we need a
   collection of noisy images (with the type of noise we want to
@@ -24,19 +25,20 @@ classified as:
   $\{\bm{Y}_i\}_{i=0}^{M\in\mathbb{N}}$. GAN-based denoiser can be
   classified as unsupervised.
 \item Self-supervised (blind / noise-only): Unsing patching of blind-spotting techniques, we simulate the existence of the pairs $\{(\tilde{\bm{X}}_i,\bm{X}_i)\}$ Learn from noisy images
-  themselves. Can be:
+  themselves.  Depending on the way the training is performed, we can classify image denoisers as:
   \begin{enumerate}
-  \item Noise2Noise: Based on mapping one noisy
+  \item \textbf{Noise2Noise}, if they learn to map one noisy
     version of a scene to another noisy version of the same scene.
   \item Noise2Void:
   \item Noise2Self:
-  \item Blind-spot networks: predict a
-    pixel from its neighbors.
+  \item \textbf{Blind-spot}: predict a
+    pixel from its neighbors. $\hat{x}_i​=f_\Theta​(x_{∖i}​)$ $i$-th pixel.
   \end{enumerate}
-\item ``Zero-Shot'' Denoisers: when you have only one instance
-  $\tilde{\bm{X}}$ and during the training
+\item \textbf{``Zero-Shot'' denoisers}: when you have only one
+  instance $\tilde{\bm{X}}$ and during the training
   $model(\tilde{\bm{X}})=\tilde{\bm{X}}$, you stop when you consider
-  that the model is learning the noise. For example, DIP, based on the
+  that the model is learning the noise (natural image structure
+  emerges before noise memorization.). For example, \gls{DIP}, based on the
   fact that autoencoders with skip connections (U-Nets, although this
   is true also for all denoising \gls{DL}-based techniques) learn
   first those information in an image that is not noise, an U-Net is

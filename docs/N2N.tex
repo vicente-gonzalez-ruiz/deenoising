@@ -1,5 +1,21 @@
 \chapter{Noise2Noise (N2N)} % https://arxiv.org/pdf/2510.01666
 
+Based on a U-Net with convolution layers, downsampling and upsampling stages, skip connections, residual learning concepts.
+
+Mathematically, the model learns:
+\begin{equation}
+  f_\Theta​(\bm{X}+\bm{N}_0)\approx \rm{X}+\bm{N}_1
+\end{equation}
+where $\bm{X}$is the clean signal, and $\bm{N}_0$, and $\bm{N}_2$ are independent noise samples.
+
+The standard loss is
+\begin{equation}
+  L = \mathbb{E}[||f_\Theta​(\bm{\tilde{X}^{(0)}})-\bm{\tilde{X}^{(1)}}||^2],
+\end{equation}
+where $\bm{\tilde{X}^{(0)}}$ and $\bm{\tilde{X}^{(1)}}$ are two noisy observations.
+
+Self-supervised.
+
 Preparation: You split your data (often via even/odd frames or half-sets) to ensure the noise in $\tilde{\mathbf{X}}_1$ is independent of $\tilde{\mathbf{X}}_2$.
 
 Training (Self-Supervised): The network learns to map $\tilde{\mathbf{X}}_1 \rightarrow \tilde{\mathbf{X}}_2$, supposing that $\tilde{\mathbf{X}}_1 = \mathbf{X} + n_1$ and $\tilde{\mathbf{X}}_2 = \mathbf{X} + n_2$.
