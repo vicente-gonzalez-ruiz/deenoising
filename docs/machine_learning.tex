@@ -57,6 +57,8 @@ Self-supervised (blind / noise-only): Unsing patching or blind-spotting techniqu
   optimal point of the training process, the U-Net will generate a
   $\hat{\bm{X}\approx\bm{X}$.
 
+\section{Aprendizaje por refuerzo}
+    
 \section{Training of a regression model for denoising} % Noise2Noise: Learning Image Restoration without Clean Data https://arxiv.org/pdf/1803.04189
 A regression model, e.g., a \gls{CNN} can be trained using a number of pairs $(\hat{{\mathbf x}}_i, {\mathbf y}_i)$ of corrupted inputs $\hat{{\mathbf x}}_i$ and clean targets ${\mathbf y}_i$, and minimizing the empirical risk
 \begin{equation}
