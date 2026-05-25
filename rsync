@@ -1,0 +1,1 @@
+rsync -av --ignore-existing deenoising-old/ deenoising/
