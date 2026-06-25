@@ -8,7 +8,8 @@ import numpy as np
 import logging
 import inspect
 
-N_ITERS = 25
+# Denoiser default parameters
+N_ITERS = 5
 STD_DEV = 1.5
 
 WINDOW_SIDE = 9     # Side of the Gaussian applicability window used
@@ -18,7 +19,7 @@ SIGMA_K = 0.15      # Scaling factor used to calculate the standard
                     # formula to calculate the standard deviation is
                     # sigma = sigma_k*(window_side - 1).
 
-# OF estimation
+# OF estimation default parameters
 FILTER_TYPE = "box" # Shape of the filer used to average the flow. It
                     # can be "box" or "gaussian".
 FILTER_SIZE = 21    # Size of the filter used to average the G and
@@ -171,9 +172,9 @@ class SRA:
     def filter(
         self,
         noisy_volume,
-        N_iters=25,
+        N_iters=N_ITERS,
         mean=0.0,
-        std_dev=1.0,
+        std_dev=STD_DEV,
         pyramid_levels=PYRAMID_LEVELS,
         window_side=WINDOW_SIDE,
         iterations=ITERATIONS,
