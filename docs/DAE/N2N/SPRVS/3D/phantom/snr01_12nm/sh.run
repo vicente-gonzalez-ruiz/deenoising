@@ -1,0 +1,10 @@
+conda activate cupy
+papermill _generate_similar_X_.ipynb _generate_similar_X_.out.ipynb 2> _generate_similar_X_out.txt
+conda deactivate
+conda activate cryocare_11b
+papermill _denoise_.ipynb _denoise_out.ipynb 2> _denoise_out.txt
+conda deactivate
+conda activate opencv
+papermill _metrics_.ipynb _metrics_out.ipynb 2> _metrics_out.txt
+jupyter-lab _metrics_out.ipynb
+conda deactivate
