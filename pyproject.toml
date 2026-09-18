@@ -1,5 +1,6 @@
 [build-system]
-requires = ["hatchling", "setuptools", "setuptools-scm"]
+requires = ["setuptools", "setuptools-scm"]
+#requires = ["hatchling", "setuptools", "setuptools-scm"]
 #build-backend = "hatchling.build"
 build-backend = "setuptools.build_meta"
 
