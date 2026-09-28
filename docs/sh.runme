@@ -1,0 +1,8 @@
+export BIBS=/home/vruiz/repos/bibs
+conda create -n deenoising
+conda activate deenoising
+conda install -c conda-forge papermill
+conda install -c conda-forge ipykernel
+conda install -c conda-forge scipy
+conda install -c conda-forge py-opencv
+conda install -c conda-forge jupyterlab
