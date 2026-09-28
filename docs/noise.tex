@@ -329,6 +329,15 @@ If the expectation of the noise is zero, then
 \end{equation}
 (see Section~\ref{sec:power_mean_variance}).
 
+\subsection{Standard deviation of the ``power'' of the Gaussian noise}
+\begin{equation}
+  \sigma = \sqrt{\frac{\mathbb{E}[\bm{N}^2]}{\text{SNR}}}.
+\end{equation}
+In dBs:
+\begin{equation}
+  \sigma = \sqrt{\frac{\mathbb{E}[\bm{N}^2]}{10^{\text{SNR}/10}}}.
+\end{equation}
+
 \section{Expectation of the ``amplitude'' \gls{SNR}}
 Humans perceive fluctuations (noise) in amplitude, not in power. For
 this reason, there is another definition of the \gls{SNR} called
@@ -338,6 +347,11 @@ amplitude-\gls{SNR}, defined as
   \label{eq:amplitude_SNR_statistics}
 \end{equation}
 Notice that this is an amplitude-to-standard-deviation ratio.
+
+\subsection{Standard deviation of the ``amplitude'' of the Gaussian noise}
+\begin{equation}
+  \sigma = \frac{\mathbb{E}[\bm{X}]}{\text{SNR}}.
+\end{equation}
 
 \section{The \acrlong{AWG} noise model} % Additive White Gaussian
 %{{{
