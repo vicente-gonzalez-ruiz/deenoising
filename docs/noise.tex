@@ -329,13 +329,27 @@ If the expectation of the noise is zero, then
 \end{equation}
 (see Section~\ref{sec:power_mean_variance}).
 
-\subsection{Standard deviation of the ``power'' of the Gaussian noise}
+\section{Standard deviation of the ``power'' of the Gaussian noise}
 \begin{equation}
   \sigma = \sqrt{\frac{\mathbb{E}[\bm{N}^2]}{\text{SNR}}}.
 \end{equation}
 In dBs:
 \begin{equation}
   \sigma = \sqrt{\frac{\mathbb{E}[\bm{N}^2]}{10^{\text{SNR}/10}}}.
+\end{equation}
+
+\section{SNR control with Poisson noise in ``power''}
+Poisson noise is signal-dependent: the variance of each voxel equals
+its expected value, so you can't add noise of an arbitrary variance
+the way you can with Gaussian noise. Instead, you control SNR by
+scaling the volume to an effective photon (count) level, sampling from
+a Poisson distribution, then scaling back:
+\begin{equation}
+  \bm{k} = \frac{\text{SNR}\mathbb{E}[\bm{X}]}{\mathbb{E}[\bm{X}^2]}.
+\end{equation}
+In dBs:
+\begin{equation}
+  \bm{k} = 10^{\frac{\text{SNR}/10}\mathbb{E}[\bm{X}}{\mathbb{E}[\bm{X}^2}.
 \end{equation}
 
 \section{Expectation of the ``amplitude'' \gls{SNR}}
@@ -351,6 +365,11 @@ Notice that this is an amplitude-to-standard-deviation ratio.
 \subsection{Standard deviation of the ``amplitude'' of the Gaussian noise}
 \begin{equation}
   \sigma = \frac{\mathbb{E}[\bm{X}]}{\text{SNR}}.
+\end{equation}
+
+\section{SNR control with Poisson noise in ``amplitude''}
+\begin{equation}
+  \bm{k} = \frac{\text{SNR}^2}{\mathbb{E}[\bm{X}]}.
 \end{equation}
 
 \section{The \acrlong{AWG} noise model} % Additive White Gaussian
@@ -553,6 +572,13 @@ Therefore, Eq.~\ref{eq:additive_Poisson} becomes
 with
 \begin{equation}
   \eta\sim\mathcal{N}(0,1)
+\end{equation}
+
+\subsection{Poisson noise control}
+Using a Poisson noise generator with a variance equal to the expectation
+of the signal:
+\begin{equation}
+  \frac{\text{Poisson}{\bm{Z}*\bm{k}}}{\bm{k}}
 \end{equation}
 
 \subsection{Noise simulation}
