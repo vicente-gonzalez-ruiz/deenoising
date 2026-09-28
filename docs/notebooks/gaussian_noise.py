@@ -5,7 +5,8 @@ Add white Gaussian noise to a signal, specifying the noise level by ONE of:
     snr             -> SNR as a linear power ratio (Psignal / Pnoise)
     noise_power_db  -> noise power in dB (10*log10 of power, same units as signal^2)
     noise_power     -> noise power, linear (= variance of the noise)
-    noise_std       -> noise amplitude as standard deviation (= RMS amplitude)
+    noise_var       -> noise variance (identical to noise_power)
+    noise_std       -> noise standard deviation (= RMS amplitude)
 
 Works with real and complex signals. For complex signals the noise power is
 split equally between the real and imaginary parts.
@@ -25,6 +26,7 @@ def add_gaussian_noise(
     snr=None,
     noise_power_db=None,
     noise_power=None,
+    noise_var=None,
     noise_std=None,
     rng=None,
     return_noise=False,
@@ -41,6 +43,7 @@ def add_gaussian_noise(
     snr : float              SNR as linear power ratio (Ps / Pn).
     noise_power_db : float   Noise power in dB (10*log10(Pn)).
     noise_power : float      Noise power, linear (variance).
+    noise_var : float        Noise variance (same as noise_power).
     noise_std : float        Noise standard deviation (RMS amplitude).
     rng : int | np.random.Generator | None
          Seed or generator for reproducibility.
@@ -53,10 +56,10 @@ def add_gaussian_noise(
     x = np.asarray(x)
 
     given = [p is not None for p in
-             (snr_db, snr, noise_power_db, noise_power, noise_std)]
+             (snr_db, snr, noise_power_db, noise_power, noise_var, noise_std)]
     if sum(given) != 1:
         raise ValueError("Specify exactly one of: snr_db, snr, "
-                         "noise_power_db, noise_power, noise_std.")
+                         "noise_power_db, noise_power, noise_var, noise_std.")
 
     # Resolve everything to a linear noise power (variance)
     if snr_db is not None:
@@ -69,7 +72,11 @@ def add_gaussian_noise(
         pn = 10 ** (noise_power_db / 10)
     elif noise_power is not None:
         pn = noise_power
+    elif noise_var is not None:
+        pn = noise_var
     else:
+        if noise_std < 0:
+            raise ValueError("Standard deviation cannot be negative.")
         pn = noise_std ** 2
 
     if pn < 0:
@@ -111,6 +118,10 @@ if __name__ == "__main__":
     # 4) Noise power linear
     y, n = add_gaussian_noise(x, noise_power=0.01, rng=0, return_noise=True)
     print(f"noise_power=0.01    -> power {signal_power(n):.4f}")
+
+    # 4b) Variance
+    y, n = add_gaussian_noise(x, noise_var=0.01, rng=0, return_noise=True)
+    print(f"noise_var=0.01      -> var {n.var():.4f}")
 
     # 5) Amplitude (std)
     y, n = add_gaussian_noise(x, noise_std=0.1, rng=0, return_noise=True)
