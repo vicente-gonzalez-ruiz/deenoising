@@ -7,6 +7,9 @@ all: $(OUTPUTS)
 	#jupyter nbconvert --execute $<
 	#jupyter nbconvert --ExecutePreprocessor.enabled=False --to notebook --execute $< --output /tmp/$<
 	papermill $< $*.IPYNB
+
+barb_0MMPG_GF.IPYNB: barb_0MMPG.IPYNB
+
 info:
 	@echo "Notebooks:" $(NOTEBOOKS)
 	@echo "Outputs:" $(OUTPUTS)

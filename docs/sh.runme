@@ -6,3 +6,5 @@ conda install -c conda-forge ipykernel
 conda install -c conda-forge scipy
 conda install -c conda-forge py-opencv
 conda install -c conda-forge jupyterlab
+conda install -c conda-forge pandas
+conda install -c conda-forge mrcfile
