@@ -7,6 +7,13 @@ network tries to reproduce such behaviour. In image denoising, the
 network is trained to remove the noise, i.e., to generate a clean
 version of the input.
 
+\section{Typical sources of loss used for training}
+\begin{enumerate}
+\item L1 loss between the input $\mathbf{X}$ and the output $\mathbf{Y}$.
+\item L2 loss.
+\item To minimize filtering at edges, the L1 loss between the gradient of $\mathbf{X}$ and the gradient of $\mathbf{Y}$.
+\end{enumerate}
+
 \section{Compressing AEs VS denoising AEs (U-nets)}
 
 Pure AEs, also called compressing AE, consists of two main parts:
@@ -77,8 +84,6 @@ and self-supervised methods (N2V and Ne2Ne), zero-shot methods are not sensitive
 any distribution shift of test data, allowing superior
 generalizability across noise types and image domains, since training
 and inference occur on the same image.
-
-
 
 \section{Noise2Clean (N2C) training}
 N2C methods train neural networks to learn end-to-end mappings

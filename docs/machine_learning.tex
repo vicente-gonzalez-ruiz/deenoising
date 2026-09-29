@@ -39,13 +39,14 @@ $\{(\tilde{\bm{X}}_i,\bm{X}_i)\}$ Learn from noisy images themselves.
 Depending on the way the training is performed, we can classify image
 denoisers as:
 \begin{enumerate}
-\item \textbf{Noise2Noise-trained}, if they learn to map one noisy
-  version of a scene to another noisy version of the same scene.
-\item Noise2Void:
-\item Noise2Self:
-\item \textbf{Blind-spot}: predict a pixel from its
+\item \textbf{Noise2Noise-trained}
+  \cite{lehtinen2018noise2noise_conference}, if they learn to map one
+  noisy version of a scene to another noisy version of the same scene.
+\item Noise2Void \cite{krull2019noise2void}:
+\item Noise2Self \cite{batson2019noise2self}:
+\item \textbf{Blind-spot} \cite{wang2022blind2unblind}: predict a pixel from its
   neighbors. $\hat{x}_i=f_\Theta(x_{i})$ $i$-th pixel. See also
-  Blind2Unblind \cite{wang2022blind2unblind}.
+  Blind2Unblind \cite{kim2025self}.
 \end{enumerate}
 
 \subsection{Zero-shot}
