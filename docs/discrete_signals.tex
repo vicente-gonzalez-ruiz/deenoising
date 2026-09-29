@@ -60,6 +60,12 @@ Notice that, by definition, the energy of a finite-length discrete
 signal is finite, but grows with $S$. Obviously, if $S$ where infinite,
 the energy would be also infinite.
 
+\begin{lstlisting}[language=Python]
+import numpy as np
+def energy(x):
+  return np.sum(x**2)
+\end{lstlisting}
+
 %}}}
 
 \section{Power of a discrete signal}
@@ -77,6 +83,14 @@ signal values).
 Compared to the energy of a signal, the use of the power of a signal
 can be more convenient to avoid arithmetic overflow in computations
 with long signals.
+
+\begin{lstlisting}[language=Python]
+import numpy as np
+def energy(x):
+  return np.mean(x**2)
+\end{lstlisting}
+
+%}}}
 
 %}}}
 

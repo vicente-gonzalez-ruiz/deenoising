@@ -528,6 +528,11 @@ artificial \gls{AWG} noise.
 
 %}}}
 
+\subsection{$\sigma$ to SNR in Gaussian noise}
+\begin{equation}
+  \text{SNR} = \frac{\mathbb{E}[|\bm{X}^2]}{\sigma^2}
+\end{equation}
+
 \section{The Poisson noisy model}
 %{{{
 
@@ -774,6 +779,12 @@ See Figure~\ref{fig:Poisson_examples}.
 \end{figure}
 
 %}}}
+
+\subsection{$\sigma$ to (global) SNR in Poisson noise}
+Remember that the noise is signal dependent (variable $\sigma$).
+\begin{equation}
+  \text{SNR}=\frac{\mathbb{E}[\bm{X}^2]}{\mathbb{E}[\text{Var}[\bm{Y}]]} = \frac{\lambda\mathbb{E}[\bm{X}^2]}{\mathbb{E}[\bm{X}]}
+\end{equation}
 
 \section{\glsentryfull{MPG} noise}
 \label{sec:MPG}
