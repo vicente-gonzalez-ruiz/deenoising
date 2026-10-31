@@ -6,14 +6,16 @@ all:	main.pdf
 
 BIBINPUTS += ".:~/bibs"
 
+PDFLATEX = pdflatex -synctex=1 -interaction=nonstopmode
+
 main.pdf:	*.tex
 		make -C figs
 		make -C notebooks
-		pdflatex main
+		$(PDFLATEX) main
 		(export BIBINPUTS=${BIBINPUTS}:${BIBS}; bibtex main)
-		pdflatex main
+		$(PDFLATEX) main
 		makeglossaries main
-		pdflatex main
+		$(PDFLATEX) main
 
 clean:
 		rm -f *.aux *.bbl *.blg *.log *.out *.pdf
