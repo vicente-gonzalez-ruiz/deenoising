@@ -1,4 +1,27 @@
-\chapter{Noise in \acrlong{LRM}}
+\chapter{Noise in Low-Radiation Microscopy}
+
+\section{Noise VS distortion}
+
+In microscopy, the primary distinction between a source of distortion
+and a source of noise resides in the deterministic versus stochastic
+nature of the resulting image degradation. A source of distortion is a
+systematic, repeatable transformation imposed by the physical
+parameters of the optical path, a prime example being the microscope's
+Optical Transfer Function (OTF) or Point Spread Function (PSF),
+alongside optical aberrations or field non-uniformities. Although
+distortion degrades image fidelity and spatial resolution, its
+deterministic character implies that if the transfer function is
+known—which is generally measurable using calibration specimens like
+fluorescent beads—its distortive effect can be mathematically inverted
+or deconvolved, effectively recovering the true structure of the
+sample. In sharp contrast, noise arises from inherently random,
+unpredictable physical phenomena, such as quantum photon shot noise,
+thermal electronic fluctuations, or sensor readout noise. Because
+noise is probabilistic and fundamentally uncorrelated with the
+underlying signal, its precise value at any given pixel remains
+unknown; consequently, noise cannot be completely eliminated without
+irreversibly filtering, blurring, or altering the authentic, non-noisy
+visual information within the captured image.
 
 \section{Main sources of noise}
 %{{{
