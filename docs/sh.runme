@@ -8,3 +8,4 @@ conda install -c conda-forge py-opencv
 conda install -c conda-forge jupyterlab
 conda install -c conda-forge pandas
 conda install -c conda-forge mrcfile
+export MAKEFILE_TEMPLATES=/home/vruiz/repos/Makefile_templates
