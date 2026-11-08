@@ -20,3 +20,4 @@
 *.IPYNB
 *pycache*
 *.pdf
+main.synctex.gz
