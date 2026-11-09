@@ -9,7 +9,13 @@ particles, such as photons or electrons. Stochastic variations
 in these discrete arrivals introduce signal-dependent Poisson
 shot noise, degrading underlying structures. % https://arxiv.org/pdf/2610.33136
 
-Regions with higher intensity experience larger absolute noise fluctuations.
+Regions with higher intensity experience larger absolute noise
+fluctuations. If $u$ is the underlaying true (noise-free) intensity
+value at pixel $x$, and $f(x)$ the image observation at $x$, the
+probability of observing $k$ counts at $x$ is
+\begin{equation}
+  p(f(x)=k|u(x)=\lambda)=\frac{\lambda^k}{k!}e^{-\lambda}.
+\end{equation}
 
 \section{SNR control with Poisson noise in ``power''}
 Poisson noise is signal-dependent: the variance of each pixel/voxel equals
