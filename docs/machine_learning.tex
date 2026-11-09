@@ -33,6 +33,8 @@ Unsupervised (unpaired) denoising does not require paired
 \subsection{Adversarial training}
 
 \section{Self-supervised learning}
+Self-supervised denoising methods avoid the requirement for clean
+targets by exploring self-supervision from noisy observations only.
 Self-supervised (blind / noise-only): Unsing patching or
 blind-spotting techniques, we simulate the existence of the pairs
 $\{(\tilde{\bm{X}}_i,\bm{X}_i)\}$ Learn from noisy images themselves.
@@ -44,9 +46,12 @@ denoisers as:
   noisy version of a scene to another noisy version of the same scene.
 \item Noise2Void \cite{krull2019noise2void}:
 \item Noise2Self \cite{batson2019noise2self}:
-\item \textbf{Blind-spot} \cite{wang2022blind2unblind}: predict a pixel from its
-  neighbors. $\hat{x}_i=f_\Theta(x_{i})$ $i$-th pixel. See also
-  Blind2Unblind \cite{kim2025self}.
+\item \textbf{Blind-spot} \cite{wang2022blind2unblind}: predict a
+  pixel from its neighbors. $\hat{x}_i=f_\Theta(x_{i})$ $i$-th
+  pixel. See also Blind2Unblind \cite{kim2025self}, Noise2Void
+  \cite{krull2019noise2void}, Noise2Self \cite{batson2019noise2self},
+  PN2V \cite{krull2020probabilistic}, Noise2Same
+  \cite{xie2020noise2same}, and Self2Self \cite{quan2020self2self}.
 \end{enumerate}
 
 \subsection{Zero-shot}
